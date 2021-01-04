@@ -25,22 +25,41 @@ public class Pandemia {
         while (answer != 0) {
             switch (answer) {
                 case 1:
-                    if (board == null){
-                        System.out.print("No hi ha un taulell creat.\nDiga'm les mesures del taulell. Primer les files i després les columnes: ");
-                        x = scan.nextInt();
-                        y = scan.nextInt();
-                        board = new int[x][y];
-                        files = x;
-                        columnes = y;
-                        for (int i = 0; i < board.length; i++) {
-                            System.out.println(Arrays.toString(board[i]));
-                        }
-                    }else{
-                        System.out.println("Ja hi ha un taulell creat: ");
-                        for (int i = 0; i < board.length; i++) {
-                            System.out.println(Arrays.toString(board[i]));
-                        }
+                    System.out.println("Que vols fer:\n" +
+                            "1. Crear un taulell buit(introduint les files y columnes)\n" +
+                            "2. Taulell amb malalts de forma aleatoria(minim 2 columnes i files)");
+                    byte answerTaulell = scan.nextByte();
+                    switch(answerTaulell){
+                        case 1:
+                            System.out.print("Diga'm les mesures del taulell. Primer les files i després les columnes: ");
+                            x = scan.nextInt();
+                            y = scan.nextInt();
+                            board = new int[x][y];
+                            files = x;
+                            columnes = y;
+                            for (int i = 0; i < board.length; i++) {
+                                System.out.println(Arrays.toString(board[i]));
+                            }
+                            break;
+                        case  2:
+                            x = (int)(Math.random()*9+2);
+                            y = (int)(Math.random()*9+2);
+                            System.out.printf("Es creara un taulell amb les següents dimensions(x: %d, y: %d)\n",x, y);
+                            board = new int[x][y];
+                            files = x;
+                            columnes = y;
+                            for (int i = 0; i < files; i++) {
+                                for (int j = 0; j < columnes; j++) {
+                                    board[i][j] = (int)(Math.random()*10);
+                                }
+                            }
+                            System.out.println("S'ha creat el taulell");
+                            for (int i = 0; i < board.length; i++) {
+                                System.out.println(Arrays.toString(board[i]));
+                            }
+                            break;
                     }
+                    // posicions bloquejades es representarana amb null per mostrar una X
                     break;
                 case 2:
                     System.out.print("Quants malalts vols introduir: ");
@@ -49,7 +68,7 @@ public class Pandemia {
                         System.out.print("A quina fila i columna vols introduir el malalt: ");
                         x = scan.nextInt();
                         y = scan.nextInt();
-                        System.out.print("Quants malalts hi han en aquesta posició: ");
+                        System.out.print("Quants malalts hi ha en aquesta posició: ");
                         int malaltsPosicio = scan.nextInt();
                         if (x <= files && y <= columnes){
                             board[x][y] =  malaltsPosicio;
