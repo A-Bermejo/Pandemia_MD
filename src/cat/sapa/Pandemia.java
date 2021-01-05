@@ -38,8 +38,17 @@ public class Pandemia {
                             board = new float[x][y];
                             files = x;
                             columnes = y;
-                            for (int i = 0; i < board.length; i++) {
-                                System.out.println(Arrays.toString(board[i]));
+                            for (int i = 0; i < files; i++) {
+                                System.out.printf("| ");
+                                for (int j = 0; j < columnes; j++) {
+                                    if (board[i][j] == -1){
+                                        System.out.print("X | ");
+                                    }else{
+                                        System.out.printf("%.0f | ", board[i][j]);
+                                    }
+
+                                }
+                                System.out.printf("\n");
                             }
                             break;
                         case  2:
@@ -55,29 +64,62 @@ public class Pandemia {
                                 }
                             }
                             System.out.println("S'ha creat el taulell");
-                            for (int i = 0; i < board.length; i++) {
-                                System.out.println(Arrays.toString(board[i]));
+                            for (int i = 0; i < files; i++) {
+                                System.out.printf("| ");
+                                for (int j = 0; j < columnes; j++) {
+                                    if (board[i][j] == -1){
+                                        System.out.print("X | ");
+                                    }else{
+                                        System.out.printf("%.0f | ", board[i][j]);
+                                    }
+
+                                }
+                                System.out.printf("\n");
                             }
                             break;
                         default:
                             System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
                             break;
                     }
-                    // posicions bloquejades es representarana amb null per mostrar una X
+                    int numPosicioRand = (int)(Math.random() * 4);
+                    for (int i = 0; i < numPosicioRand; i++) {
+                        x = (int)(Math.random() * files);
+                        y = (int)(Math.random() * columnes);
+                        board[x][y] = -1;
+                    }
+                    System.out.printf("Total de posicions bloquejades: %d\n", numPosicioRand);
                     break;
                 case 2:
                     System.out.print("Quants malalts vols introduir: ");
-                    int malalts = scan.nextInt();
+                    int malalts = Math.abs(scan.nextInt());
+                    int malaltsPosicio = 0;
+                    for (int i = 0; i < files; i++) {
+                        System.out.printf("| ");
+                        for (int j = 0; j < columnes; j++) {
+                            if (board[i][j] == -1){
+                                System.out.print("X | ");
+                            }else{
+                                System.out.printf("%.0f | ", board[i][j]);
+                            }
+
+                        }
+                        System.out.printf("\n");
+                    }
                     for (int i = 0; i < malalts;) {
                         System.out.print("A quina fila i columna vols introduir el malalt: ");
-                        x = scan.nextInt();
-                        y = scan.nextInt();
-                        System.out.print("Quants malalts hi ha en aquesta posició: ");
-                        int malaltsPosicio = scan.nextInt();
+                        x = Math.abs(scan.nextInt());
+                        y = Math.abs(scan.nextInt());
                         if (x <= files && y <= columnes){
-                            board[x][y] =  malaltsPosicio;
+                            System.out.print("Quants malalts hi ha en aquesta posició: ");
+                            malaltsPosicio = Math.abs(scan.nextInt());
+                            if (malaltsPosicio + i <= malalts && board[x][y] != -1){
+                                board[x][y] = malaltsPosicio;
+                            }else{
+                                System.out.println("No pots especificar més malalts en una posicio que el total " +
+                                        "de malalts que vols introduir.");
+                            }
                         }else{
-                            System.out.println();
+                            System.out.println("Especifica una columna i fila existents en el taulell.");
                         }
                         i += malaltsPosicio;
                     }
@@ -87,7 +129,9 @@ public class Pandemia {
                     taxaContagi = scan.nextFloat();
                     for (int i = 0; i < files; i++) {
                         for (int j = 0; j < columnes; j++) {
-                            board[i][j] += board[i][j] * taxaContagi;
+                            if(board[i][j] != -1){
+                                board[i][j] += board[i][j] * taxaContagi;
+                            }
                         }
                     }
                     break;
@@ -96,10 +140,89 @@ public class Pandemia {
                             "1. Globalment\n" +
                             "2. Per a una posició concreta");
                     byte answerCura = scan.nextByte();
+                    byte answerCuraValor;
                     switch (answerCura) {
                         case 1:
+                            System.out.println("Ho vols fer amb:\n" +
+                                    "1. Percentatge (%)\n" +
+                                    "2. Valor concret");
+                            answerCuraValor = scan.nextByte();
+                            int numeroCura;
+                            switch (answerCuraValor){
+                                case 1:
+                                    System.out.println("Quin percentatge de malalts vols curar (%)");
+                                    numeroCura = scan.nextInt();
+                                    for (int i = 0; i < files; i++) {
+                                        for (int j = 0; j < columnes; j++) {
+                                            if(board[i][j] != -1) {
+                                                board[i][j] -= board[i][j] * numeroCura / 100;
+                                            }
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    System.out.println("Quants malalts vols curar (valor concret)");
+                                    numeroCura = scan.nextInt();
+                                    for (int i = 0; i < files; i++) {
+                                        for (int j = 0; j < columnes; j++) {
+                                            if(board[i][j] != -1) {
+                                                if ((board[i][j] - numeroCura) < 0) {
+                                                    board[i][j] = 0;
+                                                } else {
+                                                    board[i][j] -= numeroCura;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
+                                    break;
+                            }
                             break;
                         case 2:
+                            for (int i = 0; i < files; i++) {
+                                System.out.printf("| ");
+                                for (int j = 0; j < columnes; j++) {
+                                    if (board[i][j] == -1){
+                                        System.out.print("X | ");
+                                    }else{
+                                        System.out.printf("%.0f | ", board[i][j]);
+                                    }
+
+                                }
+                                System.out.printf("\n");
+                            }
+                            System.out.println("A quina posicio vols curar els malalts: ");
+                            x = scan.nextInt();
+                            y = scan.nextInt();
+                            System.out.println("Ho vols fer amb:\n" +
+                                    "1. Percentatge (%)\n" +
+                                    "2. Valor concret");
+                            answerCuraValor = scan.nextByte();
+                            switch (answerCuraValor){
+                                case 1:
+                                    System.out.println("Quin percentatge de malalts vols curar (%)");
+                                    numeroCura = scan.nextInt();
+                                    if(board[x][y] != -1) {
+                                        board[x][y] -= board[x][y] * numeroCura / 100;
+                                    }
+                                    break;
+                                case 2:
+                                    System.out.println("Quants malalts vols curar (valor concret)");
+                                    numeroCura = scan.nextInt();
+                                    if(board[x][y] != -1) {
+                                        if ((board[x][y] - numeroCura) < 0) {
+                                            board[x][y] = 0;
+                                        } else {
+                                            board[x][y] -= numeroCura;
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
+                                    break;
+                            }
                             break;
                         default:
                             System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
@@ -110,8 +233,17 @@ public class Pandemia {
 
                     break;
                 case 6:
-                    for (int i = 0; i < board.length; i++) {
-                        System.out.println(Arrays.toString(board[i]));
+                    for (int i = 0; i < files; i++) {
+                        System.out.printf("| ");
+                        for (int j = 0; j < columnes; j++) {
+                            if (board[i][j] == -1){
+                                System.out.print("X | ");
+                            }else{
+                                System.out.printf("%.0f | ", board[i][j]);
+                            }
+
+                        }
+                        System.out.printf("\n");
                     }
                     break;
                 default:
