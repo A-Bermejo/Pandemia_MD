@@ -3,6 +3,7 @@ package cat.sapa;
 import java.util.Scanner;
 
 public class Pandemia {
+    // Creació d'un method per evitar codi redundant
     private static void Menu(int files, int columnes, float[][] board) {
         for (int i = 0; i < files; i++) {
             System.out.print("| ");
@@ -10,7 +11,7 @@ public class Pandemia {
                 if (board[i][j] == -1) {
                     System.out.printf("%4s    | ", "X");
                 } else {
-                    System.out.printf("%-7.0f | ", board[i][j]);
+                    System.out.printf("%-7.0f | ", Math.floor(board[i][j]));
                 }
 
             }
@@ -34,6 +35,8 @@ public class Pandemia {
         int files = 0;
         int columnes = 0;
         float taxaContagi;
+        float totalMalalts = 0;
+        int totalCurats = 0;
         float[][] board = null; //Especifiquem "null" per poder utilitzar l'array a tot el programa"
         byte answer = scan.nextByte(); //Introduir resposta
         while (answer != 0) {
@@ -51,6 +54,8 @@ public class Pandemia {
                             board = new float[x][y];
                             files = x;
                             columnes = y;
+                            totalCurats = 0;
+                            totalMalalts = 0;
                             break;
                         case 2: //Creació d'un taulell aleatori
                             x = (int) (Math.random() * 9 + 2);
@@ -64,6 +69,8 @@ public class Pandemia {
                                     board[i][j] = (int) (Math.random() * 10);
                                 }
                             }
+                            totalCurats = 0;
+                            totalMalalts = 0;
                             break;
                         default:
                             System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
@@ -134,6 +141,7 @@ public class Pandemia {
                                         for (int j = 0; j < columnes; j++) {
                                             if (board[i][j] != -1) {
                                                 board[i][j] -= board[i][j] * numeroCura / 100;
+                                                totalCurats += board[i][j] * numeroCura / 100; // algo falla aqui ಠಿ_ಠ
                                             }
                                         }
                                     }
@@ -145,9 +153,11 @@ public class Pandemia {
                                         for (int j = 0; j < columnes; j++) {
                                             if (board[i][j] != -1) {
                                                 if ((board[i][j] - numeroCura) < 0) {
+                                                    totalCurats += (board[i][j] - numeroCura) + numeroCura;
                                                     board[i][j] = 0;
                                                 } else {
                                                     board[i][j] -= numeroCura;
+                                                    totalCurats += numeroCura;
                                                 }
                                             }
                                         }
@@ -173,6 +183,7 @@ public class Pandemia {
                                     numeroCura = scan.nextInt();
                                     if (board[x][y] != -1) {
                                         board[x][y] -= board[x][y] * numeroCura / 100;
+                                        totalCurats += board[x][y] * numeroCura / 100;
                                     }
                                     break;
                                 case 2: //Curar malalts de forma individual introduïnt un valor concret
@@ -180,9 +191,11 @@ public class Pandemia {
                                     numeroCura = scan.nextInt();
                                     if (board[x][y] != -1) {
                                         if ((board[x][y] - numeroCura) < 0) {
+                                            totalCurats += (board[x][y] - numeroCura) + numeroCura;
                                             board[x][y] = 0;
                                         } else {
                                             board[x][y] -= numeroCura;
+                                            totalCurats += numeroCura;
                                         }
                                     }
                                     break;
@@ -275,6 +288,9 @@ public class Pandemia {
                                         posicioBloquejada = true;
                                     }
                                     break;
+                                default:
+                                    System.out.println("Només es pot introduir una lletra corresponent a les opcions del menú");
+                                    break;
                             }
                             if (posicioBloquejada) {
                                 board[x][y] += malalts;
@@ -289,9 +305,17 @@ public class Pandemia {
                     break;
                 case 6: //Mostrar informació
                     Menu(files, columnes, board);
-                    System.out.printf("Número total de malalts: %d\n" +
+                    for (int i = 0; i < files; i++) {
+                        for (int j = 0; j < columnes; j++) {
+                            if (board[i][j] != -1){
+                                totalMalalts += board[i][j];
+                            }
+                        }
+                    }
+                    System.out.printf("Número total de malalts: %.0f\n" +
                             "Número de persones curades: %d\n" +
-                            "Percentatge que no ha complit confinament: %d");
+                            "Percentatge que no ha complit confinament: \n"
+                            , totalMalalts, totalCurats);
                     break;
                 default:
                     System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
