@@ -25,13 +25,13 @@ public class Pandemia {
         byte answer = scan.nextByte(); //Introduir resposta
         while (answer != 0) {
             switch (answer) {
-                case 1:
+                case 1: //Carregar Taulell
                     System.out.println("Que vols fer:\n" +
                             "1. Crear un taulell buit (introduint les files y columnes)\n" +
                             "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)");
                     byte answerTaulell = scan.nextByte();
                     switch(answerTaulell){
-                        case 1:
+                        case 1: //Creació de taulell buit amb mesures especificades per l'usuari
                             System.out.print("Diga'm les mesures del taulell. Primer les files i després les columnes: ");
                             x = scan.nextInt();
                             y = scan.nextInt();
@@ -51,10 +51,10 @@ public class Pandemia {
                                 System.out.printf("\n");
                             }
                             break;
-                        case  2:
+                        case  2: //Creació d'un taulell aleatori
                             x = (int)(Math.random()*9+2);
                             y = (int)(Math.random()*9+2);
-                            System.out.printf("Es creara un taulell amb les següents dimensions (x: %d, y: %d)\n",x, y);
+                            System.out.printf("Es creará un taulell amb les següents dimensions (x: %d, y: %d)\n",x, y);
                             board = new float[x][y];
                             files = x;
                             columnes = y;
@@ -89,7 +89,7 @@ public class Pandemia {
                     }
                     System.out.printf("Total de posicions bloquejades: %d\n", numPosicioRand);
                     break;
-                case 2:
+                case 2: //Introduir malalts
                     System.out.print("Quants malalts vols introduir: ");
                     int malalts = Math.abs(scan.nextInt());
                     int malaltsPosicio = 0;
@@ -124,7 +124,7 @@ public class Pandemia {
                         i += malaltsPosicio;
                     }
                     break;
-                case 3:
+                case 3: //Transmitir virus
                     System.out.println("Diga'm la taxa de contagi");
                     taxaContagi = scan.nextFloat();
                     for (int i = 0; i < files; i++) {
@@ -135,21 +135,21 @@ public class Pandemia {
                         }
                     }
                     break;
-                case 4:
+                case 4: //Curar malalts
                     System.out.println("Introdueix de quina forma vols transmetre la teva cura:\n" +
                             "1. Globalment\n" +
                             "2. Per a una posició concreta");
                     byte answerCura = scan.nextByte();
                     byte answerCuraValor;
                     switch (answerCura) {
-                        case 1:
+                        case 1: //Curar malalts de forma global
                             System.out.println("Ho vols fer amb:\n" +
                                     "1. Percentatge (%)\n" +
                                     "2. Valor concret");
                             answerCuraValor = scan.nextByte();
                             int numeroCura;
                             switch (answerCuraValor){
-                                case 1:
+                                case 1: //Curar malalts globalment introduïnt un percentatge
                                     System.out.println("Quin percentatge de malalts vols curar (%)");
                                     numeroCura = scan.nextInt();
                                     for (int i = 0; i < files; i++) {
@@ -160,7 +160,7 @@ public class Pandemia {
                                         }
                                     }
                                     break;
-                                case 2:
+                                case 2: //Curar malalts globalment introduïnt un valor concret
                                     System.out.println("Quants malalts vols curar (valor concret)");
                                     numeroCura = scan.nextInt();
                                     for (int i = 0; i < files; i++) {
@@ -180,7 +180,7 @@ public class Pandemia {
                                     break;
                             }
                             break;
-                        case 2:
+                        case 2: //Curar malalts de forma individual
                             for (int i = 0; i < files; i++) {
                                 System.out.printf("| ");
                                 for (int j = 0; j < columnes; j++) {
@@ -201,14 +201,14 @@ public class Pandemia {
                                     "2. Valor concret");
                             answerCuraValor = scan.nextByte();
                             switch (answerCuraValor){
-                                case 1:
+                                case 1: //Curar malalts de forma individual introduïnt percentatge
                                     System.out.println("Quin percentatge de malalts vols curar (%)");
                                     numeroCura = scan.nextInt();
                                     if(board[x][y] != -1) {
                                         board[x][y] -= board[x][y] * numeroCura / 100;
                                     }
                                     break;
-                                case 2:
+                                case 2: //Curar malalts de forma individual introduïnt un valor concret
                                     System.out.println("Quants malalts vols curar (valor concret)");
                                     numeroCura = scan.nextInt();
                                     if(board[x][y] != -1) {
@@ -229,10 +229,10 @@ public class Pandemia {
                             break;
                     }
                     break;
-                case 5:
+                case 5: //Desplaçar malalts
 
                     break;
-                case 6:
+                case 6: //Mostrar informació
                     for (int i = 0; i < files; i++) {
                         System.out.printf("| ");
                         for (int j = 0; j < columnes; j++) {
@@ -253,6 +253,6 @@ public class Pandemia {
             System.out.println(menu);
             answer = scan.nextByte();
         }
-        System.out.println("Adeu");
+        System.out.println("Adeu! Esperem veure't aviat!");
     }
 }
