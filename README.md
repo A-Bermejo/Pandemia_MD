@@ -15,4 +15,4 @@ Projecte Pandemia Morel i Daniel
 
 # Joc de Proves
 
-# Proposta de millora
+# - [x] Proposta de millora
