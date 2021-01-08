@@ -21,12 +21,9 @@ public class Pandemia {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String menu = ("1. Carregar taulell\n" +
-                "2. Introduir malalts\n" +
-                "3. Transmetre virus\n" +
-                "4. Curar malalts\n" +
-                "5. Desplaçar malalts\n" +
-                "6. Mostrar informació\n" +
+        String menu = ("1. Carregar taulell   4. Curar malalts\n" +
+                "2. Introduir malalts  5. Desplaçar malalts\n" +
+                "3. Transmetre virus   6. Mostrar informació\n" +
                 "0. Sortir");
         System.out.println(menu);
         //Declaració variables
@@ -37,6 +34,7 @@ public class Pandemia {
         float taxaContagi;
         float totalMalalts = 0;
         int totalCurats = 0;
+        int totalDesplacats = 0;
         float[][] board = null; //Especifiquem "null" per poder utilitzar l'array a tot el programa"
         byte answer = scan.nextByte(); //Introduir resposta
         while (answer != 0) {
@@ -140,8 +138,8 @@ public class Pandemia {
                                     for (int i = 0; i < files; i++) {
                                         for (int j = 0; j < columnes; j++) {
                                             if (board[i][j] != -1) {
+                                                totalCurats += Math.ceil(board[i][j] * numeroCura / 100); // algo falla aqui ಠಿ_ಠ
                                                 board[i][j] -= board[i][j] * numeroCura / 100;
-                                                totalCurats += board[i][j] * numeroCura / 100; // algo falla aqui ಠಿ_ಠ
                                             }
                                         }
                                     }
@@ -182,8 +180,8 @@ public class Pandemia {
                                     System.out.println("Quin percentatge de malalts vols curar (%)");
                                     numeroCura = scan.nextInt();
                                     if (board[x][y] != -1) {
+                                        totalCurats += Math.ceil(board[x][y] * numeroCura / 100);
                                         board[x][y] -= board[x][y] * numeroCura / 100;
-                                        totalCurats += board[x][y] * numeroCura / 100;
                                     }
                                     break;
                                 case 2: //Curar malalts de forma individual introduïnt un valor concret
@@ -220,14 +218,9 @@ public class Pandemia {
                         if (malalts <= board[x][y]) {
                             board[x][y] -= malalts;
                             System.out.println("De quina manera vols desplaçar els malalts?\n" +
-                                    "Q. (Dalt esquerra)\n" +
-                                    "W. (Dalt mig)\n" +
-                                    "E. (Dalt dreta)\n" +
-                                    "A. (Esquerra mig)\n" +
-                                    "D. (Dreta mig)\n" +
-                                    "Z. (Baix esquerra)\n" +
-                                    "X. (Baix mig)\n" +
-                                    "C. (Baix dreta)");
+                                    "Q. (Dalt esquerra) | W. (Dalt mig) | E. (Dalt dreta)\n" +
+                                    "A. (Esquerra mig)  |               | D. (Dreta mig)\n" +
+                                    "Z. (Baix esquerra) | X. (Baix mig) | C. (Baix dreta)");
                             String answerDesplacar = scan.next();
                             answerDesplacar = answerDesplacar.toLowerCase();
                             boolean posicioBloquejada = false;
@@ -235,6 +228,7 @@ public class Pandemia {
                                 case "q":
                                     if ((x - 1 != -1 && y - 1 != -1) && board[x - 1][y - 1] != -1) {
                                         board[x - 1][y - 1] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -242,6 +236,7 @@ public class Pandemia {
                                 case "w":
                                     if (x - 1 != -1 && board[x - 1][y] != -1) {
                                         board[x - 1][y] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -249,6 +244,7 @@ public class Pandemia {
                                 case "e":
                                     if ((x - 1 != -1 && y + 1 != columnes) && board[x - 1][y + 1] != -1) {
                                         board[x - 1][y + 1] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -256,6 +252,7 @@ public class Pandemia {
                                 case "a":
                                     if (y - 1 != -1 && board[x][y - 1] != -1) {
                                         board[x][y - 1] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -263,6 +260,7 @@ public class Pandemia {
                                 case "d":
                                     if (y + 1 != columnes && board[x][y + 1] != -1) {
                                         board[x][y + 1] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -270,6 +268,7 @@ public class Pandemia {
                                 case "z":
                                     if ((x + 1 != files && y - 1 != -1) && board[x + 1][y - 1] != -1) {
                                         board[x + 1][y - 1] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -277,6 +276,7 @@ public class Pandemia {
                                 case "x":
                                     if (x + 1 != files && board[x + 1][y] != -1) {
                                         board[x + 1][y] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -284,6 +284,7 @@ public class Pandemia {
                                 case "c":
                                     if ((x + 1 != files && y + 1 != columnes) && board[x + 1][y + 1] != -1) {
                                         board[x + 1][y + 1] += malalts;
+                                        totalDesplacats += malalts;
                                     } else {
                                         posicioBloquejada = true;
                                     }
@@ -314,8 +315,8 @@ public class Pandemia {
                     }
                     System.out.printf("Número total de malalts: %.0f\n" +
                             "Número de persones curades: %d\n" +
-                            "Percentatge que no ha complit confinament: \n"
-                            , totalMalalts, totalCurats);
+                            "Percentatge que no ha complit confinament: %.0f%%\n"
+                            , totalMalalts, totalCurats, totalDesplacats * 100 / totalMalalts);
                     break;
                 default:
                     System.out.println("Només es pot introduir un número corresponent a les opcions del menú");
@@ -324,6 +325,6 @@ public class Pandemia {
             System.out.println(menu);
             answer = scan.nextByte();
         }
-        System.out.println("Adeu! Esperem veure't aviat!");
+        System.out.println("Adeu! Esperem veure't aviat! ^o^");
     }
 }
