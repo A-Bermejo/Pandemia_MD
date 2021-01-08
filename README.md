@@ -1,4 +1,4 @@
-# Pandemia_MD
+# Pandemia_MD :shipit:
 Projecte Pandemia Morel i Daniel
 
 # Esquema Principal del Projecte
