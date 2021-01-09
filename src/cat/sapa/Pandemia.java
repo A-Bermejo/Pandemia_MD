@@ -96,7 +96,7 @@ public class Pandemia {
                             System.out.print("Quants malalts hi ha en aquesta posició: ");
                             malaltsPosicio = Math.abs(scan.nextInt());
                             if (malaltsPosicio + i <= malalts && board[x][y] != -1) {
-                                board[x][y] = malaltsPosicio;
+                                board[x][y] += malaltsPosicio;
                             } else {
                                 System.out.println("No pots especificar més malalts en una posicio que el total " +
                                         "de malalts que vols introduir.");
