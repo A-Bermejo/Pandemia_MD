@@ -109,7 +109,7 @@ public class Pandemia {
                         malaltsPosicio = 0;
                         Menu(files, columnes, board);
                         for (int i = 0; i < malalts; ) {
-                            System.out.print("A quina fila i columna vols introduir el malalt: ");
+                            System.out.print(WHITE + "A quina fila i columna vols introduir el malalt: ");
                             x = Math.abs(scan.nextInt());
                             y = Math.abs(scan.nextInt());
                             if (x <= files && y <= columnes) {
@@ -345,18 +345,18 @@ public class Pandemia {
                                         "Número de persones curades: %d\n" +
                                         "Percentatge que no ha complit confinament: %.0f%%\n"
                                 , totalMalalts, totalCurats, totalDesplacats * 100 / totalMalalts);
+                        Menu(files, columnes, board);
+                        for (int i = 0; i < files; i++) {
+                            for (int j = 0; j < columnes; j++) {
+                                if (board[i][j] != -1){
+                                    totalMalalts += board[i][j];
+                                }
+                            }
+                        }
+                        break;
                     } else {
                         System.out.println(errorMessage);
                     }
-                    Menu(files, columnes, board);
-                    for (int i = 0; i < files; i++) {
-                        for (int j = 0; j < columnes; j++) {
-                            if (board[i][j] != -1){
-                                totalMalalts += board[i][j];
-                            }
-                        }
-                    }
-                    break;
                 default:
                     System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
                     break;
