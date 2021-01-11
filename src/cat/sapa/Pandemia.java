@@ -70,6 +70,7 @@ public class Pandemia {
                             columnes = y;
                             totalCurats = 0;
                             totalMalalts = 0;
+                            totalDesplacats = 0;
                             break;
                         case 2: //Creació d'un taulell aleatori
                             x = (int) (Math.random() * 9 + 2);
@@ -78,13 +79,14 @@ public class Pandemia {
                             board = new float[x][y];
                             files = x;
                             columnes = y;
+                            totalCurats = 0;
+                            totalMalalts = 0;
+                            totalDesplacats = 0;
                             for (int i = 0; i < files; i++) {
                                 for (int j = 0; j < columnes; j++) {
                                     board[i][j] = (int) (Math.random() * 10);
                                 }
                             }
-                            totalCurats = 0;
-                            totalMalalts = 0;
                             break;
                         default:
                             noError = false;
@@ -133,7 +135,7 @@ public class Pandemia {
                 case 3: //Transmitir virus
                     if (board != null) {
                         System.out.println(WHITE + "Diga'm la taxa de contagi");
-                        taxaContagi = scan.nextFloat();
+                        taxaContagi = Math.abs(scan.nextFloat());
                         for (int i = 0; i < files; i++) {
                             for (int j = 0; j < columnes; j++) {
                                 if (board[i][j] != -1) {
@@ -341,11 +343,7 @@ public class Pandemia {
                     break;
                 case 6: //Mostrar informació
                     if (board != null) {
-                        System.out.printf(WHITE + "Número total de malalts: %.0f\n" +
-                                        "Número de persones curades: %d\n" +
-                                        "Percentatge que no ha complit confinament: %.0f%%\n"
-                                , totalMalalts, totalCurats, totalDesplacats * 100 / totalMalalts);
-                        Menu(files, columnes, board);
+                        totalMalalts = 0;
                         for (int i = 0; i < files; i++) {
                             for (int j = 0; j < columnes; j++) {
                                 if (board[i][j] != -1){
@@ -353,6 +351,12 @@ public class Pandemia {
                                 }
                             }
                         }
+                        System.out.printf(WHITE + "Número total de malalts: %.0f\n" +
+                                        "Número de persones curades: %d\n" +
+                                        "Percentatge que no ha complit confinament: %.0f%%\n"
+                                , totalMalalts, totalCurats, totalDesplacats * 100 / totalMalalts);
+                        Menu(files, columnes, board);
+
                         break;
                     } else {
                         System.out.println(errorMessage);
