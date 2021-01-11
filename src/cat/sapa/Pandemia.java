@@ -13,7 +13,7 @@ public class Pandemia {
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[38m";
 
-    // Creació d'un method per evitar codi redundant
+    //Creació d'un method per evitar codi redundant
     private static void Menu(int files, int columnes, float[][] board) {
         for (int i = 0; i < files; i++) {
             System.out.print(BLUE + "| ");
@@ -134,7 +134,7 @@ public class Pandemia {
                     break;
                 case 3: //Transmitir virus
                     if (board != null) {
-                        System.out.println(WHITE + "Diga'm la taxa de contagi");
+                        System.out.print (WHITE + "Diga'm la taxa de contagi: ");
                         taxaContagi = Math.abs(scan.nextFloat());
                         for (int i = 0; i < files; i++) {
                             for (int j = 0; j < columnes; j++) {
@@ -163,7 +163,7 @@ public class Pandemia {
                                 int numeroCura;
                                 switch (answerCuraValor) {
                                     case 1: //Curar malalts globalment introduïnt un percentatge
-                                        System.out.println("Quin percentatge de malalts vols curar (%)");
+                                        System.out.print("Quin percentatge de malalts vols curar (%): ");
                                         numeroCura = scan.nextInt();
                                         for (int i = 0; i < files; i++) {
                                             for (int j = 0; j < columnes; j++) {
@@ -175,7 +175,7 @@ public class Pandemia {
                                         }
                                         break;
                                     case 2: //Curar malalts globalment introduïnt un valor concret
-                                        System.out.println("Quants malalts vols curar (valor concret)");
+                                        System.out.print("Quants malalts vols curar (valor concret): ");
                                         numeroCura = scan.nextInt();
                                         for (int i = 0; i < files; i++) {
                                             for (int j = 0; j < columnes; j++) {
@@ -198,38 +198,42 @@ public class Pandemia {
                                 break;
                             case 2: //Curar malalts de forma individual
                                 Menu(files, columnes, board);
-                                System.out.println("A quina posicio vols curar els malalts: ");
+                                System.out.print(WHITE + "A quina posicio vols curar els malalts: ");
                                 x = scan.nextInt();
                                 y = scan.nextInt();
-                                System.out.println("Ho vols fer amb:\n" +
-                                        "1. Percentatge (%)\n" +
-                                        "2. Valor concret");
-                                answerCuraValor = scan.nextByte();
-                                switch (answerCuraValor) {
-                                    case 1: //Curar malalts de forma individual introduïnt percentatge
-                                        System.out.println("Quin percentatge de malalts vols curar (%)");
-                                        numeroCura = scan.nextInt();
-                                        if (board[x][y] != -1) {
-                                            totalCurats += Math.ceil(board[x][y] * numeroCura / 100);
-                                            board[x][y] -= board[x][y] * numeroCura / 100;
-                                        }
-                                        break;
-                                    case 2: //Curar malalts de forma individual introduïnt un valor concret
-                                        System.out.println("Quants malalts vols curar (valor concret)");
-                                        numeroCura = scan.nextInt();
-                                        if (board[x][y] != -1) {
-                                            if ((board[x][y] - numeroCura) < 0) {
-                                                totalCurats += (board[x][y] - numeroCura) + numeroCura;
-                                                board[x][y] = 0;
-                                            } else {
-                                                board[x][y] -= numeroCura;
-                                                totalCurats += numeroCura;
+                                if (board[x][y] != -1) {
+                                    System.out.println("Ho vols fer amb:\n" +
+                                            "1. Percentatge (%)\n" +
+                                            "2. Valor concret");
+                                    answerCuraValor = scan.nextByte();
+                                    switch (answerCuraValor) {
+                                        case 1: //Curar malalts de forma individual introduïnt percentatge
+                                            System.out.print("Quin percentatge de malalts vols curar (%): ");
+                                            numeroCura = scan.nextInt();
+                                            if (board[x][y] != -1) {
+                                                totalCurats += Math.ceil(board[x][y] * numeroCura / 100);
+                                                board[x][y] -= board[x][y] * numeroCura / 100;
                                             }
-                                        }
-                                        break;
-                                    default:
-                                        System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
-                                        break;
+                                            break;
+                                        case 2: //Curar malalts de forma individual introduïnt un valor concret
+                                            System.out.print("Quants malalts vols curar (valor concret): ");
+                                            numeroCura = scan.nextInt();
+                                            if (board[x][y] != -1) {
+                                                if ((board[x][y] - numeroCura) < 0) {
+                                                    totalCurats += (board[x][y] - numeroCura) + numeroCura;
+                                                    board[x][y] = 0;
+                                                } else {
+                                                    board[x][y] -= numeroCura;
+                                                    totalCurats += numeroCura;
+                                                }
+                                            }
+                                            break;
+                                        default:
+                                            System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
+                                            break;
+                                    }
+                                } else {
+                                    System.out.println(YELLOW + "No es pot curar una posició bloquejada");
                                 }
                                 break;
                             default:
@@ -243,17 +247,17 @@ public class Pandemia {
                 case 5: //Desplaçar malalts
                     if (board != null) {
                         Menu(files, columnes, board);
-                        System.out.println(WHITE + "Indica la posició del malalt que vols desplaçar");
+                        System.out.print(WHITE + "Indica la posició del malalt que vols desplaçar: ");
                         x = scan.nextInt();
                         y = scan.nextInt();
                         if (board[x][y] != -1) {
-                            System.out.println("Quants malalts vols desplaçar?");
+                            System.out.print("Quants malalts vols desplaçar?: ");
                             malalts = scan.nextInt();
                             if (malalts <= board[x][y]) {
                                 board[x][y] -= malalts;
-                                System.out.println("De quina manera vols desplaçar els malalts?\n" +
+                                System.out.println("De quina manera vols desplaçar els malalts?:\n" +
                                         RED + "Q. (Dalt esquerra) " + WHITE + "| " + CYAN + "W. (Dalt mig) " + WHITE + "| " + RED + "E. (Dalt dreta)\n" +
-                                        BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE +"D. (Dreta mig)\n" +
+                                        BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE + "D. (Dreta mig)\n" +
                                         YELLOW + "Z. (Baix esquerra) " + WHITE + "| " + CYAN + "X. (Baix mig) " + WHITE + "| " + YELLOW + "C. (Baix dreta)");
                                 String answerDesplacar = scan.next();
                                 answerDesplacar = answerDesplacar.toLowerCase();
@@ -346,7 +350,7 @@ public class Pandemia {
                         totalMalalts = 0;
                         for (int i = 0; i < files; i++) {
                             for (int j = 0; j < columnes; j++) {
-                                if (board[i][j] != -1){
+                                if (board[i][j] != -1) {
                                     totalMalalts += board[i][j];
                                 }
                             }
@@ -356,7 +360,6 @@ public class Pandemia {
                                         "Percentatge que no ha complit confinament: %.0f%%\n"
                                 , totalMalalts, totalCurats, totalDesplacats * 100 / totalMalalts);
                         Menu(files, columnes, board);
-
                         break;
                     } else {
                         System.out.println(errorMessage);
