@@ -10,7 +10,8 @@ Projecte Pandemia Morel i Daniel
  * Finalment quedava implementar el nostre codi tal i com haviem pensat. Per alguns apartats teniem una idea principal la qual vam haver de rectifiar perquè no teniem els coneixements suficients per dur a terme aquesta idea. **Per exemple**:
  
    - Començant el projecte ens vam adonar que a l'hora de mostrar l'array aquesta hauria de mostrar contingut alfanumèric (0-9, X). Com vam fer una array numèrica vam pensar que haviem de fer una altra alfanumèrica, però a l'hora de codificar aquesta proposta vam veure que no era la més adecuada tenint en compte els nostres coneixements.
-   - A mesura que codificavem el nostre projecte ens vam adonar que quan voliem mostrar el nostre taulell per realitzar diferents apartats, hi havia codi redundant. Això ho vam solucionar fent un "Method", que ens serveix per indicar un bloc de codi que volem utilitzar al llarg del programa i que a l'hora d'utilitzar-lo, només hem de fer referència al nom d'aquest "Method" a l'apartat on volem que aquest bloc de codi funcioni, i així evitem redundància.
+   - A mesura que codificavem el nostre projecte ens vam adonar que quan voliem mostrar el nostre taulell per realitzar diferents apartats, hi havia codi redundant. Això ho vam solucionar fent un "**Method**", que ens serveix per indicar un bloc de codi que volem utilitzar al llarg del programa i que a l'hora d'utilitzar-lo, només hem de fer referència al nom d'aquest "**Method**" a l'apartat on volem que aquest bloc de codi funcioni, i així evitem redundància.
+   - També ens vam adonar de que el format amb el qual es mostrava el taulell no ens agradava i vam decidir utilitzar un "**printf**" per donar format i a més a més vam declarar unes "**Constants**" que definien un color, que també se li va aplicar a aquest taulell i a altres blocs del codi per donar estil.
   
 # Explicació Repartiment de Tasques
 En el nostre cas nos ens hem atabalat molt, hem fet els apartats intercalats però això no vol dir que els hagim fet per separat o incomunicats. Mitjançant "Discord" hem fet trucades per realitzar cadascun dels apartats del projecte fos el que ens toquès a nosaltres o no, comentant codi, errors, fent proves... A més a més si no ens tocava realitzar un apartat el dia que feiem trucada, procuravem ajudar, buscar informació, intentar solucionar problemes... per tal de possar de la nostra part.  
@@ -253,3 +254,7 @@ A més es mostrara a continuació el taulell.
 En aquest cas el que es fa és mostrar un missatge de comiat i a continuació s'atura el programa.
 
 # Proposta de millora
+![Proposta de millora](./img/PropostaMillora.png)
+
+La nostra proposta de millora està basada en l'apartat "Introduir malalts".
+De base, aquesta opció ens permitia només introduir una quantitat de malalts en una posició del taullel determinada. Amb la nostra millora hem fet que l'usuari pugui introduir una quantitat de malalts, però amb la diferència de que no necessariament tots els malalts que vulgui introduir han d'estar a la mateixa posició, els pot distrbuir en diferents caselles fins a arribar al número de malalts que s'havia especificat per inserir. No es pot superar aquest número, sino el programa ens mostraria un missatge d'error de que hem superat el número de malalts que haviem especificat.
