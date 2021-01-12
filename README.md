@@ -60,6 +60,16 @@ Per finalitzar ens diu que quants del 5 malalts volem introduir en aquesta posic
 
 #### Cas Extrem:
 ![Introduir malalts. Cas Extrem](./img/IntroduirMalaltsExtrem.png)
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 2
+  - **patients:** 5
+  - **x:** 3, **y:** 1
+  
+En aquest cas el que es fa és introduir malalts en una posició seleccionada per l'usuari.
+Primerament seleccionem que volem utilitzar la opció "2" del menú.
+Una vegada fet això ens demanarà quants malalts volem introduir. (5 en el nostre exemple).
+Seguidament ens mostra el nostre taulell i ens pregunta a quina fila i a quina columna volem introduir el malalt (3 1 en el nostre cas)
+Per finalitzar com la posició especificada resulta ser una posicio bloquejada el programa ens comunica que no es posible realitzar aquesta operació i torna al menú principal.
 
 ### Transmitir virus
 
@@ -76,6 +86,14 @@ Finalment s'aplica aquesta taxa a tot el taulell.
 
 #### Cas Extrem:
 ![Transmitir virus. Cas Extrem](./img/TransmitirVirusExtrem.png)
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 3
+  - **infectionRate:** -1,25
+
+En aquest cas el que es fa és aplicar una taxa de contagi negativa especificada per l'usuari a tot el taulell per veure com reacciona el programa.
+Primerament seleccionem que volem utilitzar la opció "3" del menú.
+Una vegada fet això ens demanarà quina volem que sigui la taxa de contagi. (-1,25 en el nostre exemple).
+Finalment s'aplica aquesta taxa a tot el taulell, i com es pot veure al taulell el programa ignora el valors negatius.
 
 ### Curar malalts
 
@@ -139,6 +157,18 @@ Finalment introduïm el valor que volem curar (aquest no podrà ser superior al 
 
 #### Cas Extrem:
 ![Curar malalts. Cas Extrem](./img/CurarMalaltsExtrem.png)
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 4
+  - **answerCure:** 2
+  - **x:** 0, **y:** 0 
+  - **answerCureValue:** 2
+  - **cureNumber:** 5
+
+En aquest cas el que es fa és curar malalts seleccionant si volem fer-ho de manera global o per una posició concreta. En ambdós casos la cura es pot fer mitjançant un % o mitjançant un valor concret.
+Primerament seleccionem que volem utilitzar la opció "4" del menú.
+Una vegada fet això ens pregunta com volem aplicar la cura (Globalment o per una posició concreta). Introduïm "2" per fer-ho per una posició concreta.
+Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor concret. Introduïm "2" per fer-ho amb un valor concret.
+Finalment introduïm el valor que volem curar (aquest no podrà ser superior al número de malalts d'una casella) i com podem veure encara que el número que volem curar es superior al número de malalts de la posició el programa cura els malalts fins arribar a 0, sense posar números negatius.
 
 ### Desplaçar malalts:
 
@@ -183,13 +213,24 @@ Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats 
 En aquest cas el que es fa és desplaçar els malalts de una posició a totes les que li envolten.
 Primerament seleccionem que volem utilitzar la opció "5" del menú.
 Una vegada fet això ens mostrar el taulell i indicarem la posició on esta el malalt que volem desplaçar, en aquest cas sera x:"5" i y:"0".
-Seguidament ens preguntarà quants malalts volem desplaçar, en aquets cas hi han 2 malalts però només desplaçarem "1". Aixó vol dir que l'usuari pot agafar part dels malalts d'una posició i no agafarlos tos si o si.
+Seguidament ens preguntarà quants malalts volem desplaçar, en aquets cas hi han 2 malalts però només desplaçarem "1". Aixó vol dir que l'usuari pot agafar part dels malalts d'una posició i no agafarlos tots si o si.
 Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara que es posi en mayúscula el programa podra entendre quina opció estas indicant) per moure'l "Dalt mig". 
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas Extrem:
 ![Curar malalts. Cas Extrem](./img/DesplacarMalaltsExtrem.png)
-S'ha de tenir en compte que no es pot desplaçar malalts fora del taulell o a una posició bloquejada.
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 5
+  - **x:** 1, **y:** 1
+  - **patients:** 1
+  - **answerDisplace:** d
+
+En aquest cas el que es fa és desplaçar els malalts de una posició a totes les que li envolten.
+Primerament seleccionem que volem utilitzar la opció "5" del menú.
+Una vegada fet això ens mostrar el taulell i indicarem la posició on esta el malalt que volem desplaçar, en aquest cas sera x:"1" i y:"1".
+Seguidament ens preguntarà quants malalts volem desplaçar, en aquets cas desplaçarem "1".
+Finalment ens comunica que no es pot realitzar aquesta operació degut a que estem intentant desplaçar el malalt a una posició bloquejada. S'ha de tenir en compte que no es pot desplaçar malalts fora del taulell o a una posició bloquejada.
+
 
 ### Mostrar informació:
 
