@@ -14,10 +14,10 @@ public class Pandemia {
     public static final String WHITE = "\u001B[38m";
 
     //Creació d'un method per evitar codi redundant
-    private static void Menu(int files, int columnes, float[][] board) {
-        for (int i = 0; i < files; i++) {
+    private static void Menu(int rows, int columns, float[][] board) {
+        for (int i = 0; i < rows; i++) {
             System.out.print(BLUE + "| ");
-            for (int j = 0; j < columnes; j++) {
+            for (int j = 0; j < columns; j++) {
                 if (board[i][j] == -1) {
                     System.out.printf(RED + "%4s    " + BLUE + "| ", "X");
                 } else {
@@ -39,14 +39,14 @@ public class Pandemia {
         //Declaració variables
         int x;
         int y;
-        int files = 0;
-        int columnes = 0;
-        int malalts = 0;
-        int malaltsPosicio = 0;
-        float taxaContagi;
-        float totalMalalts = 0;
-        int totalCurats = 0;
-        int totalDesplacats = 0;
+        int rows = 0;
+        int columns = 0;
+        int patients = 0;
+        int positionPatients = 0;
+        float infectionRate;
+        float totalPatients = 0;
+        int totalCured = 0;
+        int totalDisplaced = 0;
         //Declaració de variables Constants
         final String errorMessage = YELLOW + "No pots utilitzar aquesta opció fins que no hi hagi un taulell creat";
         final String defaultMessage = YELLOW + "Només es pot introduir un número corresponent a les opcions del menú";
@@ -59,31 +59,31 @@ public class Pandemia {
                     System.out.println(WHITE + "Que vols fer:\n" +
                             "1. Crear un taulell buit (introduint les files y columnes)\n" +
                             "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)");
-                    byte answerTaulell = scan.nextByte();
-                    switch (answerTaulell) {
+                    byte answerBoard = scan.nextByte();
+                    switch (answerBoard) {
                         case 1: //Creació de taulell buit amb mesures especificades per l'usuari
-                            System.out.print("Diga'm les mesures del taulell. Primer les files i després les columnes: ");
+                            System.out.print("Diga'm les mesures del taulell en números. Primer les files i després les columnes: ");
                             x = scan.nextInt();
                             y = scan.nextInt();
                             board = new float[x][y];
-                            files = x;
-                            columnes = y;
-                            totalCurats = 0;
-                            totalMalalts = 0;
-                            totalDesplacats = 0;
+                            rows = x;
+                            columns = y;
+                            totalCured = 0;
+                            totalPatients = 0;
+                            totalDisplaced = 0;
                             break;
                         case 2: //Creació d'un taulell aleatori
                             x = (int) (Math.random() * 9 + 2);
                             y = (int) (Math.random() * 9 + 2);
                             System.out.printf("Es creará un taulell amb les següents dimensions (x: %d, y: %d)\n", x, y);
                             board = new float[x][y];
-                            files = x;
-                            columnes = y;
-                            totalCurats = 0;
-                            totalMalalts = 0;
-                            totalDesplacats = 0;
-                            for (int i = 0; i < files; i++) {
-                                for (int j = 0; j < columnes; j++) {
+                            rows = x;
+                            columns = y;
+                            totalCured = 0;
+                            totalPatients = 0;
+                            totalDisplaced = 0;
+                            for (int i = 0; i < rows; i++) {
+                                for (int j = 0; j < columns; j++) {
                                     board[i][j] = (int) (Math.random() * 10);
                                 }
                             }
@@ -94,31 +94,31 @@ public class Pandemia {
                             break;
                     }
                     if (noError) {
-                        int numPosicioRand = (int) (Math.random() * 4);
-                        for (int i = 0; i < numPosicioRand; i++) {
-                            x = (int) (Math.random() * files);
-                            y = (int) (Math.random() * columnes);
+                        int numPositionRand = (int) (Math.random() * 4);
+                        for (int i = 0; i < numPositionRand; i++) {
+                            x = (int) (Math.random() * rows);
+                            y = (int) (Math.random() * columns);
                             board[x][y] = -1;
                         }
-                        System.out.printf("Total de posicions bloquejades: %d\n", numPosicioRand);
-                        Menu(files, columnes, board);
+                        System.out.printf("Total de posicions bloquejades: %d\n", numPositionRand);
+                        Menu(rows, columns, board);
                     }
                     break;
                 case 2: //Introduïr malalts
                     if (board != null) {
                         System.out.print(WHITE + "Quants malalts vols introduir: ");
-                        malalts = Math.abs(scan.nextInt());
-                        malaltsPosicio = 0;
-                        Menu(files, columnes, board);
-                        for (int i = 0; i < malalts; ) {
+                        patients = Math.abs(scan.nextInt());
+                        positionPatients = 0;
+                        Menu(rows, columns, board);
+                        for (int i = 0; i < patients; ) {
                             System.out.print(WHITE + "A quina fila i columna vols introduir el malalt: ");
                             x = Math.abs(scan.nextInt());
                             y = Math.abs(scan.nextInt());
-                            if (x <= files && y <= columnes) {
+                            if (x <= rows && y <= columns) {
                                 System.out.print("Quants malalts hi ha en aquesta posició: ");
-                                malaltsPosicio = Math.abs(scan.nextInt());
-                                if (malaltsPosicio + i <= malalts && board[x][y] != -1) {
-                                    board[x][y] += malaltsPosicio;
+                                positionPatients = Math.abs(scan.nextInt());
+                                if (positionPatients + i <= patients && board[x][y] != -1) {
+                                    board[x][y] += positionPatients;
                                 } else {
                                     System.out.println(YELLOW + "No pots especificar més malalts en una posicio que el total " +
                                             "de malalts que vols introduir.");
@@ -126,7 +126,7 @@ public class Pandemia {
                             } else {
                                 System.out.println("Especifica una columna i fila existents en el taulell.");
                             }
-                            i += malaltsPosicio;
+                            i += positionPatients;
                         }
                     } else {
                         System.out.println(errorMessage);
@@ -135,11 +135,11 @@ public class Pandemia {
                 case 3: //Transmitir virus
                     if (board != null) {
                         System.out.print (WHITE + "Diga'm la taxa de contagi: ");
-                        taxaContagi = Math.abs(scan.nextFloat());
-                        for (int i = 0; i < files; i++) {
-                            for (int j = 0; j < columnes; j++) {
+                        infectionRate = Math.abs(scan.nextFloat());
+                        for (int i = 0; i < rows; i++) {
+                            for (int j = 0; j < columns; j++) {
                                 if (board[i][j] != -1) {
-                                    board[i][j] += board[i][j] * taxaContagi;
+                                    board[i][j] += board[i][j] * infectionRate;
                                 }
                             }
                         }
@@ -152,40 +152,40 @@ public class Pandemia {
                         System.out.println(WHITE + "Introdueix de quina forma vols transmetre la teva cura:\n" +
                                 "1. Globalment\n" +
                                 "2. Per a una posició concreta");
-                        byte answerCura = scan.nextByte();
-                        byte answerCuraValor;
-                        switch (answerCura) {
+                        byte answerCure = scan.nextByte();
+                        byte answerCureValue;
+                        switch (answerCure) {
                             case 1: //Curar malalts de forma global
                                 System.out.println("Ho vols fer amb:\n" +
                                         "1. Percentatge (%)\n" +
                                         "2. Valor concret");
-                                answerCuraValor = scan.nextByte();
-                                int numeroCura;
-                                switch (answerCuraValor) {
+                                answerCureValue = scan.nextByte();
+                                int cureNumber;
+                                switch (answerCureValue) {
                                     case 1: //Curar malalts globalment introduïnt un percentatge
                                         System.out.print("Quin percentatge de malalts vols curar (%): ");
-                                        numeroCura = scan.nextInt();
-                                        for (int i = 0; i < files; i++) {
-                                            for (int j = 0; j < columnes; j++) {
+                                        cureNumber = scan.nextInt();
+                                        for (int i = 0; i < rows; i++) {
+                                            for (int j = 0; j < columns; j++) {
                                                 if (board[i][j] != -1) {
-                                                    totalCurats += Math.ceil(board[i][j] * numeroCura / 100); // algo falla aqui ಠಿ_ಠ
-                                                    board[i][j] -= board[i][j] * numeroCura / 100;
+                                                    totalCured += Math.ceil(board[i][j] * cureNumber / 100); // algo falla aqui ಠಿ_ಠ
+                                                    board[i][j] -= board[i][j] * cureNumber / 100;
                                                 }
                                             }
                                         }
                                         break;
                                     case 2: //Curar malalts globalment introduïnt un valor concret
                                         System.out.print("Quants malalts vols curar (valor concret): ");
-                                        numeroCura = scan.nextInt();
-                                        for (int i = 0; i < files; i++) {
-                                            for (int j = 0; j < columnes; j++) {
+                                        cureNumber = scan.nextInt();
+                                        for (int i = 0; i < rows; i++) {
+                                            for (int j = 0; j < columns; j++) {
                                                 if (board[i][j] != -1) {
-                                                    if ((board[i][j] - numeroCura) < 0) {
-                                                        totalCurats += (board[i][j] - numeroCura) + numeroCura;
+                                                    if ((board[i][j] - cureNumber) < 0) {
+                                                        totalCured += (board[i][j] - cureNumber) + cureNumber;
                                                         board[i][j] = 0;
                                                     } else {
-                                                        board[i][j] -= numeroCura;
-                                                        totalCurats += numeroCura;
+                                                        board[i][j] -= cureNumber;
+                                                        totalCured += cureNumber;
                                                     }
                                                 }
                                             }
@@ -197,7 +197,7 @@ public class Pandemia {
                                 }
                                 break;
                             case 2: //Curar malalts de forma individual
-                                Menu(files, columnes, board);
+                                Menu(rows, columns, board);
                                 System.out.print(WHITE + "A quina posicio vols curar els malalts: ");
                                 x = scan.nextInt();
                                 y = scan.nextInt();
@@ -205,26 +205,26 @@ public class Pandemia {
                                     System.out.println("Ho vols fer amb:\n" +
                                             "1. Percentatge (%)\n" +
                                             "2. Valor concret");
-                                    answerCuraValor = scan.nextByte();
-                                    switch (answerCuraValor) {
+                                    answerCureValue = scan.nextByte();
+                                    switch (answerCureValue) {
                                         case 1: //Curar malalts de forma individual introduïnt percentatge
                                             System.out.print("Quin percentatge de malalts vols curar (%): ");
-                                            numeroCura = scan.nextInt();
+                                            cureNumber = scan.nextInt();
                                             if (board[x][y] != -1) {
-                                                totalCurats += Math.ceil(board[x][y] * numeroCura / 100);
-                                                board[x][y] -= board[x][y] * numeroCura / 100;
+                                                totalCured += Math.ceil(board[x][y] * cureNumber / 100);
+                                                board[x][y] -= board[x][y] * cureNumber / 100;
                                             }
                                             break;
                                         case 2: //Curar malalts de forma individual introduïnt un valor concret
                                             System.out.print("Quants malalts vols curar (valor concret): ");
-                                            numeroCura = scan.nextInt();
+                                            cureNumber = scan.nextInt();
                                             if (board[x][y] != -1) {
-                                                if ((board[x][y] - numeroCura) < 0) {
-                                                    totalCurats += (board[x][y] - numeroCura) + numeroCura;
+                                                if ((board[x][y] - cureNumber) < 0) {
+                                                    totalCured += (board[x][y] - cureNumber) + cureNumber;
                                                     board[x][y] = 0;
                                                 } else {
-                                                    board[x][y] -= numeroCura;
-                                                    totalCurats += numeroCura;
+                                                    board[x][y] -= cureNumber;
+                                                    totalCured += cureNumber;
                                                 }
                                             }
                                             break;
@@ -246,93 +246,93 @@ public class Pandemia {
                     break;
                 case 5: //Desplaçar malalts
                     if (board != null) {
-                        Menu(files, columnes, board);
+                        Menu(rows, columns, board);
                         System.out.print(WHITE + "Indica la posició del malalt que vols desplaçar: ");
                         x = scan.nextInt();
                         y = scan.nextInt();
                         if (board[x][y] != -1) {
                             System.out.print("Quants malalts vols desplaçar?: ");
-                            malalts = scan.nextInt();
-                            if (malalts <= board[x][y]) {
-                                board[x][y] -= malalts;
+                            patients = scan.nextInt();
+                            if (patients <= board[x][y]) {
+                                board[x][y] -= patients;
                                 System.out.println("De quina manera vols desplaçar els malalts?:\n" +
                                         RED + "Q. (Dalt esquerra) " + WHITE + "| " + CYAN + "W. (Dalt mig) " + WHITE + "| " + RED + "E. (Dalt dreta)\n" +
                                         BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE + "D. (Dreta mig)\n" +
                                         YELLOW + "Z. (Baix esquerra) " + WHITE + "| " + CYAN + "X. (Baix mig) " + WHITE + "| " + YELLOW + "C. (Baix dreta)");
-                                String answerDesplacar = scan.next();
-                                answerDesplacar = answerDesplacar.toLowerCase();
-                                boolean posicioBloquejada = false;
-                                switch (answerDesplacar) {
+                                String answerDisplace = scan.next();
+                                answerDisplace = answerDisplace.toLowerCase();
+                                boolean lockedPosition = false;
+                                switch (answerDisplace) {
                                     case "q":
                                         if ((x - 1 != -1 && y - 1 != -1) && board[x - 1][y - 1] != -1) {
-                                            board[x - 1][y - 1] += malalts;
-                                            totalDesplacats += malalts;
+                                            board[x - 1][y - 1] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "w":
                                         if (x - 1 != -1 && board[x - 1][y] != -1) {
-                                            board[x - 1][y] += malalts;
-                                            totalDesplacats += malalts;
+                                            board[x - 1][y] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "e":
-                                        if ((x - 1 != -1 && y + 1 != columnes) && board[x - 1][y + 1] != -1) {
-                                            board[x - 1][y + 1] += malalts;
-                                            totalDesplacats += malalts;
+                                        if ((x - 1 != -1 && y + 1 != columns) && board[x - 1][y + 1] != -1) {
+                                            board[x - 1][y + 1] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "a":
                                         if (y - 1 != -1 && board[x][y - 1] != -1) {
-                                            board[x][y - 1] += malalts;
-                                            totalDesplacats += malalts;
+                                            board[x][y - 1] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "d":
-                                        if (y + 1 != columnes && board[x][y + 1] != -1) {
-                                            board[x][y + 1] += malalts;
-                                            totalDesplacats += malalts;
+                                        if (y + 1 != columns && board[x][y + 1] != -1) {
+                                            board[x][y + 1] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "z":
-                                        if ((x + 1 != files && y - 1 != -1) && board[x + 1][y - 1] != -1) {
-                                            board[x + 1][y - 1] += malalts;
-                                            totalDesplacats += malalts;
+                                        if ((x + 1 != rows && y - 1 != -1) && board[x + 1][y - 1] != -1) {
+                                            board[x + 1][y - 1] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "x":
-                                        if (x + 1 != files && board[x + 1][y] != -1) {
-                                            board[x + 1][y] += malalts;
-                                            totalDesplacats += malalts;
+                                        if (x + 1 != rows && board[x + 1][y] != -1) {
+                                            board[x + 1][y] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     case "c":
-                                        if ((x + 1 != files && y + 1 != columnes) && board[x + 1][y + 1] != -1) {
-                                            board[x + 1][y + 1] += malalts;
-                                            totalDesplacats += malalts;
+                                        if ((x + 1 != rows && y + 1 != columns) && board[x + 1][y + 1] != -1) {
+                                            board[x + 1][y + 1] += patients;
+                                            totalDisplaced += patients;
                                         } else {
-                                            posicioBloquejada = true;
+                                            lockedPosition = true;
                                         }
                                         break;
                                     default:
                                         System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
                                         break;
                                 }
-                                if (posicioBloquejada) {
-                                    board[x][y] += malalts;
+                                if (lockedPosition) {
+                                    board[x][y] += patients;
                                     System.out.println(YELLOW + "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                                 }
                             } else {
@@ -347,19 +347,19 @@ public class Pandemia {
                     break;
                 case 6: //Mostrar informació
                     if (board != null) {
-                        totalMalalts = 0;
-                        for (int i = 0; i < files; i++) {
-                            for (int j = 0; j < columnes; j++) {
+                        totalPatients = 0;
+                        for (int i = 0; i < rows; i++) {
+                            for (int j = 0; j < columns; j++) {
                                 if (board[i][j] != -1) {
-                                    totalMalalts += board[i][j];
+                                    totalPatients += board[i][j];
                                 }
                             }
                         }
                         System.out.printf(WHITE + "Número total de malalts: %.0f\n" +
                                         "Número de persones curades: %d\n" +
                                         "Percentatge que no ha complit confinament: %.0f%%\n"
-                                , totalMalalts, totalCurats, totalDesplacats * 100 / totalMalalts);
-                        Menu(files, columnes, board);
+                                , totalPatients, totalCured, totalDisplaced * 100 / totalPatients);
+                        Menu(rows, columns, board);
                         break;
                     } else {
                         System.out.println(errorMessage);
