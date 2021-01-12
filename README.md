@@ -19,7 +19,8 @@ En el nostre cas nos ens hem atabalat molt, hem fet els apartats intercalats per
 
 ### Carregar Taulell
 
-#### Cas 1: Creació d'un taullel buit:
+#### Cas 1:
+![Joc de Proves. Cas 1](./img/CarregarTaulell1.png)
 * Dades introduïdes a les variables utilitzades
   - **answer:** 1
   - **answerBoard:** 1
@@ -30,7 +31,7 @@ Primerament seleccionem que volem utilitzar la opció "1" del menú.
 Una vegada fet això ens demanarà si volem crear un taulell buit o si volem crear un taullel amb mesures random. Introduïm "1" perquè l'usuari ens pugui donar les mesures del taulell.
 Seguidament se'ns demanen les mesures. En aquest hem fet un taulell de 5 x 10 (5 files, 10 columnes). A més a més, tot taulell es crea amb un interval de 0-3 posicions bloquejades.
 
-#### Cas 2: Creació d'un taulell amb mesures random:
+#### Cas 2:
 * Dades introduïdes a les variables utilitzades
   - **answer:** 1
   - **answerBoard:** 2
