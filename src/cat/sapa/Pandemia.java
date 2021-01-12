@@ -33,7 +33,7 @@ public class Pandemia {
         Scanner scan = new Scanner(System.in);
         String menu = (WHITE + "1. Carregar taulell   4. Curar malalts\n" +
                 "2. Introduir malalts  5. Desplaçar malalts\n" +
-                "3. Transmetre virus   6. Mostrar informació\n" +
+                "3. Transmitir virus   6. Mostrar informació\n" +
                 "0. Sortir");
         System.out.println(menu);
         //Declaració variables
