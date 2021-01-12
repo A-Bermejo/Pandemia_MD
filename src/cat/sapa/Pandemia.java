@@ -168,7 +168,7 @@ public class Pandemia {
                                         for (int i = 0; i < rows; i++) {
                                             for (int j = 0; j < columns; j++) {
                                                 if (board[i][j] != -1) {
-                                                    totalCured += Math.ceil(board[i][j] * cureNumber / 100); // algo falla aqui ಠಿ_ಠ
+                                                    totalCured += Math.ceil(board[i][j] * cureNumber / 100);
                                                     board[i][j] -= board[i][j] * cureNumber / 100;
                                                 }
                                             }
