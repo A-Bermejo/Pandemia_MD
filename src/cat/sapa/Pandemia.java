@@ -114,17 +114,21 @@ public class Pandemia {
                             System.out.print(WHITE + "A quina fila i columna vols introduir el malalt: ");
                             x = Math.abs(scan.nextInt());
                             y = Math.abs(scan.nextInt());
-                            if (x <= rows && y <= columns) {
-                                System.out.print("Quants malalts hi ha en aquesta posició: ");
-                                positionPatients = Math.abs(scan.nextInt());
-                                if (positionPatients + i <= patients && board[x][y] != -1) {
-                                    board[x][y] += positionPatients;
+                            if (board[x][y] != -1) {
+                                if (x <= rows && y <= columns) {
+                                    System.out.print("Quants malalts hi ha en aquesta posició: ");
+                                    positionPatients = Math.abs(scan.nextInt());
+                                    if (positionPatients + i <= patients) {
+                                        board[x][y] += positionPatients;
+                                    } else {
+                                        System.out.println(YELLOW + "No pots especificar més malalts en una posicio que el total " +
+                                                "de malalts que vols introduir.");
+                                    }
                                 } else {
-                                    System.out.println(YELLOW + "No pots especificar més malalts en una posicio que el total " +
-                                            "de malalts que vols introduir.");
+                                    System.out.println("Especifica una columna i fila existents en el taulell.");
                                 }
                             } else {
-                                System.out.println("Especifica una columna i fila existents en el taulell.");
+                                System.out.println(YELLOW + "No pots introduir malalts en una posició bloquejada");
                             }
                             i += positionPatients;
                         }
@@ -165,6 +169,10 @@ public class Pandemia {
                                     case 1: //Curar malalts globalment introduïnt un percentatge
                                         System.out.print("Quin percentatge de malalts vols curar (%): ");
                                         cureNumber = scan.nextInt();
+                                        if (cureNumber > 100) {
+                                            System.out.println(YELLOW + "Ja que no es pot curar més d'un 100% i s'ha introduït un número més gran que aquest, la cura es limitarà a 100%.");
+                                            cureNumber = 100;
+                                        }
                                         for (int i = 0; i < rows; i++) {
                                             for (int j = 0; j < columns; j++) {
                                                 if (board[i][j] != -1) {
@@ -192,7 +200,7 @@ public class Pandemia {
                                         }
                                         break;
                                     default:
-                                        System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
+                                        System.out.println(defaultMessage);
                                         break;
                                 }
                                 break;
@@ -210,6 +218,10 @@ public class Pandemia {
                                         case 1: //Curar malalts de forma individual introduïnt percentatge
                                             System.out.print("Quin percentatge de malalts vols curar (%): ");
                                             cureNumber = scan.nextInt();
+                                            if (cureNumber > 100) {
+                                                System.out.println(YELLOW + "Ja que no es pot curar més d'un 100% i s'ha introduït un número més gran que aquest, la cura es limitarà a 100%.");
+                                                cureNumber = 100;
+                                            }
                                             if (board[x][y] != -1) {
                                                 totalCured += Math.ceil(board[x][y] * cureNumber / 100);
                                                 board[x][y] -= board[x][y] * cureNumber / 100;
@@ -229,7 +241,7 @@ public class Pandemia {
                                             }
                                             break;
                                         default:
-                                            System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
+                                            System.out.println(defaultMessage);
                                             break;
                                     }
                                 } else {
@@ -237,7 +249,7 @@ public class Pandemia {
                                 }
                                 break;
                             default:
-                                System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
+                                System.out.println(defaultMessage);
                                 break;
                         }
                     } else {
@@ -328,7 +340,7 @@ public class Pandemia {
                                         }
                                         break;
                                     default:
-                                        System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
+                                        System.out.println(defaultMessage);
                                         break;
                                 }
                                 if (lockedPosition) {
@@ -365,7 +377,7 @@ public class Pandemia {
                         System.out.println(errorMessage);
                     }
                 default:
-                    System.out.println(YELLOW + "Només es pot introduir un número corresponent a les opcions del menú");
+                    System.out.println(defaultMessage);
                     break;
             }
             System.out.println(menu);
