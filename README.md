@@ -197,6 +197,7 @@ S'ha de tenir en compte que no es pot desplaçar malalts fora del taulell o a un
 ![Curar malalts. Cas 1](./img/MostrarInformacio.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 6
+  
 En aquest cas el que es fa és mostrar a l'usuari el número total de malalts, persones curades i un percentatge de les persones que no han complit el confinament.
 Totes aquestes dades estan asociades al taulell i a les operacions que es facin en el mateix a partir de les opcions del menú en cas de crear altre taulell es resetejaran els totals i el percentatge.
 A més es mostrara a continuació el taulell.
@@ -207,6 +208,7 @@ A més es mostrara a continuació el taulell.
 ![Curar malalts. Cas 1](./img/Sortir.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 0
+  
 En aquest cas el que es fa és mostrar un missatge de comiat i a continuació s'atura el programa.
 
 # Proposta de millora
