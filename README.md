@@ -2,6 +2,7 @@
 Projecte Pandemia Morel i Daniel
 
 # Esquema Principal del Projecte
+![Diagrama de fluxe. Pandemia_MD](./img/PandemiaMD.svg)
 
 # Explicació Decisions de Disseny Preses
  * Primerament vam haver d'analitzar els apartats que conté aquest projecte i entendre el que se'ns demanava.
@@ -133,19 +134,64 @@ Finalment introduïm el valor que volem curar (aquest no podrà ser superior al 
 ### Desplaçar malalts:
 
 #### Cas 1:
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 5
+  - **x:** 1, **y:** 2
+  - **patients:** 2
+  - **answerDisplace:** z
+
+En aquest cas el que es fa és desplaçar els malalts de una posició a totes les que li envolten.
+Primerament seleccionem que volem utilitzar la opció "5" del menú.
+Una vegada fet això ens mostrar el taulell i indicarem la posició on estan els "2" malalts que volem desplaçar, en aquest cas sera x:"1" i y:"2".
+Seguidament ens preguntarà quants malalts volem desplaçar.
+Finalment ens mostrara un petit menu amb les lletres i introduírem "z" per moure'l "Baix esquerra".
+Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"1" y:"2" a la x:"2" y:"1".
 
 #### Cas 2:
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 5
+  - **x:** 5, **y:** 0
+  - **patients:** 3
+  - **answerDisplace:** W
+
+En aquest cas el que es fa és desplaçar els malalts de una posició a totes les que li envolten.
+Primerament seleccionem que volem utilitzar la opció "5" del menú.
+Una vegada fet això ens mostrar el taulell i indicarem la posició on estan els "3" malalts que volem desplaçar, en aquest cas sera x:"5" i y:"0".
+Seguidament ens preguntarà quants malalts volem desplaçar.
+Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara que es posi en mayúscula el programa podra entendre quina opció estas indicant) per moure'l "Dalt mig".
+Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas 3:
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 5
+  - **x:** 2, **y:** 0
+  - **patients:** 1
+  - **answerDisplace:** d
+
+En aquest cas el que es fa és desplaçar els malalts de una posició a totes les que li envolten.
+Primerament seleccionem que volem utilitzar la opció "5" del menú.
+Una vegada fet això ens mostrar el taulell i indicarem la posició on esta el malalt que volem desplaçar, en aquest cas sera x:"5" i y:"0".
+Seguidament ens preguntarà quants malalts volem desplaçar, en aquets cas hi han 2 malalts però només desplaçarem "1". Aixó vol dir que l'usuari pot agafar part dels malalts d'una posició i no agafarlos tos si o si.
+Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara que es posi en mayúscula el programa podra entendre quina opció estas indicant) per moure'l "Dalt mig". 
+Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas Extrem:
+S'ha de tenir en compte que no es pot desplaçar malalts fora del taulell o a una posició bloquejada.
 
 ### Mostrar informació:
 
 #### Cas 1:
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 6
+En aquest cas el que es fa és mostrar a l'usuari el número total de malalts, persones curades i un percentatge de les persones que no han complit el confinament.
+Totes aquestes dades estan asociades al taulell i a les operacions que es facin en el mateix a partir de les opcions del menú en cas de crear altre taulell es resetejaran els totals i el percentatge.
+A més es mostrara a continuació el taulell.
 
 ### Sortir:
 
 #### Cas 1:
+* Dades introduïdes a les variables utilitzades:
+  - **answer:** 0
+En aquest cas el que es fa és mostrar un missatge de comiat i a continuació s'atura el programa.
 
 # Proposta de millora
