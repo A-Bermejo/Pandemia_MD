@@ -14,7 +14,7 @@ public class Pandemia {
     public static final String WHITE = "\u001B[38m";
 
     //Creació d'un method per evitar codi redundant
-    private static void Menu(int rows, int columns, float[][] board) {
+    private static void menu(int rows, int columns, float[][] board) {
         for (int i = 0; i < rows; i++) {
             System.out.print(BLUE + "| ");
             for (int j = 0; j < columns; j++) {
@@ -101,7 +101,7 @@ public class Pandemia {
                             board[x][y] = -1;
                         }
                         System.out.printf("Total de posicions bloquejades: %d\n", numPositionRand);
-                        Menu(rows, columns, board);
+                        menu(rows, columns, board);
                     }
                     break;
                 case 2: //Introduïr malalts
@@ -109,7 +109,7 @@ public class Pandemia {
                         System.out.print(WHITE + "Quants malalts vols introduir: ");
                         patients = Math.abs(scan.nextInt());
                         positionPatients = 0;
-                        Menu(rows, columns, board);
+                        menu(rows, columns, board);
                         for (int i = 0; i < patients; ) {
                             System.out.print(WHITE + "A quina fila i columna vols introduir el malalt: ");
                             x = Math.abs(scan.nextInt());
@@ -197,7 +197,7 @@ public class Pandemia {
                                 }
                                 break;
                             case 2: //Curar malalts de forma individual
-                                Menu(rows, columns, board);
+                                menu(rows, columns, board);
                                 System.out.print(WHITE + "A quina posicio vols curar els malalts: ");
                                 x = scan.nextInt();
                                 y = scan.nextInt();
@@ -246,7 +246,7 @@ public class Pandemia {
                     break;
                 case 5: //Desplaçar malalts
                     if (board != null) {
-                        Menu(rows, columns, board);
+                        menu(rows, columns, board);
                         System.out.print(WHITE + "Indica la posició del malalt que vols desplaçar: ");
                         x = scan.nextInt();
                         y = scan.nextInt();
@@ -359,7 +359,7 @@ public class Pandemia {
                                         "Número de persones curades: %d\n" +
                                         "Percentatge que no ha complit confinament: %.0f%%\n"
                                 , totalPatients, totalCured, totalDisplaced * 100 / totalPatients);
-                        Menu(rows, columns, board);
+                        menu(rows, columns, board);
                         break;
                     } else {
                         System.out.println(errorMessage);
