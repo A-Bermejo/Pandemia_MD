@@ -32,6 +32,7 @@ Una vegada fet això ens demanarà si volem crear un taulell buit o si volem cre
 Seguidament se'ns demanen les mesures. En aquest hem fet un taulell de 5 x 10 (5 files, 10 columnes). A més a més, tot taulell es crea amb un interval de 0-3 posicions bloquejades.
 
 #### Cas 2:
+![Joc de Proves. Cas 2](./img/CarregarTaulell2.png)
 * Dades introduïdes a les variables utilitzades
   - **answer:** 1
   - **answerBoard:** 2
@@ -41,11 +42,10 @@ Primerament seleccionem que volem utilitzar la opció "1" del menú.
 Una vegada fet això ens demanarà si volem crear un taulell buit o si volem crear un taullel amb mesures random. Introduïm "2" per agafar l'opció del taulell random.
 Seguidament se'ns crea el taulell amb mesures aleatories (el programa indica quines són) i també conté posicions bloquejades.
 
-#### Cas Extrem:
-
 ### Introduir malalts
 
 #### Cas 1:
+![Introduir malalts. Cas 1](./img/IntroduirMalalts.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 2
   - **patients:** 5
@@ -59,10 +59,12 @@ Seguidament ens mostra el nostre taulell i ens pregunta a quina fila i a quina c
 Per finalitzar ens diu que quants del 5 malalts volem introduir en aquesta posició introduïda (volem introduir els 5 malalts en aquest exemple).
 
 #### Cas Extrem:
+![Introduir malalts. Cas Extrem](./img/IntroduirMalaltsExtrem.png)
 
 ### Transmitir virus
 
 #### Cas 1:
+![Transmitir virus. Cas 1](./img/TransmitirVirus.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 3
   - **infectionRate:** 1,25
@@ -73,10 +75,12 @@ Una vegada fet això ens demanarà quina volem que sigui la taxa de contagi. (1,
 Finalment s'aplica aquesta taxa a tot el taulell.
 
 #### Cas Extrem:
+![Transmitir virus. Cas Extrem](./img/TransmitirVirusExtrem.png)
 
 ### Curar malalts
 
 #### Cas 1: Curar globalment amb %:
+![Curar malalts. Cas 1: Curar globalment amb %](./img/CurarMalalts1.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 4
   - **answerCure:** 1 
@@ -90,6 +94,7 @@ Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor con
 Finalment introduïm el % que volem curar i s'aplicarà correctament.
 
 #### Cas 2: Curar globalment amb valor concret:
+![Curar malalts. Cas 2: Curar globalment amb valor concret](./img/CurarMalalts2.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 4
   - **answerCure:** 1 
@@ -103,6 +108,7 @@ Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor con
 Finalment introduïm el valor que volem curar i s'aplicarà correctament. En el cas de que tinguem 2 malalts en una posició i nosaltres volguessim curar 7 persones, simplement el taulell mostraria 0 perquè s'han curat totes les persones d'aquella posició.
 
 #### Cas 3: Curar posició concreta amb %:
+![Curar malalts. Cas 3: Curar posició concreta amb %](./img/CurarMalalts3.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 4
   - **answerCure:** 2
@@ -117,6 +123,7 @@ Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor con
 Finalment introduïm el % que volem curar i s'aplicarà correctament a aquella posició.
 
 #### Cas 4: Curar posició concreta amb valor concret:
+![Curar malalts. Cas 4: Curar posició concreta amb valor concret](./img/CurarMalalts4.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 4
   - **answerCure:** 2
@@ -131,10 +138,12 @@ Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor con
 Finalment introduïm el valor que volem curar (aquest no podrà ser superior al número de malalts d'una casella) i s'aplicarà correctament a aquella posició.
 
 #### Cas Extrem:
+![Curar malalts. Cas Extrem](./img/CurarMalaltsExtrem.png)
 
 ### Desplaçar malalts:
 
 #### Cas 1:
+![Curar malalts. Cas 1](./img/DesplacarMalalts1.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 1, **y:** 2
@@ -149,6 +158,7 @@ Finalment ens mostrara un petit menu amb les lletres i introduírem "z" per mour
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"1" y:"2" a la x:"2" y:"1".
 
 #### Cas 2:
+![Curar malalts. Cas 2](./img/DesplacarMalalts2.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 5, **y:** 0
@@ -163,6 +173,7 @@ Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara q
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas 3:
+![Curar malalts. Cas 3](./img/DesplacarMalalts3.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 2, **y:** 0
@@ -177,11 +188,13 @@ Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara q
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas Extrem:
+![Curar malalts. Cas Extrem](./img/DesplacarMalaltsExtrem.png)
 S'ha de tenir en compte que no es pot desplaçar malalts fora del taulell o a una posició bloquejada.
 
 ### Mostrar informació:
 
 #### Cas 1:
+![Curar malalts. Cas 1](./img/MostrarInformacio.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 6
 En aquest cas el que es fa és mostrar a l'usuari el número total de malalts, persones curades i un percentatge de les persones que no han complit el confinament.
@@ -191,6 +204,7 @@ A més es mostrara a continuació el taulell.
 ### Sortir:
 
 #### Cas 1:
+![Curar malalts. Cas 1](./img/Sortir.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 0
 En aquest cas el que es fa és mostrar un missatge de comiat i a continuació s'atura el programa.
