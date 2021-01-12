@@ -47,7 +47,7 @@ Seguidament se'ns crea el taulell amb mesures aleatories (el programa indica qui
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 2
   - **patients:** 5
-  - **x:** , **y:** 3 1
+  - **x:** 3, **y:** 1
   - **positionPatients:** 5
   
 En aquest cas el que es fa és introduir malalts en una posició seleccionada per l'usuari.
