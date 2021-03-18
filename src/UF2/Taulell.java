@@ -1,4 +1,4 @@
-package projecte.uf2;
+package UF2;
 
 public class Taulell {
 
