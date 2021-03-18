@@ -101,7 +101,7 @@ public class Pandemia {
                             board[x][y] = -1;
                         }
                         System.out.printf("Total de posicions bloquejades: %d\n", numPositionRand);
-                        menu(rows, columns, board);
+                        menu(rows, columns, board); // Crida del method menu
                     }
                     break;
                 case 2: //Introduïr malalts
@@ -118,7 +118,7 @@ public class Pandemia {
                                 if (x <= rows && y <= columns) {
                                     System.out.print("Quants malalts hi ha en aquesta posició: ");
                                     positionPatients = Math.abs(scan.nextInt());
-                                    if (positionPatients + i <= patients) {
+                                    if (positionPatients + i <= patients) { // Es suma positionPatients + i per tenir en compte els malalts que ya s'han introduit.
                                         board[x][y] += positionPatients;
                                     } else {
                                         System.out.println(YELLOW + "No pots especificar més malalts en una posicio que el total " +
@@ -276,6 +276,7 @@ public class Pandemia {
                                 boolean lockedPosition = false;
                                 switch (answerDisplace) {
                                     case "q":
+                                        // Comprova que x i y quan s'efectiu el desplaçament no quedi fora del taulell o en una posició bloquejada. Cada if s'adapta segons la posicio final dels malalts.
                                         if ((x - 1 != -1 && y - 1 != -1) && board[x - 1][y - 1] != -1) {
                                             board[x - 1][y - 1] += patients;
                                             totalDisplaced += patients;
