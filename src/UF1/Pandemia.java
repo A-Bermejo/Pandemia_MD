@@ -1,4 +1,4 @@
-package cat.sapa;
+package UF1;
 
 import java.util.Scanner;
 
