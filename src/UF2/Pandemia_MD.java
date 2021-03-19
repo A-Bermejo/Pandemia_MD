@@ -24,25 +24,29 @@ static Scanner scan = new Scanner(System.in);
                 "4. Curar malalts", "5. Desplaçar malalts", "6. Mostrar informació","0. Sortir"
         };
         int opcio;
+        Taulell t = new Taulell();
         GestorTaulell g = new GestorTaulell();
-        int x = scan.nextInt();
-        int y = scan.nextInt();
-        float[][] taulell = new float[x][y];
-        //g.carregarDades(taulell);
+        g.carregarDades(t);
         do {
             Interficie.mostrarMenu(0);
             opcio = Utils.validarEnter("Tria una opció", "Error");
             switch(opcio) {
                 case 1:
-                    g.carregarDades(taulell);
+                    g.carregarDades(t);
                     break;
                 case 2:
-                    g.introduirMalalts(taulell);
+                    g.introduirMalalts(t.getTaulell());
+                    break;
+                case 3:
+                    g.transmetreVirus(t);
+                    break;
+                case 4:
+                    g.curarMalalts(t);
                     break;
                 case 6:
-                    g.mostrarInformació(taulell);
+                    g.mostrarInformació(t);
                     Interficie.mostrarEstadistiques();
-                    Interficie.mostrarTaulell(taulell);
+                    Interficie.mostrarTaulell(t);
                     break;
                 case 0:
                     Interficie.mostrarMissatgeSortida("Adeu! Esperem veure't aviat! ^o^");

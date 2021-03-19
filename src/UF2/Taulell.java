@@ -18,4 +18,27 @@ public class Taulell {
         this.taulell = new float[files][columnes];
     }
 
+    public int getFiles() {
+        return files;
+    }
+
+    public void setFiles(int files) {
+        this.files = files;
+    }
+
+    public int getColumnes() {
+        return columnes;
+    }
+
+    public void setColumnes(int columnes) {
+        this.columnes = columnes;
+    }
+
+    public float[][] getTaulell() {
+        return taulell;
+    }
+
+    public void setTaulell(float[][] taulell) {
+        this.taulell = taulell;
+    }
 }

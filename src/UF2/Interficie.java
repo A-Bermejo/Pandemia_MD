@@ -3,6 +3,8 @@ package UF2;
 
 public class Interficie {
 
+    static Taulell t;
+
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
     private static final String YELLOW = "\u001B[33m";
@@ -31,30 +33,40 @@ public class Interficie {
         String menu = "";
         switch (opcion) {
             case 0:
-                menu = ("MENÚ PRINCIPAL\n" +
+                menu = "MENÚ PRINCIPAL\n" +
                         "1. Carregar taulell   4. Curar malalts\n" +
                         "2. Introduir malalts  5. Desplaçar malalts\n" +
                         "3. Transmitir virus   6. Mostrar informació\n" +
-                        "0. Sortir");
+                        "0. Sortir";
                 break;
             case 1:
-                menu = ("De quina manera vols crear el taulell?:\n" +
+                menu = "De quina manera vols crear el taulell?:\n" +
                         "1. Crear un taulell buit (introduint les files y columnes)\n" +
-                        "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)");
+                        "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)";
+                break;
+            case 2:
+                menu = "Introdueix de quina forma vols transmetre la teva cura:\n" +
+                        "1. Globalment\n" +
+                        "2. Per a una posició concreta";
+                break;
+            case 21:
+                menu = "Ho vols fer amb:\n" +
+                        "1. Percentatge (%)\n" +
+                        "2. Valor concret";
                 break;
 
         }
         System.out.println(WHITE + menu);
     }
 
-    public static void mostrarTaulell(float[][] board) {
-        for (int i = 0; i < GestorTaulell.rows; i++) {
+    public static void mostrarTaulell(Taulell t) {
+        for (int i = 0; i < t.getFiles(); i++) {
             System.out.print(BLUE + "| ");
-            for (int j = 0; j < GestorTaulell.columns; j++) {
-                if (board[i][j] == -1) {
+            for (int j = 0; j < t.getColumnes(); j++) {
+                if (t.getTaulell()[i][j] == -1) {
                     System.out.printf(RED + "%4s    " + BLUE + "| ", "X");
                 } else {
-                    System.out.printf(GREEN + "%-7.0f " + BLUE + "| ", Math.floor(board[i][j]));
+                    System.out.printf(GREEN + "%-7.0f " + BLUE + "| ", Math.floor(t.getTaulell()[i][j]));
                 }
 
             }
