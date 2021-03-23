@@ -11,7 +11,7 @@ public class Utils {
      * introdueixi un número buid o incorrecte
      * @return Valor enter que simbolitza el número que s'ha introduït per teclat
      */
-    public static int validarEnter(String missatge, String missatgeError){
+    public static int validarEnter(String missatge, String missatgeError /* int max, int min*/){
         Scanner scanner = new Scanner(System.in);
         int ret;
         boolean correcte;
@@ -24,7 +24,7 @@ public class Utils {
             }
         }while(!correcte);
         ret = scanner.nextInt();
-        scanner.nextLine();
+
         return ret;
     }
 }

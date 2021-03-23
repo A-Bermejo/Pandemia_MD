@@ -43,13 +43,15 @@ static Scanner scan = new Scanner(System.in);
                 case 4:
                     g.curarMalalts(t);
                     break;
+                case 5:
+                    g.desplacarMalalts(t);
                 case 6:
                     g.mostrarInformació(t);
                     Interficie.mostrarEstadistiques();
                     Interficie.mostrarTaulell(t);
                     break;
                 case 0:
-                    Interficie.mostrarMissatgeSortida("Adeu! Esperem veure't aviat! ^o^");
+                    Interficie.mostrarMissatgeSortida();
                     break;
             }
         } while (opcio!=0);

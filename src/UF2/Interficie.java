@@ -2,8 +2,15 @@ package UF2;
 
 
 public class Interficie {
-
-    static Taulell t;
+    enum colors{
+        RED,
+        GREEN,
+        YELLOW,
+        BLUE,
+        PURPLE,
+        CYAN,
+        WHITE
+    }
 
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
@@ -58,12 +65,18 @@ public class Interficie {
         }
         System.out.println(WHITE + menu);
     }
+    public static void mostrarMenuDesplacar(){
+        System.out.println("De quina manera vols desplaçar els malalts?:\n" +
+                RED + "Q. (Dalt esquerra) " + WHITE + "| " + CYAN + "W. (Dalt mig) " + WHITE + "| " + RED + "E. (Dalt dreta)\n" +
+                BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE + "D. (Dreta mig)\n" +
+                YELLOW + "Z. (Baix esquerra) " + WHITE + "| " + CYAN + "X. (Baix mig) " + WHITE + "| " + YELLOW + "C. (Baix dreta)");
+    }
 
     public static void mostrarTaulell(Taulell t) {
         for (int i = 0; i < t.getFiles(); i++) {
             System.out.print(BLUE + "| ");
             for (int j = 0; j < t.getColumnes(); j++) {
-                if (t.getTaulell()[i][j] == -1) {
+                if (t.getTaulell()[i][j] == GestorTaulell.INVALIDPOSITION) {
                     System.out.printf(RED + "%4s    " + BLUE + "| ", "X");
                 } else {
                     System.out.printf(GREEN + "%-7.0f " + BLUE + "| ", Math.floor(t.getTaulell()[i][j]));
@@ -87,8 +100,7 @@ public class Interficie {
         System.out.println(YELLOW + missatge);
     }
 
-    public static void mostrarMissatgeSortida(String missatge) {
-        System.out.println(PURPLE + missatge);
+    public static void mostrarMissatgeSortida() { System.out.println(PURPLE + "Adeu! Esperem veure't aviat! ^o^");
     }
 
     public static void mostrarEstadistiques() {
@@ -103,13 +115,4 @@ public class Interficie {
      *
      * @param missatge Missatge a mostrar per pantalla en format capçalera
      */
-    public static void mostrarCapçalera(String missatge) {
-
-        System.out.println("______________________________");
-        System.out.println(missatge);
-        System.out.println("______________________________");
-    }
-
-    public static void mostrarMissatgeSortida() {
-    }
 }
