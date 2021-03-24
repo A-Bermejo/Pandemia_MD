@@ -3,6 +3,7 @@ package UF2;
 import java.util.Scanner;
 
 public class Utils {
+
     /**
      * Solicita un enter fins que sigui correcte
      * @param missatge Conté el text que es mostrarà per sol·licitar per

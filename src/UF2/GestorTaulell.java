@@ -3,6 +3,10 @@ package UF2;
 import java.util.Scanner;
 
 public class GestorTaulell {
+    /**
+     * @author Daniel Lopez & Morel Luque
+     *
+     */
     static final int INVALIDPOSITION = -1;
 
     Taulell t = new Taulell();
@@ -15,6 +19,12 @@ public class GestorTaulell {
     public static float totalPatients;
     public static int totalDisplaced;
 
+    /**
+     * Funció que serveix per carregar dades al taulell, tant si es vol crear un taulell aleatori com si es vol crear un amb mesures introduïdes per l'usuari,
+     * desprès de demanar al principi de tot el primer taulell. És a dir, aquesta funció la utilitzem una vegada ja s'ha creat el primer taulell però es vol tornar a crear un altre al llarg del programa.
+     *
+     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
+     */
     public void carregarDades(Taulell t) {
         Interficie.mostrarMenu(1);
         int answerBoard = Utils.validarEnter("Introdueix un número de la llista", "No has introduit un número vàlid. Torna a provar.");
@@ -62,6 +72,11 @@ public class GestorTaulell {
         Interficie.mostrarTaulell(t);
     }
 
+    /**
+     * Funció que ens permet introduïr malalts al nostre taulell i no només en una sola cel·la, sino que pels podem repartir en varies cel·les
+     *
+     * @param board
+     */
     public void introduirMalalts(float[][] board) {
         Interficie.mostrarMissatge("Quants malalts vols introduir: ");
         patients = Math.abs(scan.nextInt());
@@ -92,7 +107,12 @@ public class GestorTaulell {
         }
     }
 
-    public void transmetreVirus(Taulell t){
+    /**
+     * Funció que ens permet trasnmetre virus aplicant una taxa de contagi
+     *
+     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
+     */
+    public void transmetreVirus(Taulell t) {
         Interficie.mostrarMissatge("Diga'm la taxa de contagi: ");
         float infectionRate = Math.abs(scan.nextFloat());
         for (int i = 0; i < rows; i++) {
@@ -103,7 +123,13 @@ public class GestorTaulell {
             }
         }
     }
-    public void curarMalalts(Taulell t){
+
+    /**
+     * Funció que ens permet curar maltalts. Es pot fer de dues maneres: 1 - De forma global, 2 - A una casella completa. En ambdós casos es pot decidir si es vol curar amb % o amb un valor concret
+     *
+     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
+     */
+    public void curarMalalts(Taulell t) {
         Interficie.mostrarMenu(2);
         byte answerCure = scan.nextByte();
         byte answerCureValue;
@@ -199,7 +225,13 @@ public class GestorTaulell {
                 break;
         }
     }
-    public void desplacarMalalts(Taulell t){
+
+    /**
+     * Funció que ens serveix per desplaçar malalts d'una cel·la a un altre. Es pot desplaçar a qualsevol cel·la colindant sempre que no sigui una posició bloquejada
+     *
+     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
+     */
+    public void desplacarMalalts(Taulell t) {
         Interficie.mostrarTaulell(t);
         Interficie.mostrarMissatge("Indica la posició del malalt que vols desplaçar: ");
         int x = scan.nextInt() - 1;
@@ -294,6 +326,12 @@ public class GestorTaulell {
             Interficie.mostrarMissatgeError("No pots desplaçar posicions bloquejades");
         }
     }
+
+    /**
+     * Funció que ens mostra la situació actual del taulell
+     *
+     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
+     */
     public void mostrarInformació(Taulell t) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
