@@ -127,4 +127,20 @@ public class Interficie {
                         "Percentatge que no ha complit confinament: %.0f%%\n"
                 , GestorTaulell.totalPatients, GestorTaulell.totalCured, GestorTaulell.totalDisplaced * 100 / GestorTaulell.totalPatients);
     }
+
+    /**
+     * Funció que ens mostra la situació actual del taulell
+     *
+     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
+     */
+    public static void mostrarInformacio(Taulell t) {
+        GestorTaulell.totalPatients = 0;
+        for (int i = 0; i < t.getFiles(); i++) {
+            for (int j = 0; j < t.getColumnes(); j++) {
+                if (t.getTaulell()[i][j] != GestorTaulell.INVALIDPOSITION) {
+                    GestorTaulell.totalPatients += t.getTaulell()[i][j];
+                }
+            }
+        }
+    }
 }

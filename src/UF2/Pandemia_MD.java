@@ -29,7 +29,7 @@ static Scanner scan = new Scanner(System.in);
         g.carregarDades(t);
         do {
             Interficie.mostrarMenu(0);
-            opcio = Utils.validarEnter("Tria una opció", "Error");
+            opcio = Utils.validarEnterMenu("Tria una opció del menú", "No has introduit un caràcter númeric vàlid. Torna a provar.",6,0);
             switch(opcio) {
                 case 1:
                     g.carregarDades(t);
@@ -45,8 +45,9 @@ static Scanner scan = new Scanner(System.in);
                     break;
                 case 5:
                     g.desplacarMalalts(t);
+                    break;
                 case 6:
-                    g.mostrarInformació(t);
+                    Interficie.mostrarInformacio(t);
                     Interficie.mostrarEstadistiques();
                     Interficie.mostrarTaulell(t);
                     break;

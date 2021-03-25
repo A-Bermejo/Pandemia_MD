@@ -12,8 +12,6 @@ public class GestorTaulell {
     Taulell t = new Taulell();
 
     static Scanner scan = new Scanner(System.in);
-    private static int rows;
-    private static int columns;
     public static int patients;
     public static int totalCured;
     public static float totalPatients;
@@ -27,48 +25,11 @@ public class GestorTaulell {
      */
     public void carregarDades(Taulell t) {
         Interficie.mostrarMenu(1);
-        int answerBoard = Utils.validarEnter("Introdueix un número de la llista", "No has introduit un número vàlid. Torna a provar.");
+        int answerBoard = Utils.validarEnterMenu("Introdueix un número de la llista", "No has introduit un caràcter númeric vàlid. Torna a provar.",2,1);
         totalCured = 0;
         totalPatients = 0;
         totalDisplaced = 0;
-        switch (answerBoard) {
-            case 1: //Creació de taulell buit amb mesures especificades per l'usuari
-                Interficie.mostrarMissatge("Diga'm les mesures del taulell en números. Primer les files i després les columnes: ");
-                rows = scan.nextInt();
-                columns = scan.nextInt();
-                t.setFiles(rows);
-                t.setColumnes(columns);
-                t.setTaulell(new float[t.getFiles()][t.getColumnes()]);
-                break;
-            case 2: //Creació d'un taulell aleatori
-                rows = (int) (Math.random() * 9 + 2);
-                columns = (int) (Math.random() * 9 + 2);
-                t.setFiles(rows);
-                t.setColumnes(columns);
-                t.setTaulell(new float[t.getFiles()][t.getColumnes()]);
-                Interficie.mostrarMissatge("Es crearà un taulell amb les següents dimensions (x:" + rows + " y:" + columns + ")");
-                for (int i = 0; i < rows; i++) {
-                    for (int j = 0; j < columns; j++) {
-                        t.getTaulell()[i][j] = (int) (Math.random() * 10);
-                    }
-                }
-                break;
-            /*default:
-                // Validar en la clase Utils
-                noError = false;
-                System.out.println(defaultMessage);
-                break;*/
-        }
-        // Despues de validar
-        int x;
-        int y;
-        int numPositionRand = (int) (Math.random() * 4);
-        for (int i = 0; i < numPositionRand; i++) {
-            x = (int) (Math.random() * rows);
-            y = (int) (Math.random() * columns);
-            t.getTaulell()[x][y] = INVALIDPOSITION;
-        }
-        Interficie.mostrarMissatge("Total de posicions bloquejades: " + numPositionRand);
+        t.createTaulell(answerBoard);
         Interficie.mostrarTaulell(t);
     }
 
@@ -88,7 +49,7 @@ public class GestorTaulell {
             int y = Math.abs(scan.nextInt()) - 1; // Validar que no sigui 0
             // Cambiar els dos ifs a funcio en utils
             if (t.getTaulell()[x][y] != INVALIDPOSITION) {
-                if (x <= rows && y <= columns) {
+                if (x <= t.getFiles() && y <= t.getColumnes()) {
                     Interficie.mostrarMissatge("Quants malalts hi ha en aquesta posició: ");
                     positionPatients = Math.abs(scan.nextInt());
                     if (positionPatients + i <= patients) { // Es suma positionPatients + i per tenir en compte els malalts que ya s'han introduit.
@@ -115,8 +76,8 @@ public class GestorTaulell {
     public void transmetreVirus(Taulell t) {
         Interficie.mostrarMissatge("Diga'm la taxa de contagi: ");
         float infectionRate = Math.abs(scan.nextFloat());
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < t.getFiles(); i++) {
+            for (int j = 0; j < t.getColumnes(); j++) {
                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
                     t.getTaulell()[i][j] += t.getTaulell()[i][j] * infectionRate;
                 }
@@ -131,12 +92,12 @@ public class GestorTaulell {
      */
     public void curarMalalts(Taulell t) {
         Interficie.mostrarMenu(2);
-        byte answerCure = scan.nextByte();
-        byte answerCureValue;
+        int answerCure = Utils.validarEnterMenu("Introdueix un número de la llista", "No has introduit un caràcter númeric vàlid. Torna a provar.",2,1);
+        int answerCureValue;
         switch (answerCure) {
             case 1: //Curar malalts de forma global
                 Interficie.mostrarMenu(21);
-                answerCureValue = scan.nextByte();
+                answerCureValue = Utils.validarEnterMenu("Introdueix un número de la llista", "No has introduit un caràcter númeric vàlid. Torna a provar.",2,1);
                 int cureNumber;
                 switch (answerCureValue) {
                     case 1: //Curar malalts globalment introduïnt un percentatge
@@ -147,8 +108,8 @@ public class GestorTaulell {
                             Interficie.mostrarMissatgeError("Ja que no es pot curar més d'un 100% i s'ha introduït un número més gran que aquest, la cura es limitarà a 100%.");
                             cureNumber = 100;
                         }
-                        for (int i = 0; i < rows; i++) {
-                            for (int j = 0; j < columns; j++) {
+                        for (int i = 0; i < t.getFiles(); i++) {
+                            for (int j = 0; j < t.getColumnes(); j++) {
                                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
                                     totalCured += Math.ceil(t.getTaulell()[i][j] * cureNumber / 100);
                                     t.getTaulell()[i][j] -= t.getTaulell()[i][j] * cureNumber / 100;
@@ -159,8 +120,8 @@ public class GestorTaulell {
                     case 2: //Curar malalts globalment introduïnt un valor concret
                         System.out.print("Quants malalts vols curar (valor concret): ");
                         cureNumber = scan.nextInt();
-                        for (int i = 0; i < rows; i++) {
-                            for (int j = 0; j < columns; j++) {
+                        for (int i = 0; i < t.getFiles(); i++) {
+                            for (int j = 0; j < t.getColumnes(); j++) {
                                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
                                     if ((t.getTaulell()[i][j] - cureNumber) < 0) {
                                         totalCured += (t.getTaulell()[i][j] - cureNumber) + cureNumber;
@@ -173,9 +134,6 @@ public class GestorTaulell {
                             }
                         }
                         break;
-                    default:
-                        Interficie.mostrarMissatgeError("Només es pot introduir un número corresponent a les opcions del menú");
-                        break;
                 }
                 break;
             case 2: //Curar malalts de forma individual
@@ -185,7 +143,7 @@ public class GestorTaulell {
                 int y = scan.nextInt() - 1; // Validar que no sigui 0
                 if (t.getTaulell()[x][y] != INVALIDPOSITION) {
                     Interficie.mostrarMenu(21);
-                    answerCureValue = scan.nextByte();
+                    answerCureValue = Utils.validarEnterMenu("Introdueix un número de la llista", "No has introduit un caràcter númeric vàlid. Torna a provar.",2,1);
                     switch (answerCureValue) {
                         case 1: //Curar malalts de forma individual introduïnt percentatge
                             Interficie.mostrarMissatge("Quin percentatge de malalts vols curar (%): ");
@@ -211,9 +169,6 @@ public class GestorTaulell {
                                     totalCured += cureNumber;
                                 }
                             }
-                            break;
-                        default:
-                            Interficie.mostrarMissatgeError("Només es pot introduir un número corresponent a les opcions del menú");
                             break;
                     }
                 } else {
@@ -242,103 +197,75 @@ public class GestorTaulell {
             if (patients <= t.getTaulell()[x][y]) {
                 t.getTaulell()[x][y] -= patients;
                 Interficie.mostrarMenuDesplacar();
-                String answerDisplace = scan.next();
-                answerDisplace = answerDisplace.toLowerCase();
+                String answerDisplace = Utils.validarLletraCasella("Introdueix una lletra de la llista","Has de introduir un caràcter valid.");
                 boolean lockedPosition = false;
                 switch (answerDisplace) {
                     case "q":
                         // Comprova que x i y quan s'efectiu el desplaçament no quedi fora del taulell o en una posició bloquejada. Cada if s'adapta segons la posicio final dels malalts.
-                        if ((x - 1 != INVALIDPOSITION && y - 1 != INVALIDPOSITION) && t.getTaulell()[x - 1][y - 1] != INVALIDPOSITION) {
-                            t.getTaulell()[x - 1][y - 1] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x - 1,y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x - 1][y - 1] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "w":
-                        if (x - 1 != INVALIDPOSITION && t.getTaulell()[x - 1][y] != INVALIDPOSITION) {
-                            t.getTaulell()[x - 1][y] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x - 1,y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x - 1][y] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "e":
-                        if ((x - 1 != INVALIDPOSITION && y + 1 != columns) && t.getTaulell()[x - 1][y + 1] != INVALIDPOSITION) {
-                            t.getTaulell()[x - 1][y + 1] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x - 1,y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x - 1][y + 1] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "a":
-                        if (y - 1 != INVALIDPOSITION && t.getTaulell()[x][y - 1] != INVALIDPOSITION) {
-                            t.getTaulell()[x][y - 1] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x,y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x][y - 1] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "d":
-                        if (y + 1 != columns && t.getTaulell()[x][y + 1] != INVALIDPOSITION) {
-                            t.getTaulell()[x][y + 1] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x,y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x][y + 1] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "z":
-                        if ((x + 1 != rows && y - 1 != INVALIDPOSITION) && t.getTaulell()[x + 1][y - 1] != INVALIDPOSITION) {
-                            t.getTaulell()[x + 1][y - 1] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x + 1,y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x + 1][y - 1] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "x":
-                        if (x + 1 != rows && t.getTaulell()[x + 1][y] != INVALIDPOSITION) {
-                            t.getTaulell()[x + 1][y] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x + 1,y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x + 1][y] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
                     case "c":
-                        if ((x + 1 != rows && y + 1 != columns) && t.getTaulell()[x + 1][y + 1] != INVALIDPOSITION) {
-                            t.getTaulell()[x + 1][y + 1] += patients;
-                            totalDisplaced += patients;
-                        } else {
-                            lockedPosition = true;
+                        lockedPosition = Utils.validarCasellaDesti(t,x + 1,y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        if (lockedPosition){
+                            t.getTaulell()[x + 1][y + 1] += GestorTaulell.patients;
+                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                         break;
-                    default:
-                        Interficie.mostrarMissatgeError("Només es pot introduir un número corresponent a les opcions del menú");
-                        break;
                 }
-                if (lockedPosition) {
+                if (!lockedPosition) {
                     t.getTaulell()[x][y] += patients;
-                    Interficie.mostrarMissatgeError("No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                 }
             } else {
                 Interficie.mostrarMissatgeError("No pots introduïr un número superior als malalts que pertanyen a aquesta posició");
             }
         } else {
             Interficie.mostrarMissatgeError("No pots desplaçar posicions bloquejades");
-        }
-    }
-
-    /**
-     * Funció que ens mostra la situació actual del taulell
-     *
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
-     */
-    public void mostrarInformació(Taulell t) {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                if (t.getTaulell()[i][j] != INVALIDPOSITION) {
-                    totalPatients += t.getTaulell()[i][j];
-                }
-            }
         }
     }
 }
