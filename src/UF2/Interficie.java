@@ -4,7 +4,6 @@ package UF2;
 public class Interficie {
     /**
      * @author Daniel Lopez & Morel Luque
-     *
      */
     enum colors {
         RED,
@@ -62,10 +61,9 @@ public class Interficie {
 
     /**
      * Funció que mostra el menú de desplaçament de la opció "Desplaçar malalts" del programa.
-     *
      */
     public static void mostrarMenuDesplacar() {
-        System.out.println("De quina manera vols desplaçar els malalts?:\n" +
+        Interficie.mostrarMissatge("De quina manera vols desplaçar els malalts?:\n" +
                 RED + "Q. (Dalt esquerra) " + WHITE + "| " + CYAN + "W. (Dalt mig) " + WHITE + "| " + RED + "E. (Dalt dreta)\n" +
                 BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE + "D. (Dreta mig)\n" +
                 YELLOW + "Z. (Baix esquerra) " + WHITE + "| " + CYAN + "X. (Baix mig) " + WHITE + "| " + YELLOW + "C. (Baix dreta)");
@@ -111,7 +109,6 @@ public class Interficie {
 
     /**
      * Mostra per pantalla el missatge de sortida que nosaltres li passem
-     *
      */
     public static void mostrarMissatgeSortida() {
         System.out.println(PURPLE + "Adeu! Esperem veure't aviat! ^o^");
@@ -119,7 +116,6 @@ public class Interficie {
 
     /**
      * Funció que mostra les estadistiques respecte a la situació actual del taulell
-     *
      */
     public static void mostrarEstadistiques() {
         System.out.printf(WHITE + "Número total de malalts: %.0f\n" +

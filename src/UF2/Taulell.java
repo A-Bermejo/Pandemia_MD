@@ -12,7 +12,7 @@ public class Taulell {
     private int columnes;
     private float[][] taulell;
     /**
-     * Inicialitzem el taulell a 0 per files i columnes
+     * Inicialitzem el taulell a 0 per files i columnes.
      *
      */
     public Taulell() {
@@ -21,12 +21,11 @@ public class Taulell {
         this.taulell = new float[files][columnes];
     }
 
-
     /**
-     * Una vegada demanem les files y les columnes a la classe "main" les assignem al taulell perquè tingui les dimensions que volem
+     * Una vegada demanem les files y les columnes a la classe "main" les assignem al taulell perquè tingui les dimensions que volem.
      *
-     * @param f Files
-     * @param c Columnes
+     * @param f Files.
+     * @param c Columnes.
      */
     public Taulell(int f, int c) {
         this.files = f;
@@ -35,16 +34,16 @@ public class Taulell {
     }
 
     /**
-     * Funció per obtenir les files del nostre taulell
+     * Funció per obtenir les files del nostre taulell.
      *
-     * @return Número de files
+     * @return Número de files.
      */
     public int getFiles() {
         return files;
     }
 
     /**
-     * Funció per modificar les files del nostre taulell passant-li un nou valor
+     * Funció per modificar les files del nostre taulell passant-li un nou valor.
      *
      */
     public void setFiles(int files) {
@@ -52,16 +51,16 @@ public class Taulell {
     }
 
     /**
-     * Funció per obtenir les columnes del nostre taulell
+     * Funció per obtenir les columnes del nostre taulell.
      *
-     * @return Número de files
+     * @return Número de files.
      */
     public int getColumnes() {
         return columnes;
     }
 
     /**
-     * Funció per modificar les columnes del nostre taulell passant-li un nou valor
+     * Funció per modificar les columnes del nostre taulell passant-li un nou valor.
      *
      */
     public void setColumnes(int columnes) {
@@ -69,7 +68,7 @@ public class Taulell {
     }
 
     /**
-     * Funció per obtenir el nostre taulell
+     * Funció per obtenir el nostre taulell.
      *
      */
     public float[][] getTaulell() {
@@ -77,12 +76,18 @@ public class Taulell {
     }
 
     /**
-     * Funció per modificar el taulell i assignar-li nous valors utilitzats en altres classes
+     * Funció per modificar el taulell i assignar-li nous valors utilitzats en altres classes.
      *
      */
     public void setTaulell(float[][] taulell) {
         this.taulell = taulell;
     }
+
+    /**
+     * Funció per crear el taulell ja sigui de forma manual o de forma aleatoria.
+     * @param option És la opció que introdueix l'usuari segons com
+     * vulgui crear el taulell
+     */
     public void createTaulell(int option) {
         switch (option) {
             case 1: //Creació de taulell buit amb mesures especificades per l'usuari
