@@ -1,6 +1,12 @@
 
 package UF2;
 
+    /**
+     * Aquesta és la classe principal, on es crea el main i on es
+     * crida a la resta de classes per fer les operacions necessàries.
+     * @author Daniel Lopez & Morel Luque
+     */
+
 public class Pandemia_MD {
     public static void main(String[] args) {
         Pandemia_MD solucio = new Pandemia_MD();

@@ -2,15 +2,20 @@ package UF2;
 
 import java.util.Scanner;
 
+/**
+ * Classe on es crea i es modifica l'estructura del Taulell.
+ *
+ * @author Daniel Lopez & Morel Luque
+ *
+ */
+
 public class Taulell {
-    /**
-     * @author Daniel Lopez & Morel Luque
-     *
-     */
+
     private Scanner scan = new Scanner(System.in);
     private int files;
     private int columnes;
     private float[][] taulell;
+
     /**
      * Inicialitzem el taulell a 0 per files i columnes.
      *
@@ -22,7 +27,7 @@ public class Taulell {
     }
 
     /**
-     * Una vegada demanem les files y les columnes a la classe "main" les assignem al taulell perquè tingui les dimensions que volem.
+     * Una vegada demanem les files y les columnes les assignem al taulell perquè tingui les dimensions que volem.
      *
      * @param f Files.
      * @param c Columnes.
@@ -45,6 +50,7 @@ public class Taulell {
     /**
      * Funció per modificar les files del nostre taulell passant-li un nou valor.
      *
+     * @param files Nou valor de files
      */
     public void setFiles(int files) {
         this.files = files;
@@ -62,6 +68,7 @@ public class Taulell {
     /**
      * Funció per modificar les columnes del nostre taulell passant-li un nou valor.
      *
+     * @param columnes Nou valor de columnes.
      */
     public void setColumnes(int columnes) {
         this.columnes = columnes;
@@ -70,14 +77,16 @@ public class Taulell {
     /**
      * Funció per obtenir el nostre taulell.
      *
+     * @return Ens retorna el taulell com una array bidimensional de tipus float.
      */
     public float[][] getTaulell() {
         return taulell;
     }
 
     /**
-     * Funció per modificar el taulell i assignar-li nous valors utilitzats en altres classes.
+     * Funció per modificar el taulell i assignar-li nous valors.
      *
+     * @param taulell Passem una array bidimensional de tipus float.
      */
     public void setTaulell(float[][] taulell) {
         this.taulell = taulell;

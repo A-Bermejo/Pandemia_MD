@@ -3,6 +3,8 @@ package UF2;
 import java.util.Scanner;
 
 /**
+ * Classe que serveix per validar les entrades que realitza
+ * l'usuari al llarg del programa.
  * @author Daniel Lopez & Morel Luque
  */
 
@@ -16,8 +18,8 @@ public class Utils {
      * @param missatge      Conté el text que es mostrarà per sol·licitar per
      *                      pantalla la introducció del número.
      * @param missatgeError Conté el text que es mostrarà a l'usuari en cas que
-     *                      introdueixi un número buid o incorrecte.
-     * @return Valor enter que simbolitza el número que s'ha introduït per teclat.
+     *                      introdueixi un número incorrecte o un caràcter, segons la opció del programa.
+     * @return Valor enter o caràcter (segons la opció del programa) que simbolitza el número o caràcter que s'ha introduït per teclat.
      */
     public static int validarEnter(String missatge, String missatgeError, int max, int min) {
         int ret = 0;
@@ -38,15 +40,15 @@ public class Utils {
     }
 
     /**
-     * Funció que ens permet verificar la casella de destí quan desplaçem un malalt.
+     * Funció que ens permet validar la casella de destí quan desplaçem un malalt.
      *
      * @param t             Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      * @param x             Representa la fila a on es vol desplaçar el malalt.
      * @param y             Representa la columna a on es vol desplaçar el malalt.
      * @param missatgeError Conté el text que es mostrarà a l'usuari en cas
-     *                      que introdueixi una posició que estigui fora del taulell.
+     *                      que introdueixi una posició que estigui fora del taulell o si està bloquejada.
      * @return Dona "true" o "false" depent si la comprovació que es fa sobre
-     * si la posició a on es mou el malalt està fora del taulell o es una posició bloquejada.
+     * si la posició a on es mou el malalt està fora del taulell, es una posició bloquejada o es una posició vàlida.
      */
     public static boolean validarCasellaDesti(Taulell t, int x, int y, String missatgeError) {
         if ((x != GestorTaulell.INVALIDPOSITION && y != GestorTaulell.INVALIDPOSITION) && (x != t.getFiles() && y != t.getColumnes()) && t.getTaulell()[x][y] != GestorTaulell.INVALIDPOSITION) {
@@ -64,7 +66,7 @@ public class Utils {
      *                      introdueixi una lletra que no sigui una de les que es demanen
      * @param missatgeError Conté el text que es mostrarà a l'usuari en cas que
      *                      introdueixi un valor que no sigui una lletra
-     * @return Caràcter que simbolitza el número que s'ha introduït per teclat.
+     * @return Caràcter que simbolitza el caràcter que s'ha introduït per teclat.
      */
     public static String validarLletraCasella(String missatge, String missatgeError) {
         String ret = "";

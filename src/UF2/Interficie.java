@@ -1,10 +1,12 @@
 package UF2;
 
-
-public class Interficie {
     /**
+     * Aquesta classe és l'encarregada de mostrar tot el que es vol veure per consola
      * @author Daniel Lopez & Morel Luque
      */
+
+public class Interficie {
+
     enum colors {
         RED,
         GREEN,
@@ -24,8 +26,7 @@ public class Interficie {
     private static final String WHITE = "\u001B[38m";
 
     /**
-     * Mostra per pantalla les diferents opcions que formen el menú
-     * que es rep com a paràmetre.
+     * Mostra per pantalla les diferents opcions que formen els menús.
      *
      * @param option Opció que utilitzem dins d'un "switch" per definir un menú o altre
      */

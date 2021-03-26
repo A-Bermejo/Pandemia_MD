@@ -2,13 +2,13 @@ package UF2;
 
 import java.util.Scanner;
 
-public class GestorTaulell {
-    /**
+    /** En aquesta classe tenim les funcions que es dediquen a modificar
+     * les dades del taulell.
      * @author Daniel Lopez & Morel Luque
      */
-    static final int INVALIDPOSITION = -1;
 
-    Taulell t = new Taulell();
+public class GestorTaulell {
+    static final int INVALIDPOSITION = -1;
 
     static Scanner scan = new Scanner(System.in);
     public static int patients;
@@ -17,8 +17,8 @@ public class GestorTaulell {
     public static int totalDisplaced;
 
     /**
-     * Funció que serveix per carregar dades al taulell, tant si es vol crear un taulell aleatori com si es vol crear un amb mesures introduïdes per l'usuari,
-     * desprès de demanar al principi de tot el primer taulell. És a dir, aquesta funció la utilitzem una vegada ja s'ha creat el primer taulell però es vol tornar a crear un altre al llarg del programa.
+     * Funció que serveix per carregar dades al taulell, tant si es vol crear un taulell aleatori com si es vol crear un amb mesures introduïdes per l'usuari.
+     * Aquesta funció la utilitzem per crear el primer taulell però es pot tornar a utilitzar durant l'execució del programa.
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
@@ -33,7 +33,7 @@ public class GestorTaulell {
     }
 
     /**
-     * Funció que ens permet introduïr malalts al nostre taulell i no només en una sola cel·la, sino que pels podem repartir en varies cel·les.
+     * Funció que ens permet introduïr malalts al nostre taulell i no només en una sola cel·la, sino que els podem repartir en varies cel·les.
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
@@ -155,8 +155,8 @@ public class GestorTaulell {
     }
 
     /**
-     * Funció que ens verifica que quan curem malalts amb un valor concret no
-     * es curin més persones que les que hi ha malaltes en una casella.
+     * Funció que ens verifica que quan curem malalts amb un valor concret no estiguem en una posició bloquejada
+     * ni que es curin més persones que les que hi ha malaltes en una casella.
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      * @param cureNumber És el número de persones que es vol curar.
      * @param x És la fila on es troba el malalt.
