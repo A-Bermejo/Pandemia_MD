@@ -90,6 +90,17 @@ En el nostre cas nos ens hem atabalat molt, hem fet els apartats intercalats per
 
 # Joc de Proves
 
+### Menú Principal
+#### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Menu Principal](./img/CasExtremMenuPrincipal.PNG)
+* Dades introduïdes a les variables utilitzades
+    - **answer:** 10
+
+Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat.
+Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
+continua executant-se fins que s'introdueix un paràmetre vàlid
+(En aquest cas no pot seleccionar un número que no sigui de la llista del menú ni tampoc pots entrar caràcters alfabètics).
+
 ### Carregar Taulell
 
 #### Cas 1:
@@ -156,7 +167,7 @@ Seguidament ens mostra el nostre taulell i ens pregunta a quina fila i a quina c
 Per finalitzar com la posició especificada resulta ser una posicio bloquejada el programa ens comunica que no es posible realitzar aquesta operació i torna al menú principal.
 
 #### Cas Extrem (Amb la classe "Utils"):
-![Cas Extrem Carregar Taulell](./img/CasExtremIntroduirMalalts.PNG)
+![Cas Extrem Introduir Malalts](./img/CasExtremIntroduirMalalts.PNG)
 * Dades introduïdes a les variables utilitzades
     - **answer:** 2
     - **patients:** 5
@@ -192,7 +203,7 @@ Una vegada fet això ens demanarà quina volem que sigui la taxa de contagi. (-1
 Finalment s'aplica aquesta taxa a tot el taulell, i com es pot veure al taulell el programa ignora el valors negatius.
 
 #### Cas Extrem (Amb la classe "Utils"):
-![Cas Extrem Carregar Taulell](./img/CasExtremTaxaContagi.PNG)
+![Cas Extrem Transmitir Virus](./img/CasExtremTaxaContagi.PNG)
 * Dades introduïdes a les variables utilitzades
     - **answer:** 2
     - **infectionRate:** 2,25
@@ -278,19 +289,22 @@ Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor con
 Finalment introduïm el valor que volem curar (aquest no podrà ser superior al número de malalts d'una casella) i com podem veure encara que el número que volem curar es superior al número de malalts de la posició el programa cura els malalts fins arribar a 0, sense posar números negatius.
 
 #### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Curar Malalts](./img/CasExtremCurarMalalts.PNG)
 * Dades introduïdes a les variables utilitzades
-    - **answer:** 2
-    - **infectionRate:** 2,25
+    - **answer:** 4
+    - **answerCure:** 1
+    - **answerCureValue:** 1
+    - **cureNumber:** 50
 
 Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat.
 Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
 continua executant-se fins que s'introdueix un paràmetre vàlid
-(En aquest cas la taxa de contagi no pot ser negativa ni un caràcter alfabètic).
+(En aquest cas no pots curar negativament. Ara bé, si es cura per % no es pot curar més d'un 100%, però si és amb valor concret, no es pot curar més malalts del que pertanyin a aquella casella).
 
 ### Desplaçar malalts:
 
 #### Cas 1:
-![Curar malalts. Cas 1](./img/DesplacarMalalts1.png)
+![Desplacar Malalts. Cas 1](./img/DesplacarMalalts1.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 1, **y:** 2
@@ -305,7 +319,7 @@ Finalment ens mostrara un petit menu amb les lletres i introduírem "z" per mour
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"1" y:"2" a la x:"2" y:"1".
 
 #### Cas 2:
-![Curar malalts. Cas 2](./img/DesplacarMalalts2.png)
+![Desplacar Malalts Cas 2](./img/DesplacarMalalts2.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 5, **y:** 0
@@ -320,7 +334,7 @@ Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara q
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas 3:
-![Curar malalts. Cas 3](./img/DesplacarMalalts3.png)
+![Desplacar Malalts. Cas 3](./img/DesplacarMalalts3.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 2, **y:** 0
@@ -335,7 +349,7 @@ Finalment ens mostrara un petit menu amb les lletres i introduírem "W"(encara q
 Entrant a la opció "6" del menú podem veure com els malalts s'han desplaçats de la posició x:"5" y:"0" a la x:"4" y:"0".
 
 #### Cas Extrem:
-![Curar malalts. Cas Extrem](./img/DesplacarMalaltsExtrem.png)
+![Desplacar Malalts. Cas Extrem](./img/DesplacarMalaltsExtrem.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 5
   - **x:** 1, **y:** 1
@@ -348,11 +362,22 @@ Una vegada fet això ens mostrar el taulell i indicarem la posició on esta el m
 Seguidament ens preguntarà quants malalts volem desplaçar, en aquets cas desplaçarem "1".
 Finalment ens comunica que no es pot realitzar aquesta operació degut a que estem intentant desplaçar el malalt a una posició bloquejada. S'ha de tenir en compte que no es pot desplaçar malalts fora del taulell o a una posició bloquejada.
 
+#### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Desplacar Malalts](./img/CasExtremDesplacarMalalts.PNG)
+![Cas Extrem Desplacar Malalts](./img/CasExtremDesplacarMalaltsV2.PNG)
+* Dades introduïdes a les variables utilitzades
+    - **answer:** 5
+    - **x:** 2, **y:** 3
+
+Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat.
+Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
+continua executant-se fins que s'introdueix un paràmetre vàlid
+(En aquest cas no pots desplaçar posicions bloquejades. Tampoc pot desplaçar malalts a una posició bloquejada o a una posició que estigui fora del taulell).
 
 ### Mostrar informació:
 
 #### Cas 1:
-![Curar malalts. Cas 1](./img/MostrarInformacio.png)
+![Mostrar Informacio Cas 1](./img/MostrarInformacio.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 6
   
@@ -363,7 +388,7 @@ A més es mostrara a continuació el taulell.
 ### Sortir:
 
 #### Cas 1:
-![Curar malalts. Cas 1](./img/Sortir.png)
+![Sortir. Cas 1](./img/Sortir.png)
 * Dades introduïdes a les variables utilitzades:
   - **answer:** 0
   
