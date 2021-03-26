@@ -40,7 +40,7 @@ En aquesta classe tenim les funcions que es dediquen a modificar les dades del t
 Classe on es crea i es modifica l'estructura del Taulell.
  * **Funció Taulell()**
    - Inicialitzem el taulell a 0 per files i columnes.
- * **Funció Taulell(f,c)**
+ * **Funció Taulell(int f,int c)**
    - Una vegada demanem les files y les columnes les assignem al taulell perquè tingui les dimensions que volem.
  * **Funció getFiles()**
    - Funció per obtenir les files del nostre taulell.
@@ -60,7 +60,7 @@ Classe on es crea i es modifica l'estructura del Taulell.
 ### Classe "Interficie"
  * **Funció mostrarMenu()**
    - Mostra per pantalla les diferents opcions que formen els menús.
- * **Funció mostrarMenuDesplacar**
+ * **Funció mostrarMenuDesplacar()**
    - Funció que mostra el menú de desplaçament de la opció "Desplaçar malalts" del programa.
  * **Funció mostrarTaulell()**
    - Funció que mostra el taulell formatat i personalitzat de la manera que nosaltres volem
@@ -80,7 +80,7 @@ Classe on es crea i es modifica l'estructura del Taulell.
    - Solicita un enter fins que sigui correcte.
  * **Funció validarTaxaContagi()**
    - Solicita un float fins que sigui correcte.
- * **Funció validarCasellaDesti**
+ * **Funció validarCasellaDesti()**
    - Funció que ens permet validar si la casella de destí quan desplaçem un malalt és una posició bloquejada, esta fora del taulell o es una posició vàlida.
  * **Funció validarLletraCasella()**
    - Funció que ens permet validar si la lletra que escriu l'usuari per moure malalts no és un número i està dins de les lletres que es demanen.
@@ -190,17 +190,6 @@ En aquest cas el que es fa és aplicar una taxa de contagi especificada per l'us
 Primerament seleccionem que volem utilitzar la opció "3" del menú.
 Una vegada fet això ens demanarà quina volem que sigui la taxa de contagi. (1,25 en el nostre exemple).
 Finalment s'aplica aquesta taxa a tot el taulell.
-
-#### Cas Extrem:
-![Transmitir virus. Cas Extrem](./img/TransmitirVirusExtrem.png)
-* Dades introduïdes a les variables utilitzades:
-  - **answer:** 3
-  - **infectionRate:** -1,25
-
-En aquest cas el que es fa és aplicar una taxa de contagi negativa especificada per l'usuari a tot el taulell per veure com reacciona el programa.
-Primerament seleccionem que volem utilitzar la opció "3" del menú.
-Una vegada fet això ens demanarà quina volem que sigui la taxa de contagi. (-1,25 en el nostre exemple).
-Finalment s'aplica aquesta taxa a tot el taulell, i com es pot veure al taulell el programa ignora el valors negatius.
 
 #### Cas Extrem (Amb la classe "Utils"):
 ![Cas Extrem Transmitir Virus](./img/CasExtremTaxaContagi.PNG)
