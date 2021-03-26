@@ -13,39 +13,75 @@ Projecte Pandemia Morel i Daniel
    - A mesura que codificavem el nostre projecte ens vam adonar que quan voliem mostrar el nostre taulell per realitzar diferents apartats, hi havia codi redundant. Això ho vam solucionar fent un "**Method**", que ens serveix per indicar un bloc de codi que volem utilitzar al llarg del programa i que a l'hora d'utilitzar-lo, només hem de fer referència al nom d'aquest "**Method**" a l'apartat on volem que aquest bloc de codi funcioni, i així evitem redundància.
    - També ens vam adonar de que el format amb el qual es mostrava el taulell no ens agradava i vam decidir utilitzar un "**printf**" per donar format i a més a més vam declarar unes "**Constants**" que definien un color, que també se li va aplicar a aquest taulell i a altres blocs del codi per donar estil.
 
-### Distribució de funcions
+# Distribució de funcions
 Per que el codi estigués ben estructurat i sigui bonic i senzill vam decidir separar-lo en diferents classes i funcions. Per explicar el següent apartat ho farem divint l'explicació en cadascuna de les classes que hem creat.
 
-#### Classe "Pandemia_MD"
+### Classe "Pandemia_MD"
 Aquesta classe conté el main. Aquest crida a la funció "inici" que és la funció principal que crida a la resta de funcions.
- * **Funció "inici"**
-  - Programa principal cridat des del main de la classe. Mostra el menú per pantalla i segons la opció triada executa una o altre instrucció fins que aquesta opció sigui la de sortir
+ * **Funció inici()**
+    - Programa principal cridat des del main de la classe. Mostra el menú per pantalla i segons la opció triada executa una o altre instrucció fins que aquesta opció sigui la de sortir
 
-#### Classe "GestorTaulell"
+### Classe "GestorTaulell"
 En aquesta classe tenim les funcions que es dediquen a modificar les dades del taulell.
- * **Funció "carregarDades"**
-  - Funció que serveix per carregar dades al taulell, tant si es vol crear un taulell aleatori com si es vol crear un amb mesures introduïdes per l'usuari. Aquesta funció la utilitzem per crear el primer taulell però es pot tornar a utilitzar durant l'execució del programa.
+ * **Funció carregarDades()**
+    - Funció que serveix per carregar dades al taulell, tant si es vol crear un taulell aleatori com si es vol crear un amb mesures introduïdes per l'usuari. Aquesta funció la utilitzem per crear el primer taulell però es pot tornar a utilitzar durant l'execució del programa.
+ * **Funció introduirMalalts()**
+    - Funció que ens permet introduïr malalts al nostre taulell i no només en una sola cel·la, sino que els podem repartir en varies cel·les (aquí entra la nostra proposta de millora).
+ * **Funció transmetreVirus()**
+    - Funció que ens permet trasnmetre virus aplicant una taxa de contagi.
+ * **Funció curarMalalts()**
+    - Funció que ens permet curar maltalts. Es pot fer de dues maneres: 1 - De forma global, 2 - A una casella concreta. En ambdós casos es pot decidir si es vol curar amb % o amb un valor concret.
+ * **Funció curarMalaltsValorConcret()**
+    - Funció que ens verifica que quan curem malalts amb un valor concret no estiguem en una posició bloquejada ni estiguem curant més persones que les que hi ha malaltes en aquella casella.
+ * **Funció desplacarMalalts()**
+    - Funció que ens serveix per desplaçar malalts d'una cel·la a un altre. Es pot desplaçar a qualsevol cel·la colindant sempre que no sigui una posició bloquejada o estigui fora del taulell.
 
-##### Funció "introduirMalalts"
-Funció que ens permet introduïr malalts al nostre taulell i no només en una sola cel·la, sino que els podem repartir en varies cel·les.
-
-##### Funció "transmetreVirus"
-Funció que ens permet trasnmetre virus aplicant una taxa de contagi.
-
-##### Funció "curarMalalts"
-Funció que ens permet curar maltalts. Es pot fer de dues maneres: 1 - De forma global, 2 - A una casella completa. En ambdós casos es pot decidir si es vol curar amb % o amb un valor concret.
-
-##### Funció "curarMalaltsValorConcret"
-Funció que ens verifica que quan curem malalts amb un valor concret no estiguem en una posició bloquejada ni que es curin més persones que les que hi ha malaltes en una casella.
-
-##### Funció "desplacarMalalts"
-Funció que ens serveix per desplaçar malalts d'una cel·la a un altre. Es pot desplaçar a qualsevol cel·la colindant sempre que no sigui una posició bloquejada.
-
-#### Classe "Taulell"
-
-#### Classe "Interficie"
-
-#### Classe "Utils"
+### Classe "Taulell"
+Classe on es crea i es modifica l'estructura del Taulell.
+ * **Funció Taulell()**
+   - Inicialitzem el taulell a 0 per files i columnes.
+ * **Funció Taulell(f,c)**
+   - Una vegada demanem les files y les columnes les assignem al taulell perquè tingui les dimensions que volem.
+ * **Funció getFiles()**
+   - Funció per obtenir les files del nostre taulell.
+ * **Funció setFiles()**
+   - Funció per modificar les files del nostre taulell passant-li un nou valor.
+ * **Funció getColumnes()**
+   - Funció per obtenir les columnes del nostre taulell.
+ * **Funció setColumnes()**
+   - Funció per modificar les columnes del nostre taulell passant-li un nou valor.
+ * **Funció getTaulell()**
+   - Funció per obtenir el nostre taulell.
+ * **Funció setTaulell()**
+   - Funció per modificar el taulell i assignar-li nous valors.
+ * **Funció createTaulell()**
+   - Funció per crear el taulell ja sigui de forma manual o de forma aleatoria.
+  
+### Classe "Interficie"
+ * **Funció mostrarMenu()**
+   - Mostra per pantalla les diferents opcions que formen els menús.
+ * **Funció mostrarMenuDesplacar**
+   - Funció que mostra el menú de desplaçament de la opció "Desplaçar malalts" del programa.
+ * **Funció mostrarTaulell()**
+   - Funció que mostra el taulell formatat i personalitzat de la manera que nosaltres volem
+ * **Funció mostrarMissatge()**
+   - Mostra per pantalla el missatge simple o normal que nosaltres li passem
+ * **Funció mostrarMissatgeError()**
+   - Mostra per pantalla el missatge de error que nosaltres li passem
+ * **Funció mostrarMissatgeSortida()**
+   - Mostra per pantalla el missatge de sortida que nosaltres li passem
+ * **Funció mostrarEstadistiques()**
+   - Funció que mostra les estadistiques respecte a la situació actual del taulell
+ * **Funció mostrarInformacio()**
+   - Funció que ens mostra la situació actual del taulell
+    
+### Classe "Utils"
+ * **Funcio validarEnter()**
+   - Solicita un enter fins que sigui correcte.
+ * **Funció validarCasellaDesti**
+   - Funció que ens permet validar si la casella de destí quan desplaçem un malalt és una posició bloquejada, esta fora del taulell o es una posició vàlida.
+ * **Funció validarLletraCasella()**
+   - Funció que ens permet validar si la lletra que escriu l'usuari per moure malalts no és un número i està dins de les lletres que es demanen.
 
 # Explicació Repartiment de Tasques
 En el nostre cas nos ens hem atabalat molt, hem fet els apartats intercalats però això no vol dir que els hagim fet per separat o incomunicats. Mitjançant "Discord" hem fet trucades per realitzar cadascun dels apartats del projecte fos el que ens toquès a nosaltres o no, comentant codi, errors, fent proves... A més a més si no ens tocava realitzar un apartat el dia que feiem trucada, procuravem ajudar, buscar informació, intentar solucionar problemes... per tal de possar de la nostra part.  
@@ -76,6 +112,8 @@ En aquest cas el que es fa és crear un taulell amb mesures aleatories.
 Primerament seleccionem que volem utilitzar la opció "1" del menú.
 Una vegada fet això ens demanarà si volem crear un taulell buit o si volem crear un taullel amb mesures random. Introduïm "2" per agafar l'opció del taulell random.
 Seguidament se'ns crea el taulell amb mesures aleatories (el programa indica quines són) i també conté posicions bloquejades.
+
+#### Cas Extrem:
 
 ### Introduir malalts
 

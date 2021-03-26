@@ -36,7 +36,43 @@ public class Utils {
                 Interficie.mostrarMissatgeError(missatgeError);
             } else {
                 ret = scan.nextInt();
-                correcte = ret <= max && ret >= min;
+                if (max == 0){
+                    correcte = ret >= min;
+                } else {
+                    correcte = ret <= max && ret >= min;
+                }
+                if (!correcte) {
+                    Interficie.mostrarMissatgeError(missatge);
+                }
+            }
+        } while (!correcte);
+        return ret;
+    }
+
+    /**
+     * Solicita un float fins que sigui correcte.
+     * @param missatge Conté el text que es mostrarà per sol·licitar per
+     *                 pantalla la introducció del número.
+     * @param missatgeError Conté el text que es mostrarà a l'usuari en cas que
+     *                      introdueixi un número incorrecte o un caràcter, segons la opció del programa.
+     * @param max Valor que ocupa el rang màxim
+     * @param min Valor que ocupa el rang mínim
+     * @return Valor amb decimals
+     */
+    public static float validarTaxaContagi(String missatge, String missatgeError, int max, int min){
+        float ret = 0;
+        do {
+            correcte = scan.hasNextFloat();
+            if (!correcte) {
+                scan.next();
+                Interficie.mostrarMissatgeError(missatgeError);
+            } else {
+                ret = scan.nextFloat();
+                if (max == 0){
+                    correcte = ret >= min;
+                } else {
+                    correcte = ret <= max && ret >= min;
+                }
                 if (!correcte) {
                     Interficie.mostrarMissatgeError(missatge);
                 }

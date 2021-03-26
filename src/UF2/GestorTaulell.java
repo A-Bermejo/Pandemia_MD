@@ -54,7 +54,7 @@ public class GestorTaulell {
      */
     public void introduirMalalts(Taulell t) {
         Interficie.mostrarMissatge("Quants malalts vols introduir: ");
-        patients = Math.abs(scan.nextInt());
+        patients = Utils.validarEnter("Introdueix un número vàlid", "No has introduït un caràcter númeric vàlid. Torna a provar",0,0);
         int positionPatients = 0;
         Interficie.mostrarTaulell(t);
         int aux = 0;
@@ -90,7 +90,7 @@ public class GestorTaulell {
      */
     public void transmetreVirus(Taulell t) {
         Interficie.mostrarMissatge("Diga'm la taxa de contagi: ");
-        float infectionRate = Math.abs(scan.nextFloat());
+        float infectionRate = Utils.validarTaxaContagi("Indica un número vàlid", "No has introduït un caràcter numèric. Torna a provar",0 , 0);
         for (int i = 0; i < t.getFiles(); i++) {
             for (int j = 0; j < t.getColumnes(); j++) {
                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
@@ -196,7 +196,7 @@ public class GestorTaulell {
     }
 
     /**
-     * Funció que ens serveix per desplaçar malalts d'una cel·la a un altre. Es pot desplaçar a qualsevol cel·la colindant sempre que no sigui una posició bloquejada.
+     *
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
