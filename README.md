@@ -78,6 +78,8 @@ Classe on es crea i es modifica l'estructura del Taulell.
 ### Classe "Utils"
  * **Funcio validarEnter()**
    - Solicita un enter fins que sigui correcte.
+ * **Funció validarTaxaContagi()**
+   - Solicita un float fins que sigui correcte.
  * **Funció validarCasellaDesti**
    - Funció que ens permet validar si la casella de destí quan desplaçem un malalt és una posició bloquejada, esta fora del taulell o es una posició vàlida.
  * **Funció validarLletraCasella()**
@@ -113,7 +115,16 @@ Primerament seleccionem que volem utilitzar la opció "1" del menú.
 Una vegada fet això ens demanarà si volem crear un taulell buit o si volem crear un taullel amb mesures random. Introduïm "2" per agafar l'opció del taulell random.
 Seguidament se'ns crea el taulell amb mesures aleatories (el programa indica quines són) i també conté posicions bloquejades.
 
-#### Cas Extrem:
+#### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Carregar Taulell](./img/CasExtremCreacioTaulell.PNG)
+* Dades introduïdes a les variables utilitzades
+    - **answer:** 1
+    - **answerBoard:** 1
+    - **x:** 5, **y:** 10
+    
+Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat. 
+Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
+continua executant-se fins que s'introdueix un paràmetre vàlid (En aquest cas ha de ser un número superior a 2 degut a que no té sentit tenir un taulell més petit de 2x2).
 
 ### Introduir malalts
 
@@ -144,6 +155,18 @@ Una vegada fet això ens demanarà quants malalts volem introduir. (5 en el nost
 Seguidament ens mostra el nostre taulell i ens pregunta a quina fila i a quina columna volem introduir el malalt (3 1 en el nostre cas)
 Per finalitzar com la posició especificada resulta ser una posicio bloquejada el programa ens comunica que no es posible realitzar aquesta operació i torna al menú principal.
 
+#### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Carregar Taulell](./img/CasExtremIntroduirMalalts.PNG)
+* Dades introduïdes a les variables utilitzades
+    - **answer:** 2
+    - **patients:** 5
+    - **x:** 1, **y:** 2
+
+Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat.
+Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
+continua executant-se fins que s'introdueix un paràmetre vàlid 
+(En aquest cas ha de ser una fila i columna que estigui al taulell i que no estigui bloquejada. A més els malalts que s'introdueixen ha de ser un número positiu).
+
 ### Transmitir virus
 
 #### Cas 1:
@@ -167,6 +190,17 @@ En aquest cas el que es fa és aplicar una taxa de contagi negativa especificada
 Primerament seleccionem que volem utilitzar la opció "3" del menú.
 Una vegada fet això ens demanarà quina volem que sigui la taxa de contagi. (-1,25 en el nostre exemple).
 Finalment s'aplica aquesta taxa a tot el taulell, i com es pot veure al taulell el programa ignora el valors negatius.
+
+#### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Carregar Taulell](./img/CasExtremTaxaContagi.PNG)
+* Dades introduïdes a les variables utilitzades
+    - **answer:** 2
+    - **infectionRate:** 2,25
+
+Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat.
+Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
+continua executant-se fins que s'introdueix un paràmetre vàlid
+(En aquest cas la taxa de contagi no pot ser negativa ni un caràcter alfabètic).
 
 ### Curar malalts
 
@@ -242,6 +276,17 @@ Primerament seleccionem que volem utilitzar la opció "4" del menú.
 Una vegada fet això ens pregunta com volem aplicar la cura (Globalment o per una posició concreta). Introduïm "2" per fer-ho per una posició concreta.
 Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor concret. Introduïm "2" per fer-ho amb un valor concret.
 Finalment introduïm el valor que volem curar (aquest no podrà ser superior al número de malalts d'una casella) i com podem veure encara que el número que volem curar es superior al número de malalts de la posició el programa cura els malalts fins arribar a 0, sense posar números negatius.
+
+#### Cas Extrem (Amb la classe "Utils"):
+![Cas Extrem Carregar Taulell](./img/CasExtremCurarMalalts.PNG)
+* Dades introduïdes a les variables utilitzades
+    - **answer:** 2
+    - **infectionRate:** 2,25
+
+Com es pot apreciar s'ha possat el programa a prova en diferents situacions on aquest podria haver fallat o podria haver-se col·lapsat.
+Gràcies a que disposem de la classe "Utils" que valida tota entrada que fa l'usuari, el programa
+continua executant-se fins que s'introdueix un paràmetre vàlid
+(En aquest cas la taxa de contagi no pot ser negativa ni un caràcter alfabètic).
 
 ### Desplaçar malalts:
 
