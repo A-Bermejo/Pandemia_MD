@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="103cm" height="62cm" viewBox="-43 -246 2060 1240" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <path style="fill: #ff0073" d="M 814.333 -244 L 883.667,-244 C 893.24,-244 901,-234.15 901,-222 C 901,-209.85 893.24,-200 883.667,-200 L 814.333,-200 C 804.76,-200 797,-209.85 797,-222 C 797,-234.15 804.76,-244 814.333,-244z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 814.333 -244 L 883.667,-244 C 893.24,-244 901,-234.15 901,-222 C 901,-209.85 893.24,-200 883.667,-200 L 814.333,-200 C 804.76,-200 797,-209.85 797,-222 C 797,-234.15 804.76,-244 814.333,-244"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="849" y="-217.2">
+      <tspan x="849" y="-217.2">Iniciar</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ff0073" d="M 812.69 949.983 L 882.023,949.983 C 891.596,949.983 899.357,959.833 899.357,971.983 C 899.357,984.134 891.596,993.983 882.023,993.983 L 812.69,993.983 C 803.117,993.983 795.357,984.134 795.357,971.983 C 795.357,959.833 803.117,949.983 812.69,949.983z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 812.69 949.983 L 882.023,949.983 C 891.596,949.983 899.357,959.833 899.357,971.983 C 899.357,984.134 891.596,993.983 882.023,993.983 L 812.69,993.983 C 803.117,993.983 795.357,984.134 795.357,971.983 C 795.357,959.833 803.117,949.983 812.69,949.983"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="847.357" y="976.783">
+      <tspan x="847.357" y="976.783">Fi</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="849" y1="-200" x2="848.127" y2="-133.503"/>
+    <polygon style="fill: #000000" points="848.028,-126.003 843.16,-136.068 848.127,-133.503 853.159,-135.937 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="848.028,-126.003 843.16,-136.068 848.127,-133.503 853.159,-135.937 "/>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 789.5 4.06655 L 909.5,-28.3335 L 909.5,52.6665 L 789.5,52.6665 L 789.5,4.06655z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 789.5 4.06655 L 909.5,-28.3335 L 909.5,52.6665 L 789.5,52.6665 L 789.5,4.06655"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="849.5" y="33.1665">
+      <tspan x="849.5" y="33.1665">Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="847.999" y1="-78.7675" x2="849.281" y2="-21.867"/>
+    <polygon style="fill: #000000" points="849.45,-14.369 844.226,-24.2538 849.281,-21.867 854.223,-24.479 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="849.45,-14.369 844.226,-24.2538 849.281,-21.867 854.223,-24.479 "/>
+  </g>
+  <g>
+    <path style="fill: #04dd36" d="M 770.624 -123.767 L 925.374,-123.767 C 948.587,-114.767 956.324,-110.267 956.324,-101.267 C 956.324,-92.2675 948.587,-87.7675 925.374,-78.7675 L 770.624,-78.7675 L 739.674,-101.267 L 770.624,-123.767z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 770.624 -123.767 L 925.374,-123.767 C 948.587,-114.767 956.324,-110.267 956.324,-101.267 C 956.324,-92.2675 948.587,-87.7675 925.374,-78.7675 L 770.624,-78.7675 L 739.674,-101.267 L 770.624,-123.767"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="847.999" y="-96.4675">
+      <tspan x="847.999" y="-96.4675">Mostrar menu principal</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="847.691" y1="166.384" x2="847.361" y2="940.247"/>
+    <polygon style="fill: #000000" points="847.358,947.747 842.362,937.745 847.361,940.247 852.362,937.749 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="847.358,947.747 842.362,937.745 847.361,940.247 852.362,937.749 "/>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="88.0551" y="107.744" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="88.0551" y="107.744" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="170.055" y="143.044">
+      <tspan x="170.055" y="143.044">1. Creació taulell</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="352.633" y="107.109" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="352.633" y="107.109" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="434.633" y="142.409">
+      <tspan x="434.633" y="142.409">2. Introduir malalts</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="572.838" y="108.891" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="572.838" y="108.891" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="654.838" y="144.191">
+      <tspan x="654.838" y="144.191">3. Transmitir virus</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 110.934 219.893 L 230.934,187.493 L 230.934,268.493 L 110.934,268.493 L 110.934,219.893z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 110.934 219.893 L 230.934,187.493 L 230.934,268.493 L 110.934,268.493 L 110.934,219.893"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="170.934" y="248.993">
+      <tspan x="170.934" y="248.993">Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="-8.15675" y="349.447" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-8.15675" y="349.447" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="73.8432" y="384.747">
+      <tspan x="73.8432" y="384.747">1. Taulell manual</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="173.591" y="349.701" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="173.591" y="349.701" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="255.591" y="385.001">
+      <tspan x="255.591" y="385.001">2. Taulell random</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="170.934,268.493 170.934,308.97 73.8432,308.97 73.8432,339.711 "/>
+    <polygon style="fill: #000000" points="73.8432,347.211 68.8432,337.211 73.8432,339.711 78.8432,337.211 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="73.8432,347.211 68.8432,337.211 73.8432,339.711 78.8432,337.211 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="170.934,268.493 170.934,309.097 255.591,309.097 255.591,339.964 "/>
+    <polygon style="fill: #000000" points="255.591,347.464 250.591,337.464 255.591,339.964 260.591,337.464 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="255.591,347.464 250.591,337.464 255.591,339.964 260.591,337.464 "/>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 374.986 529.197 L 494.986,496.797 L 494.986,577.797 L 374.986,577.797 L 374.986,529.197z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 374.986 529.197 L 494.986,496.797 L 494.986,577.797 L 374.986,577.797 L 374.986,529.197"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="434.986" y="558.297">
+      <tspan x="434.986" y="558.297">Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 595.774 631.326 L 715.774,598.926 L 715.774,679.926 L 595.774,679.926 L 595.774,631.326z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 595.774 631.326 L 715.774,598.926 L 715.774,679.926 L 595.774,679.926 L 595.774,631.326"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="655.774" y="660.426">
+      <tspan x="655.774" y="660.426">Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 106.189 476.619 L 226.189,444.219 L 226.189,525.219 L 106.189,525.219 L 106.189,476.619z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 106.189 476.619 L 226.189,444.219 L 226.189,525.219 L 106.189,525.219 L 106.189,476.619"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="166.189" y="505.719">
+      <tspan x="166.189" y="505.719">Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1183.27" y="106.943" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1183.27" y="106.943" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1265.27" y="142.243">
+      <tspan x="1265.27" y="142.243">4. Curar malalts</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 981.816 496.863 L 1103.42,464.463 L 1103.42,545.463 L 981.816,545.463 L 981.816,496.863z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 981.816 496.863 L 1103.42,464.463 L 1103.42,545.463 L 981.816,545.463 L 981.816,496.863"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1042.62" y="525.963">
+      <tspan x="1042.62" y="525.963">4.1 Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="434.633,168.109 434.633,272.11 434.986,272.11 434.986,503.261 "/>
+    <polygon style="fill: #000000" points="434.986,510.761 429.986,500.761 434.986,503.261 439.986,500.761 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="434.986,510.761 429.986,500.761 434.986,503.261 439.986,500.761 "/>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1577" y="109.697" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1577" y="109.697" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1659" y="144.997">
+      <tspan x="1659" y="144.997">5. Desplaçar malalts</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1793.52" y="109.055" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1793.52" y="109.055" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1875.52" y="144.355">
+      <tspan x="1875.52" y="144.355">6. Mostrar informació</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 1597.48 277.443 L 1717.48,245.043 L 1717.48,326.043 L 1597.48,326.043 L 1597.48,277.443z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 1597.48 277.443 L 1717.48,245.043 L 1717.48,326.043 L 1597.48,326.043 L 1597.48,277.443"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1657.48" y="306.543">
+      <tspan x="1657.48" y="306.543">5. Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="960.866" y="368.343" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="960.866" y="368.343" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1042.87" y="403.643">
+      <tspan x="1042.87" y="403.643">1. Global</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1369.86" y="368.025" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1369.86" y="368.025" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1451.86" y="403.325">
+      <tspan x="1451.86" y="403.325">2. Posicio concreta</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #04dd36" d="M 1798.2 222.172 L 1952.95,222.172 C 1976.17,231.172 1983.9,235.672 1983.9,244.672 C 1983.9,253.672 1976.17,258.172 1952.95,267.172 L 1798.2,267.172 L 1767.25,244.672 L 1798.2,222.172z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 1798.2 222.172 L 1952.95,222.172 C 1976.17,231.172 1983.9,235.672 1983.9,244.672 C 1983.9,253.672 1976.17,258.172 1952.95,267.172 L 1798.2,267.172 L 1767.25,244.672 L 1798.2,222.172"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1875.58" y="249.472">
+      <tspan x="1875.58" y="249.472">Mostrar informació</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="871.503" y="646.926" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="871.503" y="646.926" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="953.503" y="682.226">
+      <tspan x="953.503" y="682.226">1. Percentatge</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1061.1" y="646.926" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1061.1" y="646.926" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1143.1" y="682.226">
+      <tspan x="1143.1" y="682.226">2. Valor concret</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1266.4" y="646.201" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1266.4" y="646.201" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1348.4" y="681.501">
+      <tspan x="1348.4" y="681.501">1. Percentatge</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #04dd36" x="1465.61" y="646.34" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1465.61" y="646.34" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1547.61" y="681.64">
+      <tspan x="1547.61" y="681.64">2. Valor concret</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 1189.61 822.173 L 1311.21,789.773 L 1311.21,870.773 L 1189.61,870.773 L 1189.61,822.173z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 1189.61 822.173 L 1311.21,789.773 L 1311.21,870.773 L 1189.61,870.773 L 1189.61,822.173"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1250.41" y="851.273">
+      <tspan x="1250.41" y="851.273">Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 1191.09 247.911 L 1312.69,215.511 L 1312.69,296.511 L 1191.09,296.511 L 1191.09,247.911z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 1191.09 247.911 L 1312.69,215.511 L 1312.69,296.511 L 1191.09,296.511 L 1191.09,247.911"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1251.89" y="277.011">
+      <tspan x="1251.89" y="277.011">4 Introduir valor</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffa500" d="M 1389.8 493.133 L 1511.4,460.733 L 1511.4,541.733 L 1389.8,541.733 L 1389.8,493.133z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 1389.8 493.133 L 1511.4,460.733 L 1511.4,541.733 L 1389.8,541.733 L 1389.8,493.133"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1450.6" y="522.233">
+      <tspan x="1450.6" y="522.233">4.2 Introduir valor</tspan>
+    </text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="170.055,106.736 170.055,79.7013 849.5,79.7013 849.5,52.6665 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="654.838,169.891 654.838,380.859 655.774,380.859 655.774,615.126 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="849.5,52.6665 849.5,80.0779 1265.27,80.0779 1265.27,106.943 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1265.27,167.943 1265.27,199.061 1251.89,199.061 1251.89,231.711 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1251.89,296.511 1251.89,332.427 1042.87,332.427 1042.87,368.343 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1251.89,296.511 1251.89,332.268 1451.86,332.268 1451.86,368.025 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1042.87,429.343 1042.87,452.625 1042.62,452.625 1042.62,480.663 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1451.86,429.025 1451.86,449.76 1450.6,449.76 1450.6,476.933 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1042.62,545.463 1042.62,596.195 953.503,596.195 953.503,646.926 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1042.62,545.463 1042.62,596.195 1143.1,596.195 1143.1,646.926 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1450.6,541.733 1450.6,593.967 1348.4,593.967 1348.4,646.201 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1450.6,541.733 1450.6,594.036 1547.61,594.036 1547.61,646.34 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="953.503,707.926 953.503,754.571 1250.41,754.571 1250.41,805.973 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1143.1,707.926 1143.1,754.571 1250.41,754.571 1250.41,805.973 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1348.4,707.201 1348.4,754.944 1250.41,754.944 1250.41,805.973 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1547.61,707.34 1547.61,754.944 1250.41,754.944 1250.41,805.973 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="849.5,52.6665 849.5,80.4963 1659,80.4963 1659,109.697 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1659,170.697 1659,201.5 1657.48,201.5 1657.48,261.243 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="849.5,52.6665 849.5,80.4963 1875.52,80.4963 1875.52,109.055 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1875.52,170.055 1875.52,196.113 1875.58,196.113 1875.58,222.172 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="956.324,-101.267 2016.13,-101.267 2016.13,244.672 1983.9,244.672 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="170.055,168.744 170.055,210.858 170.934,210.858 170.934,203.693 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="73.8432,410.447 73.8432,435.433 166.189,435.433 166.189,460.419 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="255.591,410.701 255.591,435.56 166.189,435.56 166.189,460.419 "/>
+  <g>
+    <rect style="fill: #04dd36" x="765.691" y="105.384" width="164" height="61"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="765.691" y="105.384" width="164" height="61"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="847.691" y="140.684">
+      <tspan x="847.691" y="140.684">0. Sortir</tspan>
+    </text>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="434.633,107.109 434.633,79.8878 849.5,79.8878 849.5,52.6665 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="654.838,108.891 654.838,79.6295 849.5,79.6295 849.5,52.6665 "/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="849.5" y1="52.6665" x2="847.691" y2="105.384"/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="956.324,-101.267 2016.13,-101.267 2016.13,305.793 1717.48,305.793 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="956.324,-101.267 2016.13,-101.267 2016.13,830.273 1311.21,830.273 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="595.774,655.626 -41.3628,655.626 -41.3628,-101.267 739.674,-101.267 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="374.986,553.497 -41.3628,553.497 -41.3628,-101.267 739.674,-101.267 "/>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="106.189,500.919 -41.3628,500.919 -41.3628,-101.267 739.674,-101.267 "/>
+</svg>

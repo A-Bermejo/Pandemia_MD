@@ -2,7 +2,7 @@
 Projecte Pandemia Morel i Daniel
 
 # Esquema Principal del Projecte
-![Diagrama de fluxe. Pandemia_MD](./img/PandemiaMD.svg)
+![Diagrama de fluxe. Pandemia_MD](./img/Pandemia_MD.svg)
 
 # Explicació Decisions de Disseny Preses
  * Primerament vam haver d'analitzar els apartats que conté aquest projecte i entendre el que se'ns demanava.
