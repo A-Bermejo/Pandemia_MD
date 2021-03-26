@@ -4,10 +4,16 @@ package UF2;
     /**
      * Aquesta és la classe principal, on es crea el main i on es
      * crida a la resta de classes per fer les operacions necessàries.
-     * @author Daniel Lopez & Morel Luque
+     * @author Daniel Lopez
+     * @author Morel Luque
      */
 
 public class Pandemia_MD {
+        /**
+         * Donem la benvinguda al programa i cridem a la funció inici
+         * que és la funció principal del programa.
+         * @param args No s'utilitza
+         */
     public static void main(String[] args) {
         Pandemia_MD solucio = new Pandemia_MD();
         Interficie.mostrarMissatge("BENVINGUTS AL NOSTRE PROGRAMA PANEDMIA_MD\n" +

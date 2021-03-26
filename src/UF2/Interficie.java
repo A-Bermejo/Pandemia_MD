@@ -2,12 +2,13 @@ package UF2;
 
     /**
      * Aquesta classe és l'encarregada de mostrar tot el que es vol veure per consola
-     * @author Daniel Lopez & Morel Luque
+     * @author Daniel Lopez
+     * @author Morel Luque
      */
 
 public class Interficie {
 
-    enum colors {
+    /*enum colors {
         RED,
         GREEN,
         YELLOW,
@@ -15,7 +16,7 @@ public class Interficie {
         PURPLE,
         CYAN,
         WHITE
-    }
+    }*/
 
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";

@@ -5,7 +5,8 @@ import java.util.Scanner;
 /**
  * Classe on es crea i es modifica l'estructura del Taulell.
  *
- * @author Daniel Lopez & Morel Luque
+ * @author Daniel Lopez
+ * @author Morel Luque
  *
  */
 

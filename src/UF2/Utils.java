@@ -5,7 +5,8 @@ import java.util.Scanner;
 /**
  * Classe que serveix per validar les entrades que realitza
  * l'usuari al llarg del programa.
- * @author Daniel Lopez & Morel Luque
+ * @author Daniel Lopez
+ * @author Morel Luque
  */
 
 public class Utils {
@@ -19,6 +20,8 @@ public class Utils {
      *                      pantalla la introducció del número.
      * @param missatgeError Conté el text que es mostrarà a l'usuari en cas que
      *                      introdueixi un número incorrecte o un caràcter, segons la opció del programa.
+     * @param max Valor que ocupa el rang màxim
+     * @param min Valor que ocupa el rang mínim
      * @return Valor enter o caràcter (segons la opció del programa) que simbolitza el número o caràcter que s'ha introduït per teclat.
      */
     public static int validarEnter(String missatge, String missatgeError, int max, int min) {

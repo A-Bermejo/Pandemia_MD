@@ -4,12 +4,15 @@ import java.util.Scanner;
 
     /** En aquesta classe tenim les funcions que es dediquen a modificar
      * les dades del taulell.
-     * @author Daniel Lopez & Morel Luque
+     * @author Daniel Lopez
+     * @author Morel Luque
      */
 
 public class GestorTaulell {
+        /**
+         * Posició bloquejada al taulell. També actua com límit d'aquest.
+         */
     static final int INVALIDPOSITION = -1;
-
     static Scanner scan = new Scanner(System.in);
     public static int patients;
     public static int totalCured;
