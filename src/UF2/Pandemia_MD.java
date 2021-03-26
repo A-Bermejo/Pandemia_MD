@@ -34,30 +34,18 @@ public class Pandemia_MD {
         do {
             Interficie.mostrarMenu(0);
             opcio = Utils.validarEnter("Tria una opció del menú", "No has introduit un caràcter númeric vàlid. Torna a provar.",6,0);
-            switch(opcio) {
-                case 1:
-                    g.carregarDades(t);
-                    break;
-                case 2:
-                    g.introduirMalalts(t);
-                    break;
-                case 3:
-                    g.transmetreVirus(t);
-                    break;
-                case 4:
-                    g.curarMalalts(t);
-                    break;
-                case 5:
-                    g.desplacarMalalts(t);
-                    break;
-                case 6:
+            switch (opcio) {
+                case 1 -> g.carregarDades(t);
+                case 2 -> g.introduirMalalts(t);
+                case 3 -> g.transmetreVirus(t);
+                case 4 -> g.curarMalalts(t);
+                case 5 -> g.desplacarMalalts(t);
+                case 6 -> {
                     Interficie.mostrarInformacio(t);
                     Interficie.mostrarEstadistiques();
                     Interficie.mostrarTaulell(t);
-                    break;
-                case 0:
-                    Interficie.mostrarMissatgeSortida();
-                    break;
+                }
+                case 0 -> Interficie.mostrarMissatgeSortida();
             }
         } while (opcio!=0);
     }

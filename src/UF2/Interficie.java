@@ -32,32 +32,23 @@ public class Interficie {
      * @param option Opció que utilitzem dins d'un "switch" per definir un menú o altre
      */
     public static void mostrarMenu(int option) {
-        String menu = "";
-        switch (option) {
-            case 0:
-                menu = "MENÚ PRINCIPAL\n" +
-                        "1. Carregar taulell   4. Curar malalts\n" +
-                        "2. Introduir malalts  5. Desplaçar malalts\n" +
-                        "3. Transmitir virus   6. Mostrar informació\n" +
-                        "0. Sortir";
-                break;
-            case 1:
-                menu = "De quina manera vols crear el taulell?:\n" +
-                        "1. Crear un taulell buit (introduint les files y columnes)\n" +
-                        "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)";
-                break;
-            case 2:
-                menu = "Introdueix de quina forma vols transmetre la teva cura:\n" +
-                        "1. Globalment\n" +
-                        "2. Per a una posició concreta";
-                break;
-            case 21:
-                menu = "Ho vols fer amb:\n" +
-                        "1. Percentatge (%)\n" +
-                        "2. Valor concret";
-                break;
-
-        }
+        String menu = switch (option) {
+            case 0 -> "MENÚ PRINCIPAL\n" +
+                    "1. Carregar taulell   4. Curar malalts\n" +
+                    "2. Introduir malalts  5. Desplaçar malalts\n" +
+                    "3. Transmitir virus   6. Mostrar informació\n" +
+                    "0. Sortir";
+            case 1 -> "De quina manera vols crear el taulell?:\n" +
+                    "1. Crear un taulell buit (introduint les files y columnes)\n" +
+                    "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)";
+            case 2 -> "Introdueix de quina forma vols transmetre la teva cura:\n" +
+                    "1. Globalment\n" +
+                    "2. Per a una posició concreta";
+            case 21 -> "Ho vols fer amb:\n" +
+                    "1. Percentatge (%)\n" +
+                    "2. Valor concret";
+            default -> "";
+        };
         System.out.println(WHITE + menu);
     }
 

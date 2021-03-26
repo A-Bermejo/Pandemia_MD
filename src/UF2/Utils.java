@@ -10,7 +10,10 @@ import java.util.Scanner;
  */
 
 public class Utils {
-    final private static Scanner S = new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
+    /**
+     * Per comprovar que el valor introduït és correcte.
+     */
     private static boolean correcte;
 
     /**
@@ -27,12 +30,12 @@ public class Utils {
     public static int validarEnter(String missatge, String missatgeError, int max, int min) {
         int ret = 0;
         do {
-            correcte = S.hasNextInt();
+            correcte = scan.hasNextInt();
             if (!correcte) {
-                S.next();
+                scan.next();
                 Interficie.mostrarMissatgeError(missatgeError);
             } else {
-                ret = S.nextInt();
+                ret = scan.nextInt();
                 correcte = ret <= max && ret >= min;
                 if (!correcte) {
                     Interficie.mostrarMissatgeError(missatge);
@@ -74,13 +77,13 @@ public class Utils {
     public static String validarLletraCasella(String missatge, String missatgeError) {
         String ret = "";
         do {
-            correcte = !S.hasNextInt();
+            correcte = !scan.hasNextInt();
             if (!correcte) {
-                S.next();
+                scan.next();
                 Interficie.mostrarMissatgeError(missatgeError);
             } else {
-                ret = String.valueOf(S.next().charAt(0)).toLowerCase();
-                correcte = ret.matches("[qweadzxc]{1}");
+                ret = String.valueOf(scan.next().charAt(0)).toLowerCase();
+                correcte = ret.matches("[qweadzxc]");
                 if (!correcte) {
                     Interficie.mostrarMissatgeError(missatge);
                 }

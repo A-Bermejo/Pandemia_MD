@@ -12,7 +12,10 @@ import java.util.Scanner;
 
 public class Taulell {
 
-    private Scanner scan = new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
+    /**
+     *
+     */
     private int files;
     private int columnes;
     private float[][] taulell;
