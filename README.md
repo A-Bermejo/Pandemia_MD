@@ -278,7 +278,6 @@ Seguidament ens preguntarà si volem aplicar la cura amb un % o amb un valor con
 Finalment introduïm el valor que volem curar (aquest no podrà ser superior al número de malalts d'una casella) i com podem veure encara que el número que volem curar es superior al número de malalts de la posició el programa cura els malalts fins arribar a 0, sense posar números negatius.
 
 #### Cas Extrem (Amb la classe "Utils"):
-![Cas Extrem Carregar Taulell](./img/CasExtremCurarMalalts.PNG)
 * Dades introduïdes a les variables utilitzades
     - **answer:** 2
     - **infectionRate:** 2,25
