@@ -8,24 +8,6 @@ package UF2;
 
 public class Interficie {
 
-    /*enum colors {
-        RED,
-        GREEN,
-        YELLOW,
-        BLUE,
-        PURPLE,
-        CYAN,
-        WHITE
-    }*/
-
-    private static final String RED = "\u001B[31m";
-    private static final String GREEN = "\u001B[32m";
-    private static final String YELLOW = "\u001B[33m";
-    private static final String BLUE = "\u001B[34m";
-    private static final String PURPLE = "\u001B[35m";
-    private static final String CYAN = "\u001B[36m";
-    private static final String WHITE = "\u001B[38m";
-
     /**
      * Mostra per pantalla les diferents opcions que formen els menús.
      *
@@ -49,7 +31,7 @@ public class Interficie {
                     "2. Valor concret";
             default -> "";
         };
-        System.out.println(WHITE + menu);
+        System.out.println(Color.WHITE + menu);
     }
 
     /**
@@ -57,9 +39,9 @@ public class Interficie {
      */
     public static void mostrarMenuDesplacar() {
         Interficie.mostrarMissatge("De quina manera vols desplaçar els malalts?:\n" +
-                RED + "Q. (Dalt esquerra) " + WHITE + "| " + CYAN + "W. (Dalt mig) " + WHITE + "| " + RED + "E. (Dalt dreta)\n" +
-                BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE + "D. (Dreta mig)\n" +
-                YELLOW + "Z. (Baix esquerra) " + WHITE + "| " + CYAN + "X. (Baix mig) " + WHITE + "| " + YELLOW + "C. (Baix dreta)");
+                Color.RED + "Q. (Dalt esquerra) " + Color.WHITE + "| " + Color.CYAN + "W. (Dalt mig) " + Color.WHITE + "| " + Color.RED + "E. (Dalt dreta)\n" +
+                Color.BLUE + "A. (Esquerra mig)  " + Color.WHITE + "|               " + Color.WHITE + "| " + Color.BLUE + "D. (Dreta mig)\n" +
+                Color.YELLOW + "Z. (Baix esquerra) " + Color.WHITE + "| " + Color.CYAN + "X. (Baix mig) " + Color.WHITE + "| " + Color.YELLOW + "C. (Baix dreta)");
     }
 
     /**
@@ -69,12 +51,12 @@ public class Interficie {
      */
     public static void mostrarTaulell(Taulell t) {
         for (int i = 0; i < t.getFiles(); i++) {
-            System.out.print(BLUE + "| ");
+            System.out.print(Color.BLUE + "| ");
             for (int j = 0; j < t.getColumnes(); j++) {
                 if (t.getTaulell()[i][j] == GestorTaulell.INVALIDPOSITION) {
-                    System.out.printf(RED + "%4s    " + BLUE + "| ", "X");
+                    System.out.printf(Color.RED + "%4s    " + Color.BLUE + "| ", "X");
                 } else {
-                    System.out.printf(GREEN + "%-7.0f " + BLUE + "| ", Math.floor(t.getTaulell()[i][j]));
+                    System.out.printf(Color.GREEN + "%-7.0f " + Color.BLUE + "| ", Math.floor(t.getTaulell()[i][j]));
                 }
 
             }
@@ -88,7 +70,7 @@ public class Interficie {
      * @param missatge Missatge a mostrar per pantalla
      */
     public static void mostrarMissatge(String missatge) {
-        System.out.println(WHITE + missatge);
+        System.out.println(Color.WHITE + missatge);
     }
 
     /**
@@ -97,21 +79,21 @@ public class Interficie {
      * @param missatge Missatge a mostrar per pantalla
      */
     public static void mostrarMissatgeError(String missatge) {
-        System.out.println(YELLOW + missatge);
+        System.out.println(Color.YELLOW + missatge);
     }
 
     /**
      * Mostra per pantalla el missatge de sortida que nosaltres li passem
      */
     public static void mostrarMissatgeSortida() {
-        System.out.println(PURPLE + "Adeu! Esperem veure't aviat! ^o^");
+        System.out.println(Color.PURPLE + "Adeu! Esperem veure't aviat! ^o^");
     }
 
     /**
      * Funció que mostra les estadistiques respecte a la situació actual del taulell
      */
     public static void mostrarEstadistiques() {
-        System.out.printf(WHITE + "Número total de malalts: %.0f\n" +
+        System.out.printf(Color.WHITE + "Número total de malalts: %.0f\n" +
                         "Número de persones curades: %d\n" +
                         "Percentatge que no ha complit confinament: %.0f%%\n"
                 , GestorTaulell.totalPatients, GestorTaulell.totalCured, GestorTaulell.totalDisplaced * 100 / GestorTaulell.totalPatients);
