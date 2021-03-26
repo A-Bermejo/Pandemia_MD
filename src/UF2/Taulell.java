@@ -1,7 +1,5 @@
 package UF2;
 
-import java.util.Scanner;
-
 /**
  * Classe on es crea i es modifica l'estructura del Taulell.
  *
@@ -12,10 +10,6 @@ import java.util.Scanner;
 
 public class Taulell {
 
-    static Scanner scan = new Scanner(System.in);
-    /**
-     *
-     */
     private int files;
     private int columnes;
     private float[][] taulell;
@@ -103,13 +97,16 @@ public class Taulell {
      */
     public void createTaulell(int option) {
         switch (option) {
-            case 1: //Creació de taulell buit amb mesures especificades per l'usuari
-                Interficie.mostrarMissatge("Diga'm les mesures del taulell en números. Primer les files i després les columnes: ");
-                setFiles(scan.nextInt());
-                setColumnes(scan.nextInt());
+            //Creació de taulell buit amb mesures especificades per l'usuari
+            case 1 -> {
+                Interficie.mostrarMissatge("Diga'm les files (X:) que té el taulell: ");
+                setFiles(Utils.validarEnter("No has introduït un número de X: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
+                Interficie.mostrarMissatge("Diga'm les columnes (Y:) que té el taulell: ");
+                setColumnes(Utils.validarEnter("No has introduït un número de Y: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
                 setTaulell(new float[getFiles()][getColumnes()]);
-                break;
-            case 2: //Creació d'un taulell aleatori
+            }
+            //Creació d'un taulell aleatori
+            case 2 -> {
                 setFiles((int) (Math.random() * 9 + 2));
                 setColumnes((int) (Math.random() * 9 + 2));
                 setTaulell(new float[getFiles()][getColumnes()]);
@@ -119,7 +116,7 @@ public class Taulell {
                         getTaulell()[i][j] = (int) (Math.random() * 10);
                     }
                 }
-                break;
+            }
         }
         int numPositionRand = (int) (Math.random() * 4);
         for (int i = 0; i < numPositionRand; i++) {

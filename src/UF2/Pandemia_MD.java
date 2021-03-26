@@ -33,7 +33,7 @@ public class Pandemia_MD {
         g.carregarDades(t);
         do {
             Interficie.mostrarMenu(0);
-            opcio = Utils.validarEnter("Tria una opció del menú", "No has introduit un caràcter númeric vàlid. Torna a provar.",6,0);
+            opcio = Utils.validarEnter("Tria una opció del menú", "No has introduït un caràcter númeric vàlid. Torna a provar",6,0);
             switch (opcio) {
                 case 1 -> g.carregarDades(t);
                 case 2 -> g.introduirMalalts(t);
