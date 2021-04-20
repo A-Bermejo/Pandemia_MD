@@ -1,4 +1,4 @@
-package UF2;
+package UF3;
 
 /**
  * Classe on es crea i es modifica l'estructura del Taulell.
@@ -13,6 +13,7 @@ public class Taulell {
     private int files;
     private int columnes;
     private float[][] taulell;
+    private static final int INVALIDPOSITION = -1;
 
     /**
      * Inicialitzem el taulell a 0 per files i columnes.
@@ -35,7 +36,9 @@ public class Taulell {
         this.columnes = c;
         this.taulell = new float[files][columnes];
     }
-
+    public int getInvalidPosition() {
+        return INVALIDPOSITION;
+    }
     /**
      * Funció per obtenir les files del nostre taulell.
      *
@@ -80,50 +83,38 @@ public class Taulell {
     public float[][] getTaulell() {
         return taulell;
     }
-
-    /**
-     * Funció per modificar el taulell i assignar-li nous valors.
-     *
-     * @param taulell Passem una array bidimensional de tipus float.
-     */
-    public void setTaulell(float[][] taulell) {
-        this.taulell = taulell;
+    public float getCasella(int i, int j) {
+        return taulell[i][j];
     }
+
+    public void setCasella(int i, int j, float value) {
+        this.taulell[i][j] = value;
+    }
+
 
     /**
      * Funció per crear el taulell ja sigui de forma manual o de forma aleatoria.
      * @param option És la opció que introdueix l'usuari segons com
      * vulgui crear el taulell
      */
-    public void createTaulell(int option) {
-        switch (option) {
-            //Creació de taulell buit amb mesures especificades per l'usuari
-            case 1 -> {
-                Interficie.mostrarMissatge("Diga'm les files (X:) que té el taulell: ");
-                setFiles(Utils.validarEnter("No has introduït un número de X: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
-                Interficie.mostrarMissatge("Diga'm les columnes (Y:) que té el taulell: ");
-                setColumnes(Utils.validarEnter("No has introduït un número de Y: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
-                setTaulell(new float[getFiles()][getColumnes()]);
-            }
-            //Creació d'un taulell aleatori
-            case 2 -> {
-                setFiles((int) (Math.random() * 9 + 2));
-                setColumnes((int) (Math.random() * 9 + 2));
-                setTaulell(new float[getFiles()][getColumnes()]);
-                Interficie.mostrarMissatge("Es crearà un taulell amb les següents dimensions (x:" + getFiles() + " y:" + getColumnes() + ")");
-                for (int i = 0; i < getFiles(); i++) {
-                    for (int j = 0; j < getColumnes(); j++) {
-                        getTaulell()[i][j] = (int) (Math.random() * 10);
-                    }
-                }
+    public void createTaulellBuit( int numPositionRand) {
+        this.taulell = new float[files][columnes];
+        createInvalidPosition(numPositionRand);
+    }
+    public void createTaulellRand(int numPositionRand) {
+        this.taulell = new float[files][columnes];
+        for (int i = 0; i < getFiles(); i++) {
+            for (int j = 0; j < getColumnes(); j++) {
+                getTaulell()[i][j] = (int) (Math.random() * 10);
             }
         }
-        int numPositionRand = (int) (Math.random() * 4);
+        createInvalidPosition(numPositionRand);
+    }
+    public void createInvalidPosition(int numPositionRand) {
         for (int i = 0; i < numPositionRand; i++) {
-            int x = (int) (Math.random() * getFiles());
-            int y = (int) (Math.random() * getColumnes());
-            getTaulell()[x][y] = GestorTaulell.INVALIDPOSITION;
+            setFiles((int) (Math.random() * getFiles()));
+            setColumnes((int) (Math.random() * getColumnes()));
+            setCasella(files,columnes,INVALIDPOSITION);
         }
-        Interficie.mostrarMissatge("Total de posicions bloquejades: " + numPositionRand);
     }
 }

@@ -1,4 +1,4 @@
-package UF2;
+package UF3;
 
 import java.util.Scanner;
 
@@ -93,7 +93,7 @@ public class Utils {
      * si la posició a on es mou el malalt està fora del taulell, es una posició bloquejada o es una posició vàlida.
      */
     public static boolean validarCasellaDesti(Taulell t, int x, int y, String missatgeError) {
-        if ((x != GestorTaulell.INVALIDPOSITION && y != GestorTaulell.INVALIDPOSITION) && (x != t.getFiles() && y != t.getColumnes()) && t.getTaulell()[x][y] != GestorTaulell.INVALIDPOSITION) {
+        if ((x != t.getInvalidPosition() && y != t.getInvalidPosition()) && (x != t.getFiles() && y != t.getColumnes()) && t.getTaulell()[x][y] != t.getInvalidPosition()) {
             return true;
         }
         Interficie.mostrarMissatgeError(missatgeError);

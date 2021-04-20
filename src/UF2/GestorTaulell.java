@@ -37,14 +37,14 @@ public class GestorTaulell {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
-    public void carregarDades(Taulell t) {
-        Interficie.mostrarMenu(1);
-        int answerBoard = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter númeric vàlid. Torna a provar.", 2, 1);
+    public void carregarDades(TaulellUF2 t) {
+        InterficieUF2.mostrarMenu(1);
+        int answerBoard = UtilsUF2.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter númeric vàlid. Torna a provar.", 2, 1);
         totalCured = 0;
         totalPatients = 0;
         totalDisplaced = 0;
         t.createTaulell(answerBoard);
-        Interficie.mostrarTaulell(t);
+        InterficieUF2.mostrarTaulell(t);
     }
 
     /**
@@ -52,32 +52,32 @@ public class GestorTaulell {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
-    public void introduirMalalts(Taulell t) {
-        Interficie.mostrarMissatge("Quants malalts vols introduir: ");
-        patients = Utils.validarEnter("Introdueix un número vàlid", "No has introduït un caràcter númeric vàlid. Torna a provar",0,0);
+    public void introduirMalalts(TaulellUF2 t) {
+        InterficieUF2.mostrarMissatge("Quants malalts vols introduir: ");
+        patients = UtilsUF2.validarEnter("Introdueix un número vàlid", "No has introduït un caràcter númeric vàlid. Torna a provar",0,0);
         int positionPatients = 0;
-        Interficie.mostrarTaulell(t);
+        InterficieUF2.mostrarTaulell(t);
         int aux = 0;
         while (aux < patients) {
-            Interficie.mostrarMissatge("A quina fila (X:) vols introduir el/s malalt/s: ");
-            int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
-            Interficie.mostrarMissatge("A quina columna (Y:) vols introduir el/s malalt/s: ");
-            int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
+            InterficieUF2.mostrarMissatge("A quina fila (X:) vols introduir el/s malalt/s: ");
+            int x = UtilsUF2.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
+            InterficieUF2.mostrarMissatge("A quina columna (Y:) vols introduir el/s malalt/s: ");
+            int y = UtilsUF2.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
             if (t.getTaulell()[x][y] != INVALIDPOSITION) {
                 if (x <= t.getFiles() && y <= t.getColumnes()) {
-                    Interficie.mostrarMissatge("Quants malalts hi ha en aquesta posició: ");
+                    InterficieUF2.mostrarMissatge("Quants malalts hi ha en aquesta posició: ");
                     positionPatients = Math.abs(scan.nextInt());
                     if (positionPatients + aux <= patients) { // Es suma positionPatients + i per tenir en compte els malalts que ya s'han introduït.
                         t.getTaulell()[x][y] += positionPatients;
                     } else {
-                        Interficie.mostrarMissatgeError("No pots especificar més malalts en una posicio que el total" +
+                        InterficieUF2.mostrarMissatgeError("No pots especificar més malalts en una posicio que el total" +
                                 " de malalts que vols introduir.");
                     }
                 } else {
-                    Interficie.mostrarMissatgeError("Especifica una columna i fila existents en el taulell.");
+                    InterficieUF2.mostrarMissatgeError("Especifica una columna i fila existents en el taulell.");
                 }
             } else {
-                Interficie.mostrarMissatgeError("No pots introduir malalts en una posició bloquejada");
+                InterficieUF2.mostrarMissatgeError("No pots introduir malalts en una posició bloquejada");
             }
             aux += positionPatients;
         }
@@ -88,9 +88,9 @@ public class GestorTaulell {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
-    public void transmetreVirus(Taulell t) {
-        Interficie.mostrarMissatge("Diga'm la taxa de contagi: ");
-        float infectionRate = Utils.validarTaxaContagi("Indica un número vàlid", "No has introduït un caràcter numèric. Torna a provar",0 , 0);
+    public void transmetreVirus(TaulellUF2 t) {
+        InterficieUF2.mostrarMissatge("Diga'm la taxa de contagi: ");
+        float infectionRate = UtilsUF2.validarTaxaContagi("Indica un número vàlid", "No has introduït un caràcter numèric. Torna a provar",0 , 0);
         for (int i = 0; i < t.getFiles(); i++) {
             for (int j = 0; j < t.getColumnes(); j++) {
                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
@@ -105,21 +105,21 @@ public class GestorTaulell {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
-    public void curarMalalts(Taulell t) {
-        Interficie.mostrarMenu(2);
-        int answerCure = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter numèric vàlid. Torna a provar.", 2, 1);
+    public void curarMalalts(TaulellUF2 t) {
+        InterficieUF2.mostrarMenu(2);
+        int answerCure = UtilsUF2.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter numèric vàlid. Torna a provar.", 2, 1);
         int answerCureValue;
         int cureNumber;
         switch (answerCure) {
             //Curar malalts de forma global
             case 1 -> {
-                Interficie.mostrarMenu(21);
-                answerCureValue = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter numèric vàlid. Torna a provar.", 2, 1);
+                InterficieUF2.mostrarMenu(21);
+                answerCureValue = UtilsUF2.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter numèric vàlid. Torna a provar.", 2, 1);
                 switch (answerCureValue) {
                     //Curar malalts globalment introduïnt un percentatge
                     case 1 -> {
-                        Interficie.mostrarMissatge("Quin percentatge de malalts vols curar (%): ");
-                        cureNumber = Utils.validarEnter("Introdueix un valor entre 0 - 100", "No has introduït un valor numèric", 100, 0);
+                        InterficieUF2.mostrarMissatge("Quin percentatge de malalts vols curar (%): ");
+                        cureNumber = UtilsUF2.validarEnter("Introdueix un valor entre 0 - 100", "No has introduït un valor numèric", 100, 0);
                         for (int i = 0; i < t.getFiles(); i++) {
                             for (int j = 0; j < t.getColumnes(); j++) {
                                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
@@ -131,7 +131,7 @@ public class GestorTaulell {
                     }
                     //Curar malalts globalment introduïnt un valor concret
                     case 2 -> {
-                        Interficie.mostrarMissatge("Quants malalts vols curar (valor concret): ");
+                        InterficieUF2.mostrarMissatge("Quants malalts vols curar (valor concret): ");
                         cureNumber = scan.nextInt();
                         for (int i = 0; i < t.getFiles(); i++) {
                             for (int j = 0; j < t.getColumnes(); j++) {
@@ -143,19 +143,19 @@ public class GestorTaulell {
             }
             //Curar malalts de forma individual
             case 2 -> {
-                Interficie.mostrarTaulell(t);
-                Interficie.mostrarMissatge("A quina fila (X:) vols curar els malalts: ");
-                int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
-                Interficie.mostrarMissatge("A quina columna (Y:) vols curar els malalts: ");
-                int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
+                InterficieUF2.mostrarTaulell(t);
+                InterficieUF2.mostrarMissatge("A quina fila (X:) vols curar els malalts: ");
+                int x = UtilsUF2.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
+                InterficieUF2.mostrarMissatge("A quina columna (Y:) vols curar els malalts: ");
+                int y = UtilsUF2.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
                 if (t.getTaulell()[x][y] != INVALIDPOSITION) {
-                    Interficie.mostrarMenu(21);
-                    answerCureValue = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter númeric vàlid. Torna a provar.", 2, 1);
+                    InterficieUF2.mostrarMenu(21);
+                    answerCureValue = UtilsUF2.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter númeric vàlid. Torna a provar.", 2, 1);
                     switch (answerCureValue) {
                         //Curar malalts de forma individual introduïnt percentatge
                         case 1 -> {
-                            Interficie.mostrarMissatge("Quin percentatge de malalts vols curar (%): ");
-                            cureNumber = Utils.validarEnter("Introdueix un valor entre 0 - 100", "No has introduït un valor numèric", 100, 0);
+                            InterficieUF2.mostrarMissatge("Quin percentatge de malalts vols curar (%): ");
+                            cureNumber = UtilsUF2.validarEnter("Introdueix un valor entre 0 - 100", "No has introduït un valor numèric", 100, 0);
                             if (t.getTaulell()[x][y] != INVALIDPOSITION) {
                                 totalCured += Math.ceil(t.getTaulell()[x][y] * cureNumber / 100);
                                 t.getTaulell()[x][y] -= t.getTaulell()[x][y] * cureNumber / 100;
@@ -163,13 +163,13 @@ public class GestorTaulell {
                         }
                         //Curar malalts de forma individual introduïnt un valor concret
                         case 2 -> {
-                            Interficie.mostrarMissatge("Quants malalts vols curar (valor concret): ");
+                            InterficieUF2.mostrarMissatge("Quants malalts vols curar (valor concret): ");
                             cureNumber = scan.nextInt();
                             curarMalaltsValorConcret(t, cureNumber, x, y);
                         }
                     }
                 } else {
-                    Interficie.mostrarMissatgeError("No es pot curar una posició bloquejada");
+                    InterficieUF2.mostrarMissatgeError("No es pot curar una posició bloquejada");
                 }
             }
         }
@@ -183,7 +183,7 @@ public class GestorTaulell {
      * @param x És la fila on es troba el malalt.
      * @param y És la columna on es troba el malalt.
      */
-    private void curarMalaltsValorConcret(Taulell t, int cureNumber, int x, int y) {
+    private void curarMalaltsValorConcret(TaulellUF2 t, int cureNumber, int x, int y) {
         if (t.getTaulell()[x][y] != INVALIDPOSITION) {
             if ((t.getTaulell()[x][y] - cureNumber) < 0) {
                 totalCured += (t.getTaulell()[x][y] - cureNumber) + cureNumber;
@@ -200,73 +200,73 @@ public class GestorTaulell {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
-    public void desplacarMalalts(Taulell t) {
-        Interficie.mostrarTaulell(t);
-        Interficie.mostrarMissatge("Indica la fila (X:) del malalt que vols desplaçar: ");
-        int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
-        Interficie.mostrarMissatge("Indica la columna (Y:) del malalt que vols desplaçar: ");
-        int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
+    public void desplacarMalalts(TaulellUF2 t) {
+        InterficieUF2.mostrarTaulell(t);
+        InterficieUF2.mostrarMissatge("Indica la fila (X:) del malalt que vols desplaçar: ");
+        int x = UtilsUF2.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
+        InterficieUF2.mostrarMissatge("Indica la columna (Y:) del malalt que vols desplaçar: ");
+        int y = UtilsUF2.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
         if (t.getTaulell()[x][y] != INVALIDPOSITION) {
-            Interficie.mostrarMissatge("Quants malalts vols desplaçar?: ");
-            patients = Utils.validarEnter("Introdueix un valor màxim del malalts de la casella", "No has introduït un caràcter numèric", (int) t.getTaulell()[x][y], 0);
+            InterficieUF2.mostrarMissatge("Quants malalts vols desplaçar?: ");
+            patients = UtilsUF2.validarEnter("Introdueix un valor màxim del malalts de la casella", "No has introduït un caràcter numèric", (int) t.getTaulell()[x][y], 0);
             if (patients <= t.getTaulell()[x][y]) {
                 t.getTaulell()[x][y] -= patients;
-                Interficie.mostrarMenuDesplacar();
-                String answerDisplace = Utils.validarLletraCasella("Introdueix una lletra de la llista", "Has de introduir un caràcter valid.");
+                InterficieUF2.mostrarMenuDesplacar();
+                String answerDisplace = UtilsUF2.validarLletraCasella("Introdueix una lletra de la llista", "Has de introduir un caràcter valid.");
                 boolean lockedPosition = false;
                 // Comprova que x i y quan s'efectiu el desplaçament no quedi fora del taulell o en una posició bloquejada. Cada if s'adapta segons la posicio final dels malalts.
                 switch (answerDisplace) {
                     case "q" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x - 1][y - 1] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "w" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x - 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x - 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x - 1][y] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "e" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x - 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x - 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x - 1][y + 1] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "a" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x][y - 1] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "d" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x][y + 1] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "z" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x + 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x + 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x + 1][y - 1] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "x" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x + 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x + 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x + 1][y] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
                         }
                     }
                     case "c" -> {
-                        lockedPosition = Utils.validarCasellaDesti(t, x + 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                        lockedPosition = UtilsUF2.validarCasellaDesti(t, x + 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
                             t.getTaulell()[x + 1][y + 1] += GestorTaulell.patients;
                             GestorTaulell.totalDisplaced += GestorTaulell.patients;
@@ -277,10 +277,10 @@ public class GestorTaulell {
                     t.getTaulell()[x][y] += patients;
                 }
             } else {
-                Interficie.mostrarMissatgeError("No pots introduïr un número superior als malalts que pertanyen a aquesta posició");
+                InterficieUF2.mostrarMissatgeError("No pots introduïr un número superior als malalts que pertanyen a aquesta posició");
             }
         } else {
-            Interficie.mostrarMissatgeError("No pots desplaçar posicions bloquejades");
+            InterficieUF2.mostrarMissatgeError("No pots desplaçar posicions bloquejades");
         }
     }
 }
