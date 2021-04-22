@@ -27,6 +27,7 @@ public class Interficie {
                     "1. Carregar taulell   4. Curar malalts\n" +
                     "2. Introduir malalts  5. Desplaçar malalts\n" +
                     "3. Transmitir virus   6. Mostrar informació\n" +
+                    "7. Llegir Fitxer      8. Escriure Fitxer\n" +
                     "0. Sortir";
             case 1 -> "De quina manera vols crear el taulell?:\n" +
                     "1. Crear un taulell buit (introduint les files y columnes)\n" +

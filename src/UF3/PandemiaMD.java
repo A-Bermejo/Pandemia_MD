@@ -1,10 +1,5 @@
 package UF3;
 
-import UF2.GestorTaulell;
-import UF2.InterficieUF2;
-import UF2.TaulellUF2;
-import UF2.UtilsUF2;
-
 /**
      * Aquesta és la classe principal, on es crea el main i on es
      * crida a la resta de classes per fer les operacions necessàries.
@@ -13,18 +8,18 @@ import UF2.UtilsUF2;
      */
 
 public class PandemiaMD {
-        /**
-         * Donem la benvinguda al programa i cridem a la funció inici
-         * que és la funció principal del programa.
-         * @param args No s'utilitza
-         */
+    /**
+     * Donem la benvinguda al programa i cridem a la funció inici
+     * que és la funció principal del programa.
+     * @param args No s'utilitza
+     */
     public static void main(String[] args) {
         PandemiaMD solucio = new PandemiaMD();
-        InterficieUF2.mostrarMissatge("BENVINGUTS AL NOSTRE PROGRAMA PANEDMIA_MD\n" +
+        Interficie.mostrarMissatge("BENVINGUTS AL NOSTRE PROGRAMA PANEDMIA_MD\n" +
                 "Per començar hauràs de crear un taulell\n");
         solucio.inici();
     }
-    
+
     /**
      * Programa principal cridat des del main de la classe. Mostra el menú
      * per pantalla i segons la opció triada executa una o altre instrucció fins
@@ -32,12 +27,12 @@ public class PandemiaMD {
      */
     public void inici(){
         int opcio;
-        TaulellUF2 t = new TaulellUF2();
+        Taulell t = new Taulell();
         GestorTaulell g = new GestorTaulell();
         g.carregarDades(t);
         do {
-            InterficieUF2.mostrarMenu(0);
-            opcio = UtilsUF2.validarEnter("Tria una opció del menú", "No has introduït un caràcter númeric vàlid. Torna a provar",6,0);
+            Interficie.mostrarMenu(0);
+            opcio = Utils.validarEnter("Tria una opció del menú", "No has introduït un caràcter númeric vàlid. Torna a provar",8,0);
             switch (opcio) {
                 case 1 -> g.carregarDades(t);
                 case 2 -> g.introduirMalalts(t);
@@ -45,11 +40,13 @@ public class PandemiaMD {
                 case 4 -> g.curarMalalts(t);
                 case 5 -> g.desplacarMalalts(t);
                 case 6 -> {
-                    InterficieUF2.mostrarInformacio(t);
-                    InterficieUF2.mostrarEstadistiques();
-                    InterficieUF2.mostrarTaulell(t);
+                    Interficie.mostrarInformacio(t);
+                    Interficie.mostrarEstadistiques();
+                    Interficie.mostrarTaulell(t);
                 }
-                case 0 -> InterficieUF2.mostrarMissatgeSortida();
+                //case 7 -> g.llegirFitxer();
+                case 8 -> g.escriureFitxer(t);
+                case 0 -> Interficie.mostrarMissatgeSortida();
             }
         } while (opcio!=0);
     }

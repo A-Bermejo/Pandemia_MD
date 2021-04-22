@@ -1,5 +1,8 @@
 package UF3;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 /** En aquesta classe tenim les funcions que es dediquen a modificar
@@ -80,12 +83,12 @@ public class GestorTaulell {
             int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
             Interficie.mostrarMissatge("A quina columna (Y:) vols introduir el/s malalt/s: ");
             int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
-            if (t.getTaulell()[x][y] != t.getInvalidPosition()) {
+            if (t.getCasella(x,y) != t.getInvalidPosition()) {
                 if (x <= t.getFiles() && y <= t.getColumnes()) {
                     Interficie.mostrarMissatge("Quants malalts hi ha en aquesta posició: ");
                     positionPatients = Math.abs(scan.nextInt());
                     if (positionPatients + aux <= patients) { // Es suma positionPatients + i per tenir en compte els malalts que ya s'han introduït.
-                        t.getTaulell()[x][y] += positionPatients;
+                        t.sumCasella(x,y,positionPatients);
                     } else {
                         Interficie.mostrarMissatgeError("No pots especificar més malalts en una posicio que el total" +
                                 " de malalts que vols introduir.");
@@ -110,8 +113,8 @@ public class GestorTaulell {
         float infectionRate = Utils.validarTaxaContagi("Indica un número vàlid", "No has introduït un caràcter numèric. Torna a provar",0 , 0);
         for (int i = 0; i < t.getFiles(); i++) {
             for (int j = 0; j < t.getColumnes(); j++) {
-                if (t.getTaulell()[i][j] != t.getInvalidPosition()) {
-                    t.getTaulell()[i][j] += t.getTaulell()[i][j] * infectionRate;
+                if (t.getCasella(i,j) != t.getInvalidPosition()) {
+                    t.sumCasella(i,j,(t.getCasella(i,j) * infectionRate));
                 }
             }
         }
@@ -139,9 +142,9 @@ public class GestorTaulell {
                         cureNumber = Utils.validarEnter("Introdueix un valor entre 0 - 100", "No has introduït un valor numèric", 100, 0);
                         for (int i = 0; i < t.getFiles(); i++) {
                             for (int j = 0; j < t.getColumnes(); j++) {
-                                if (t.getTaulell()[i][j] != t.getInvalidPosition()) {
-                                    totalCured += Math.ceil(t.getTaulell()[i][j] * cureNumber / 100);
-                                    t.getTaulell()[i][j] -= t.getTaulell()[i][j] * cureNumber / 100;
+                                if (t.getCasella(i,j) != t.getInvalidPosition()) {
+                                    totalCured += Math.ceil(t.getCasella(i,j) * cureNumber / 100);
+                                    t.subtractCasella(i,j,(t.getCasella(i,j) * cureNumber / 100));
                                 }
                             }
                         }
@@ -165,7 +168,7 @@ public class GestorTaulell {
                 int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
                 Interficie.mostrarMissatge("A quina columna (Y:) vols curar els malalts: ");
                 int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
-                if (t.getTaulell()[x][y] != t.getInvalidPosition()) {
+                if (t.getCasella(x,y) != t.getInvalidPosition()) {
                     Interficie.mostrarMenu(21);
                     answerCureValue = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter númeric vàlid. Torna a provar.", 2, 1);
                     switch (answerCureValue) {
@@ -173,9 +176,9 @@ public class GestorTaulell {
                         case 1 -> {
                             Interficie.mostrarMissatge("Quin percentatge de malalts vols curar (%): ");
                             cureNumber = Utils.validarEnter("Introdueix un valor entre 0 - 100", "No has introduït un valor numèric", 100, 0);
-                            if (t.getTaulell()[x][y] != t.getInvalidPosition()) {
-                                totalCured += Math.ceil(t.getTaulell()[x][y] * cureNumber / 100);
-                                t.getTaulell()[x][y] -= t.getTaulell()[x][y] * cureNumber / 100;
+                            if (t.getCasella(x,y) != t.getInvalidPosition()) {
+                                totalCured += Math.ceil(t.getCasella(x,y) * cureNumber / 100);
+                                t.subtractCasella(x,y,(t.getCasella(x,y) * cureNumber / 100));
                             }
                         }
                         //Curar malalts de forma individual introduïnt un valor concret
@@ -201,12 +204,12 @@ public class GestorTaulell {
      * @param y És la columna on es troba el malalt.
      */
     private void curarMalaltsValorConcret(Taulell t, int cureNumber, int x, int y) {
-        if (t.getTaulell()[x][y] != t.getInvalidPosition()) {
-            if ((t.getTaulell()[x][y] - cureNumber) < 0) {
-                totalCured += (t.getTaulell()[x][y] - cureNumber) + cureNumber;
-                t.getTaulell()[x][y] = 0;
+        if (t.getCasella(x,y) != t.getInvalidPosition()) {
+            if ((t.getCasella(x,y) - cureNumber) < 0) {
+                totalCured += (t.getCasella(x,y) - cureNumber) + cureNumber;
+                t.setCasella(x,y,0);
             } else {
-                t.getTaulell()[x][y] -= cureNumber;
+                t.subtractCasella(x,y,cureNumber);
                 totalCured += cureNumber;
             }
         }
@@ -223,11 +226,11 @@ public class GestorTaulell {
         int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
         Interficie.mostrarMissatge("Indica la columna (Y:) del malalt que vols desplaçar: ");
         int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
-        if (t.getTaulell()[x][y] != t.getInvalidPosition()) {
+        if (t.getCasella(x,y) != t.getInvalidPosition()) {
             Interficie.mostrarMissatge("Quants malalts vols desplaçar?: ");
-            patients = Utils.validarEnter("Introdueix un valor màxim del malalts de la casella", "No has introduït un caràcter numèric", (int) t.getTaulell()[x][y], 0);
-            if (patients <= t.getTaulell()[x][y]) {
-                t.getTaulell()[x][y] -= patients;
+            patients = Utils.validarEnter("Introdueix un valor màxim del malalts de la casella", "No has introduït un caràcter numèric", (int) t.getCasella(x,y), 0);
+            if (patients <= t.getCasella(x,y)) {
+                t.subtractCasella(x,y,patients);
                 Interficie.mostrarMenuDesplacar();
                 String answerDisplace = Utils.validarLletraCasella("Introdueix una lletra de la llista", "Has de introduir un caràcter valid.");
                 boolean lockedPosition = false;
@@ -236,68 +239,79 @@ public class GestorTaulell {
                     case "q" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x - 1][y - 1] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x-1,y-1,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "w" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x - 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x - 1][y] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x-1,y,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "e" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x - 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x - 1][y + 1] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x-1,y+1,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "a" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x][y - 1] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x,y-1,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "d" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x][y + 1] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x,y+1,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "z" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x + 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x + 1][y - 1] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x+1,y-1,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "x" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x + 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x + 1][y] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x+1,y,patients);
+                            totalDisplaced += patients;
                         }
                     }
                     case "c" -> {
                         lockedPosition = Utils.validarCasellaDesti(t, x + 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                         if (lockedPosition) {
-                            t.getTaulell()[x + 1][y + 1] += GestorTaulell.patients;
-                            GestorTaulell.totalDisplaced += GestorTaulell.patients;
+                            t.sumCasella(x+1,y+1,patients);
+                            totalDisplaced += patients;
                         }
                     }
                 }
                 if (!lockedPosition) {
-                    t.getTaulell()[x][y] += patients;
+                    t.sumCasella(x,y,patients);
                 }
             } else {
                 Interficie.mostrarMissatgeError("No pots introduïr un número superior als malalts que pertanyen a aquesta posició");
             }
         } else {
             Interficie.mostrarMissatgeError("No pots desplaçar posicions bloquejades");
+        }
+    }
+
+    public void escriureFitxer(Taulell t){
+        try {
+            FileWriter desti = new FileWriter("docs/Taulells.txt",true);
+            Date data = new Date();
+            desti.append(data.toString());
+            desti.close();
+        } catch (IOException e){
+            Interficie.mostrarMissatgeError(e.getMessage());
         }
     }
 }

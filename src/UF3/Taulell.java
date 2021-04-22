@@ -17,7 +17,6 @@ public class Taulell {
 
     /**
      * Inicialitzem el taulell a 0 per files i columnes.
-     *
      */
     public Taulell() {
         this.files = 0;
@@ -36,9 +35,11 @@ public class Taulell {
         this.columnes = c;
         this.taulell = new float[files][columnes];
     }
+
     public int getInvalidPosition() {
         return INVALIDPOSITION;
     }
+
     /**
      * Funció per obtenir les files del nostre taulell.
      *
@@ -83,6 +84,7 @@ public class Taulell {
     public float[][] getTaulell() {
         return taulell;
     }
+
     public float getCasella(int i, int j) {
         return taulell[i][j];
     }
@@ -91,16 +93,29 @@ public class Taulell {
         this.taulell[i][j] = value;
     }
 
+    public void sumCasella(int i, int j, float value) {
+        this.taulell[i][j] += value;
+    }
+
+    public void subtractCasella(int i, int j, float value) {
+        this.taulell[i][j] -= value;
+    }
 
     /**
-     * Funció per crear el taulell ja sigui de forma manual o de forma aleatoria.
-     * @param option És la opció que introdueix l'usuari segons com
-     * vulgui crear el taulell
+     * Funció per crear el taulell buit amb unes mesures introduïdes per l'usuari
+     *
+     * @param numPositionRand Número aleatori de caselles bloquejadas al taulell
      */
-    public void createTaulellBuit( int numPositionRand) {
+    public void createTaulellBuit(int numPositionRand) {
         this.taulell = new float[files][columnes];
         createInvalidPosition(numPositionRand);
     }
+
+    /**
+     * Funció per crear el taulell amb mesures i valors aleatoris
+     *
+     * @param numPositionRand Número aleatori de caselles bloquejadas al taulell
+     */
     public void createTaulellRand(int numPositionRand) {
         this.taulell = new float[files][columnes];
         for (int i = 0; i < getFiles(); i++) {
@@ -110,11 +125,12 @@ public class Taulell {
         }
         createInvalidPosition(numPositionRand);
     }
+
     public void createInvalidPosition(int numPositionRand) {
         for (int i = 0; i < numPositionRand; i++) {
-            setFiles((int) (Math.random() * getFiles()));
-            setColumnes((int) (Math.random() * getColumnes()));
-            setCasella(files,columnes,INVALIDPOSITION);
+            int x = (int) (Math.random() * getFiles());
+            int y = (int) (Math.random() * getColumnes());
+            setCasella(x, y, INVALIDPOSITION);
         }
     }
 }
