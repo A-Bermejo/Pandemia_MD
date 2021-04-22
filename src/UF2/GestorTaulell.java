@@ -2,33 +2,35 @@ package UF2;
 
 import java.util.Scanner;
 
-    /** En aquesta classe tenim les funcions que es dediquen a modificar
-     * les dades del taulell.
-     * @author Daniel Lopez
-     * @author Morel Luque
-     */
+/**
+ * En aquesta classe tenim les funcions que es dediquen a modificar
+ * les dades del taulell.
+ *
+ * @author Daniel Lopez
+ * @author Morel Luque
+ */
 
 public class GestorTaulell {
-        /**
-         * Posició bloquejada al taulell. També actua com límit d'aquest.
-         */
+    /**
+     * Posició bloquejada al taulell. També actua com límit d'aquest.
+     */
     static final int INVALIDPOSITION = -1;
     static Scanner scan = new Scanner(System.in);
-        /**
-         * El número de malalts que s'introdueix.
-         */
+    /**
+     * El número de malalts que s'introdueix.
+     */
     public static int patients;
-        /**
-         * El total de malalts que s'han curat pel taulell.
-         */
+    /**
+     * El total de malalts que s'han curat pel taulell.
+     */
     public static int totalCured;
-        /**
-         * El total de malalts pel taulell.
-         */
+    /**
+     * El total de malalts pel taulell.
+     */
     public static float totalPatients;
-        /**
-         * El total de malalts que s'han saltat el confinament.
-         */
+    /**
+     * El total de malalts que s'han saltat el confinament.
+     */
     public static int totalDisplaced;
 
     /**
@@ -54,7 +56,7 @@ public class GestorTaulell {
      */
     public void introduirMalalts(TaulellUF2 t) {
         InterficieUF2.mostrarMissatge("Quants malalts vols introduir: ");
-        patients = UtilsUF2.validarEnter("Introdueix un número vàlid", "No has introduït un caràcter númeric vàlid. Torna a provar",0,0);
+        patients = UtilsUF2.validarEnter("Introdueix un número vàlid", "No has introduït un caràcter númeric vàlid. Torna a provar", 0, 0);
         int positionPatients = 0;
         InterficieUF2.mostrarTaulell(t);
         int aux = 0;
@@ -90,7 +92,7 @@ public class GestorTaulell {
      */
     public void transmetreVirus(TaulellUF2 t) {
         InterficieUF2.mostrarMissatge("Diga'm la taxa de contagi: ");
-        float infectionRate = UtilsUF2.validarTaxaContagi("Indica un número vàlid", "No has introduït un caràcter numèric. Torna a provar",0 , 0);
+        float infectionRate = UtilsUF2.validarTaxaContagi("Indica un número vàlid", "No has introduït un caràcter numèric. Torna a provar", 0, 0);
         for (int i = 0; i < t.getFiles(); i++) {
             for (int j = 0; j < t.getColumnes(); j++) {
                 if (t.getTaulell()[i][j] != INVALIDPOSITION) {
@@ -178,10 +180,11 @@ public class GestorTaulell {
     /**
      * Funció que ens verifica que quan curem malalts amb un valor concret no estiguem en una posició bloquejada
      * ni que es curin més persones que les que hi ha malaltes en una casella.
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     *
+     * @param t          Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      * @param cureNumber És el número de persones que es vol curar.
-     * @param x És la fila on es troba el malalt.
-     * @param y És la columna on es troba el malalt.
+     * @param x          És la fila on es troba el malalt.
+     * @param y          És la columna on es troba el malalt.
      */
     private void curarMalaltsValorConcret(TaulellUF2 t, int cureNumber, int x, int y) {
         if (t.getTaulell()[x][y] != INVALIDPOSITION) {
@@ -196,8 +199,6 @@ public class GestorTaulell {
     }
 
     /**
-     *
-     *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
     public void desplacarMalalts(TaulellUF2 t) {

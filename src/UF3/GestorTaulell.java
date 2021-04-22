@@ -308,7 +308,9 @@ public class GestorTaulell {
         try {
             FileWriter desti = new FileWriter("docs/Taulells.txt",true);
             Date data = new Date();
-            desti.append(data.toString());
+            desti.append(data.toString() + "\n");
+            //desti.append(); // Malalts actuals, malalts totals i curats totals
+            //desti.append(); // Taulell actual
             desti.close();
         } catch (IOException e){
             Interficie.mostrarMissatgeError(e.getMessage());
