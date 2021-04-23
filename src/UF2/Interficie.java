@@ -6,7 +6,7 @@ package UF2;
      * @author Morel Luque
      */
 
-public class InterficieUF2 {
+public class Interficie {
 
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
@@ -46,7 +46,7 @@ public class InterficieUF2 {
      * Funció que mostra el menú de desplaçament de la opció "Desplaçar malalts" del programa.
      */
     public static void mostrarMenuDesplacar() {
-        InterficieUF2.mostrarMissatge("De quina manera vols desplaçar els malalts?:\n" +
+        Interficie.mostrarMissatge("De quina manera vols desplaçar els malalts?:\n" +
                 RED + "Q. (Dalt esquerra) " + WHITE + "| " + CYAN + "W. (Dalt mig) " + WHITE + "| " + RED + "E. (Dalt dreta)\n" +
                 BLUE + "A. (Esquerra mig)  " + WHITE + "|               " + WHITE + "| " + BLUE + "D. (Dreta mig)\n" +
                 YELLOW + "Z. (Baix esquerra) " + WHITE + "| " + CYAN + "X. (Baix mig) " + WHITE + "| " + YELLOW + "C. (Baix dreta)");
@@ -57,7 +57,7 @@ public class InterficieUF2 {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
      */
-    public static void mostrarTaulell(TaulellUF2 t) {
+    public static void mostrarTaulell(Taulell t) {
         for (int i = 0; i < t.getFiles(); i++) {
             System.out.print(BLUE + "| ");
             for (int j = 0; j < t.getColumnes(); j++) {
@@ -112,7 +112,7 @@ public class InterficieUF2 {
      *
      * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
      */
-    public static void mostrarInformacio(TaulellUF2 t) {
+    public static void mostrarInformacio(Taulell t) {
         GestorTaulell.totalPatients = 0;
         for (int i = 0; i < t.getFiles(); i++) {
             for (int j = 0; j < t.getColumnes(); j++) {

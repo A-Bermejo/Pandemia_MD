@@ -8,7 +8,7 @@ package UF2;
  *
  */
 
-public class TaulellUF2 {
+public class Taulell {
 
     private int files;
     private int columnes;
@@ -18,7 +18,7 @@ public class TaulellUF2 {
      * Inicialitzem el taulell a 0 per files i columnes.
      *
      */
-    public TaulellUF2() {
+    public Taulell() {
         this.files = 0;
         this.columnes = 0;
         this.taulell = new float[files][columnes];
@@ -30,7 +30,7 @@ public class TaulellUF2 {
      * @param f Files.
      * @param c Columnes.
      */
-    public TaulellUF2(int f, int c) {
+    public Taulell(int f, int c) {
         this.files = f;
         this.columnes = c;
         this.taulell = new float[files][columnes];
@@ -99,10 +99,10 @@ public class TaulellUF2 {
         switch (option) {
             //Creació de taulell buit amb mesures especificades per l'usuari
             case 1 -> {
-                InterficieUF2.mostrarMissatge("Diga'm les files (X:) que té el taulell: ");
-                setFiles(UtilsUF2.validarEnter("No has introduït un número de X: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
-                InterficieUF2.mostrarMissatge("Diga'm les columnes (Y:) que té el taulell: ");
-                setColumnes(UtilsUF2.validarEnter("No has introduït un número de Y: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
+                Interficie.mostrarMissatge("Diga'm les files (X:) que té el taulell: ");
+                setFiles(Utils.validarEnter("No has introduït un número de X: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
+                Interficie.mostrarMissatge("Diga'm les columnes (Y:) que té el taulell: ");
+                setColumnes(Utils.validarEnter("No has introduït un número de Y: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
                 setTaulell(new float[getFiles()][getColumnes()]);
             }
             //Creació d'un taulell aleatori
@@ -110,7 +110,7 @@ public class TaulellUF2 {
                 setFiles((int) (Math.random() * 9 + 2));
                 setColumnes((int) (Math.random() * 9 + 2));
                 setTaulell(new float[getFiles()][getColumnes()]);
-                InterficieUF2.mostrarMissatge("Es crearà un taulell amb les següents dimensions (x:" + getFiles() + " y:" + getColumnes() + ")");
+                Interficie.mostrarMissatge("Es crearà un taulell amb les següents dimensions (x:" + getFiles() + " y:" + getColumnes() + ")");
                 for (int i = 0; i < getFiles(); i++) {
                     for (int j = 0; j < getColumnes(); j++) {
                         getTaulell()[i][j] = (int) (Math.random() * 10);
@@ -124,6 +124,6 @@ public class TaulellUF2 {
             int y = (int) (Math.random() * getColumnes());
             getTaulell()[x][y] = GestorTaulell.INVALIDPOSITION;
         }
-        InterficieUF2.mostrarMissatge("Total de posicions bloquejades: " + numPositionRand);
+        Interficie.mostrarMissatge("Total de posicions bloquejades: " + numPositionRand);
     }
 }

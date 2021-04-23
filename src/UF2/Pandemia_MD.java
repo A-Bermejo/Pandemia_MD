@@ -8,15 +8,15 @@ package UF2;
      * @author Morel Luque
      */
 
-public class PandemiaMDUF2 {
+public class Pandemia_MD {
         /**
          * Donem la benvinguda al programa i cridem a la funció inici
          * que és la funció principal del programa.
          * @param args No s'utilitza
          */
     public static void main(String[] args) {
-        PandemiaMDUF2 solucio = new PandemiaMDUF2();
-        InterficieUF2.mostrarMissatge("BENVINGUTS AL NOSTRE PROGRAMA PANEDMIA_MD\n" +
+        Pandemia_MD solucio = new Pandemia_MD();
+        Interficie.mostrarMissatge("BENVINGUTS AL NOSTRE PROGRAMA PANEDMIA_MD\n" +
                 "Per començar hauràs de crear un taulell\n");
         solucio.inici();
     }
@@ -28,12 +28,12 @@ public class PandemiaMDUF2 {
      */
     public void inici(){
         int opcio;
-        TaulellUF2 t = new TaulellUF2();
+        Taulell t = new Taulell();
         GestorTaulell g = new GestorTaulell();
         g.carregarDades(t);
         do {
-            InterficieUF2.mostrarMenu(0);
-            opcio = UtilsUF2.validarEnter("Tria una opció del menú", "No has introduït un caràcter númeric vàlid. Torna a provar",6,0);
+            Interficie.mostrarMenu(0);
+            opcio = Utils.validarEnter("Tria una opció del menú", "No has introduït un caràcter númeric vàlid. Torna a provar",6,0);
             switch (opcio) {
                 case 1 -> g.carregarDades(t);
                 case 2 -> g.introduirMalalts(t);
@@ -41,11 +41,11 @@ public class PandemiaMDUF2 {
                 case 4 -> g.curarMalalts(t);
                 case 5 -> g.desplacarMalalts(t);
                 case 6 -> {
-                    InterficieUF2.mostrarInformacio(t);
-                    InterficieUF2.mostrarEstadistiques();
-                    InterficieUF2.mostrarTaulell(t);
+                    Interficie.mostrarInformacio(t);
+                    Interficie.mostrarEstadistiques();
+                    Interficie.mostrarTaulell(t);
                 }
-                case 0 -> InterficieUF2.mostrarMissatgeSortida();
+                case 0 -> Interficie.mostrarMissatgeSortida();
             }
         } while (opcio!=0);
     }

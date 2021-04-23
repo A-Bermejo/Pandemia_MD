@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author Morel Luque
  */
 
-public class UtilsUF2 {
+public class Utils {
     static Scanner scan = new Scanner(System.in);
     /**
      * Per comprovar que el valor introduït és correcte.
@@ -33,7 +33,7 @@ public class UtilsUF2 {
             correcte = scan.hasNextInt();
             if (!correcte) {
                 scan.next();
-                InterficieUF2.mostrarMissatgeError(missatgeError);
+                Interficie.mostrarMissatgeError(missatgeError);
             } else {
                 ret = scan.nextInt();
                 if (max == 0){
@@ -42,7 +42,7 @@ public class UtilsUF2 {
                     correcte = ret <= max && ret >= min;
                 }
                 if (!correcte) {
-                    InterficieUF2.mostrarMissatgeError(missatge);
+                    Interficie.mostrarMissatgeError(missatge);
                 }
             }
         } while (!correcte);
@@ -65,7 +65,7 @@ public class UtilsUF2 {
             correcte = scan.hasNextFloat();
             if (!correcte) {
                 scan.next();
-                InterficieUF2.mostrarMissatgeError(missatgeError);
+                Interficie.mostrarMissatgeError(missatgeError);
             } else {
                 ret = scan.nextFloat();
                 if (max == 0){
@@ -74,7 +74,7 @@ public class UtilsUF2 {
                     correcte = ret <= max && ret >= min;
                 }
                 if (!correcte) {
-                    InterficieUF2.mostrarMissatgeError(missatge);
+                    Interficie.mostrarMissatgeError(missatge);
                 }
             }
         } while (!correcte);
@@ -92,11 +92,11 @@ public class UtilsUF2 {
      * @return Dona "true" o "false" depent si la comprovació que es fa sobre
      * si la posició a on es mou el malalt està fora del taulell, es una posició bloquejada o es una posició vàlida.
      */
-    public static boolean validarCasellaDesti(TaulellUF2 t, int x, int y, String missatgeError) {
+    public static boolean validarCasellaDesti(Taulell t, int x, int y, String missatgeError) {
         if ((x != GestorTaulell.INVALIDPOSITION && y != GestorTaulell.INVALIDPOSITION) && (x != t.getFiles() && y != t.getColumnes()) && t.getTaulell()[x][y] != GestorTaulell.INVALIDPOSITION) {
             return true;
         }
-        InterficieUF2.mostrarMissatgeError(missatgeError);
+        Interficie.mostrarMissatgeError(missatgeError);
         return false;
     }
 
@@ -116,12 +116,12 @@ public class UtilsUF2 {
             correcte = !scan.hasNextInt();
             if (!correcte) {
                 scan.next();
-                InterficieUF2.mostrarMissatgeError(missatgeError);
+                Interficie.mostrarMissatgeError(missatgeError);
             } else {
                 ret = String.valueOf(scan.next().charAt(0)).toLowerCase();
                 correcte = ret.matches("[qweadzxc]");
                 if (!correcte) {
-                    InterficieUF2.mostrarMissatgeError(missatge);
+                    Interficie.mostrarMissatgeError(missatge);
                 }
             }
         } while (!correcte);

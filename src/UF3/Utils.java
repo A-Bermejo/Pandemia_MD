@@ -5,6 +5,7 @@ import java.util.Scanner;
 /**
  * Classe que serveix per validar les entrades que realitza
  * l'usuari al llarg del programa.
+ *
  * @author Daniel Lopez
  * @author Morel Luque
  */
@@ -23,8 +24,8 @@ public class Utils {
      *                      pantalla la introducció del número.
      * @param missatgeError Conté el text que es mostrarà a l'usuari en cas que
      *                      introdueixi un número incorrecte o un caràcter, segons la opció del programa.
-     * @param max Valor que ocupa el rang màxim
-     * @param min Valor que ocupa el rang mínim
+     * @param max           Valor que ocupa el rang màxim
+     * @param min           Valor que ocupa el rang mínim
      * @return Valor enter o caràcter (segons la opció del programa) que simbolitza el número o caràcter que s'ha introduït per teclat.
      */
     public static int validarEnter(String missatge, String missatgeError, int max, int min) {
@@ -36,7 +37,7 @@ public class Utils {
                 Interficie.mostrarMissatgeError(missatgeError);
             } else {
                 ret = scan.nextInt();
-                if (max == 0){
+                if (max == 0) {
                     correcte = ret >= min;
                 } else {
                     correcte = ret <= max && ret >= min;
@@ -51,15 +52,16 @@ public class Utils {
 
     /**
      * Solicita un float fins que sigui correcte.
-     * @param missatge Conté el text que es mostrarà per sol·licitar per
-     *                 pantalla la introducció del número.
+     *
+     * @param missatge      Conté el text que es mostrarà per sol·licitar per
+     *                      pantalla la introducció del número.
      * @param missatgeError Conté el text que es mostrarà a l'usuari en cas que
      *                      introdueixi un número incorrecte o un caràcter, segons la opció del programa.
-     * @param max Valor que ocupa el rang màxim
-     * @param min Valor que ocupa el rang mínim
+     * @param max           Valor que ocupa el rang màxim
+     * @param min           Valor que ocupa el rang mínim
      * @return Valor amb decimals
      */
-    public static float validarTaxaContagi(String missatge, String missatgeError, int max, int min){
+    public static float validarTaxaContagi(String missatge, String missatgeError, int max, int min) {
         float ret = 0;
         do {
             correcte = scan.hasNextFloat();
@@ -68,7 +70,7 @@ public class Utils {
                 Interficie.mostrarMissatgeError(missatgeError);
             } else {
                 ret = scan.nextFloat();
-                if (max == 0){
+                if (max == 0) {
                     correcte = ret >= min;
                 } else {
                     correcte = ret <= max && ret >= min;
@@ -93,7 +95,7 @@ public class Utils {
      * si la posició a on es mou el malalt està fora del taulell, es una posició bloquejada o es una posició vàlida.
      */
     public static boolean validarCasellaDesti(Taulell t, int x, int y, String missatgeError) {
-        if ((x != t.getInvalidPosition() && y != t.getInvalidPosition()) && (x != t.getFiles() && y != t.getColumnes()) && t.getTaulell()[x][y] != t.getInvalidPosition()) {
+        if ((x != t.getInvalidPosition() && y != t.getInvalidPosition()) && (x != t.getFiles() && y != t.getColumnes()) && t.getCasella(x, y) != t.getInvalidPosition()) {
             return true;
         }
         Interficie.mostrarMissatgeError(missatgeError);

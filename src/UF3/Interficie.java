@@ -2,6 +2,7 @@ package UF3;
 
 /**
  * Aquesta classe és l'encarregada de mostrar tot el que es vol veure per consola
+ *
  * @author Daniel Lopez
  * @author Morel Luque
  */
@@ -62,10 +63,10 @@ public class Interficie {
         for (int i = 0; i < t.getFiles(); i++) {
             System.out.print(BLUE + "| ");
             for (int j = 0; j < t.getColumnes(); j++) {
-                if (t.getTaulell()[i][j] == t.getInvalidPosition()) {
+                if (t.getCasella(i, j) == t.getInvalidPosition()) {
                     System.out.printf(RED + "%4s    " + BLUE + "| ", "X");
                 } else {
-                    System.out.printf(GREEN + "%-7.0f " + BLUE + "| ", Math.floor(t.getTaulell()[i][j]));
+                    System.out.printf(GREEN + "%-7.0f " + BLUE + "| ", Math.floor(t.getCasella(i, j)));
                 }
 
             }
@@ -101,26 +102,10 @@ public class Interficie {
     /**
      * Funció que mostra les estadistiques respecte a la situació actual del taulell
      */
-    public static void mostrarEstadistiques() {
+    public static void mostrarEstadistiques(Taulell t) {
         System.out.printf(WHITE + "Número total de malalts: %.0f\n" +
                         "Número de persones curades: %d\n" +
                         "Percentatge que no ha complit confinament: %.0f%%\n"
-                , GestorTaulell.totalPatients, GestorTaulell.totalCured, GestorTaulell.totalDisplaced * 100 / GestorTaulell.totalPatients);
-    }
-
-    /**
-     * Funció que ens mostra la situació actual del taulell
-     *
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem
-     */
-    public static void mostrarInformacio(Taulell t) {
-        GestorTaulell.totalPatients = 0;
-        for (int i = 0; i < t.getFiles(); i++) {
-            for (int j = 0; j < t.getColumnes(); j++) {
-                if (t.getTaulell()[i][j] != t.getInvalidPosition()) {
-                    GestorTaulell.totalPatients += t.getTaulell()[i][j];
-                }
-            }
-        }
+                , t.getTotalPatients(), t.getTotalCured(), t.getTotalDisplaced() * 100 / t.getTotalPatients());
     }
 }

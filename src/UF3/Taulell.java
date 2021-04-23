@@ -5,7 +5,6 @@ package UF3;
  *
  * @author Daniel Lopez
  * @author Morel Luque
- *
  */
 
 public class Taulell {
@@ -14,6 +13,67 @@ public class Taulell {
     private int columnes;
     private float[][] taulell;
     private static final int INVALIDPOSITION = -1;
+    /**
+     * El número de malalts que s'introdueix.
+     */
+    private int patients;
+    /**
+     * El total de malalts que s'han curat pel taulell.
+     */
+    private int totalCured;
+    /**
+     * El total de malalts pel taulell.
+     */
+    private float totalPatients;
+    /**
+     * El total de malalts que s'han saltat el confinamen
+     */
+    private int totalDisplaced;
+
+    /**
+     * El malalts actuals del taulell
+     */
+    private int currentPatients;
+
+    public int getCurrentPatients() {
+        return currentPatients;
+    }
+
+    public void setCurrentPatients(int currentPatients) {
+        this.currentPatients = currentPatients;
+    }
+
+    public int getPatients() {
+        return patients;
+    }
+
+    public void setPatients(int patients) {
+        this.patients = patients;
+    }
+
+    public int getTotalCured() {
+        return totalCured;
+    }
+
+    public void setTotalCured(int totalCured) {
+        this.totalCured = totalCured;
+    }
+
+    public float getTotalPatients() {
+        return totalPatients;
+    }
+
+    public void setTotalPatients(float totalPatients) {
+        this.totalPatients = totalPatients;
+    }
+
+    public int getTotalDisplaced() {
+        return totalDisplaced;
+    }
+
+    public void setTotalDisplaced(int totalDisplaced) {
+        this.totalDisplaced = totalDisplaced;
+    }
 
     /**
      * Inicialitzem el taulell a 0 per files i columnes.
@@ -76,15 +136,6 @@ public class Taulell {
         this.columnes = columnes;
     }
 
-    /**
-     * Funció per obtenir el nostre taulell.
-     *
-     * @return Ens retorna el taulell com una array bidimensional de tipus float.
-     */
-    public float[][] getTaulell() {
-        return taulell;
-    }
-
     public float getCasella(int i, int j) {
         return taulell[i][j];
     }
@@ -104,26 +155,30 @@ public class Taulell {
     /**
      * Funció per crear el taulell buit amb unes mesures introduïdes per l'usuari
      *
-     * @param numPositionRand Número aleatori de caselles bloquejadas al taulell
+     * @param countBlockedPositions Número aleatori de caselles bloquejadas al taulell
      */
-    public void createTaulellBuit(int numPositionRand) {
+    public void createTaulellBuit(int countBlockedPositions,int x,int y) {
+        setFiles(x);
+        setColumnes(y);
         this.taulell = new float[files][columnes];
-        createInvalidPosition(numPositionRand);
+        createInvalidPosition(countBlockedPositions);
     }
 
     /**
      * Funció per crear el taulell amb mesures i valors aleatoris
      *
-     * @param numPositionRand Número aleatori de caselles bloquejadas al taulell
+     * @param countBlockedPositions Número aleatori de caselles bloquejadas al taulell
      */
-    public void createTaulellRand(int numPositionRand) {
+    public void createTaulellRand(int countBlockedPositions,int x,int y) {
+        setFiles(x);
+        setColumnes(y);
         this.taulell = new float[files][columnes];
         for (int i = 0; i < getFiles(); i++) {
             for (int j = 0; j < getColumnes(); j++) {
-                getTaulell()[i][j] = (int) (Math.random() * 10);
+                setCasella(i, j, (int) (Math.random() * 10));
             }
         }
-        createInvalidPosition(numPositionRand);
+        createInvalidPosition(countBlockedPositions);
     }
 
     public void createInvalidPosition(int numPositionRand) {
@@ -131,6 +186,148 @@ public class Taulell {
             int x = (int) (Math.random() * getFiles());
             int y = (int) (Math.random() * getColumnes());
             setCasella(x, y, INVALIDPOSITION);
+        }
+    }
+
+    public void resetVariables(){
+        setTotalCured(0);
+        setTotalPatients(0);
+        setTotalDisplaced(0);
+    }
+
+    /**
+     * Funció que actualitza els malalts actuals del taulell
+     *
+     */
+    public void actualitzarPatients() {
+        setTotalPatients(0);
+        for (int i = 0; i < getFiles(); i++) {
+            for (int j = 0; j < getColumnes(); j++) {
+                if (getCasella(i, j) != getInvalidPosition()) {
+                    setTotalPatients(getTotalPatients() + getCasella(i, j));
+                }
+            }
+        }
+    }
+
+    public void transmitirVirus(float infectionRate) {
+        for (int i = 0; i < getFiles(); i++) {
+            for (int j = 0; j < getColumnes(); j++) {
+                if (getCasella(i, j) != getInvalidPosition()) {
+                    sumCasella(i, j, (getCasella(i, j) * infectionRate));
+                }
+            }
+        }
+    }
+
+    public void curarMalaltsPercentatgeGlobal(int cureNumber) {
+        for (int i = 0; i < getFiles(); i++) {
+            for (int j = 0; j < getColumnes(); j++) {
+                if (getCasella(i, j) != getInvalidPosition()) {
+                    setTotalCured((int) (getTotalCured() + Math.ceil(getCasella(i, j) * cureNumber / 100)));
+                    subtractCasella(i, j, (getCasella(i, j) * cureNumber / 100));
+                }
+            }
+        }
+    }
+    
+    public void curarMalaltsPercentatgeVC(int cureNumber,int x, int y){
+        if (getCasella(x,y) != getInvalidPosition()) {
+            setTotalCured((int) (getTotalCured() + Math.ceil(getCasella(x, y) * cureNumber / 100)));
+            subtractCasella(x, y, (getCasella(x, y) * cureNumber / 100));
+        }
+    }
+
+    //COMENTAR DUPLICATE CODE PARA CREAR FUNCION O NO
+    public void curarMalaltsValorConcretGlobal(int cureNumber) {
+        for (int i = 0; i < getFiles(); i++) {
+            for (int j = 0; j < getColumnes(); j++) {
+                if (getCasella(i,j) != getInvalidPosition()) {
+                    if ((getCasella(i,j) - cureNumber) < 0) {
+                        setTotalCured((int) (getTotalCured() + (getCasella(i, j) - cureNumber) + cureNumber));
+                        setCasella(i, j, 0);
+                    } else {
+                        subtractCasella(i,j, cureNumber);
+                        setTotalCured(getTotalCured() + cureNumber);
+                    }
+                }
+            }
+        }
+    }
+
+    public void curarMalaltsValorConcret(int cureNumber,int x, int y) {
+        if (getCasella(x,y) != getInvalidPosition()) {
+            if ((getCasella(x,y) - cureNumber) < 0) {
+                setTotalCured((int) (getTotalCured() + (getCasella(x,y) - cureNumber) + cureNumber));
+                setCasella(x,y, 0);
+            } else {
+                subtractCasella(x,y, cureNumber);
+                setTotalCured(getTotalCured() + cureNumber);
+            }
+        }
+    }
+    
+    public void desplacarMalalts(boolean lockedPosition, String answerDisplace,int x,int y){
+        switch (answerDisplace) {
+            case "q" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x - 1, y - 1, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "w" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x - 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x - 1, y, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "e" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x - 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x - 1, y + 1, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "a" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x, y - 1, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "d" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x, y + 1, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "z" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x + 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x + 1, y - 1, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "x" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x + 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x + 1, y, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+            case "c" -> {
+                lockedPosition = Utils.validarCasellaDesti(t, x + 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                if (lockedPosition) {
+                    sumCasella(x + 1, y + 1, getPatients());
+                    setTotalDisplaced(getTotalDisplaced() + getPatients());
+                }
+            }
+        }
+        if (!lockedPosition) {
+            sumCasella(x, y, getPatients());
         }
     }
 }
