@@ -49,6 +49,7 @@ public class GestorTaulell {
                 Interficie.mostrarMissatge("Es crearà un taulell amb les següents dimensions (x:" + t.getFiles() + " y:" + t.getColumnes() + ")");
             }
         }
+        t.startTotalPatients();
         Interficie.mostrarMissatge("Total de posicions bloquejades: " + countBlockedPositions);
         Interficie.mostrarTaulell(t);
     }
@@ -110,6 +111,7 @@ public class GestorTaulell {
         int answerCure = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter numèric vàlid. Torna a provar.", 2, 1);
         int answerCureValue;
         int cureNumber;
+        int aux = (int)t.getCurrentPatients();
         switch (answerCure) {
             //Curar malalts de forma global
             case 1 -> {
@@ -160,6 +162,8 @@ public class GestorTaulell {
                 }
             }
         }
+        t.setCurrentPatients(aux - (aux - (int)t.getCurrentPatients()));
+
     }
 
     /**
@@ -192,8 +196,9 @@ public class GestorTaulell {
             FileWriter desti = new FileWriter("res/Taulells.txt", true);
             Date data = new Date();
             desti.append(data.toString() + "\n"); //Data
-            desti.append((t.getTotalPatients() - t.getTotalCured()) + " " + t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
-            //desti.append(); // Taulell actual
+            desti.append((int)t.getCurrentPatients() + " " + (int)t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
+            desti.append(t.getFiles() + " " + t.getColumnes() + "\n"); // Dimensions taulell actual
+            desti.append(t.taulellToString() + "\n"); // Taulell actual
             desti.close();
         } catch (IOException e) {
             Interficie.mostrarMissatgeError(e.getMessage());

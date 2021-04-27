@@ -42,13 +42,11 @@ public class PandemiaMD {
                 case 4 -> g.curarMalalts(t);
                 case 5 -> g.desplacarMalalts(t);
                 case 6 -> {
-                    t.actualitzarPatients();
                     Interficie.mostrarEstadistiques(t);
                     Interficie.mostrarTaulell(t);
                 }
                 //case 7 -> g.llegirFitxer();
                 case 8 -> {
-                    t.actualitzarPatients();
                     g.escriureFitxer(t);
                 }
                 case 0 -> Interficie.mostrarMissatgeSortida();

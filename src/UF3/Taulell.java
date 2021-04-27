@@ -33,14 +33,26 @@ public class Taulell {
     /**
      * El malalts actuals del taulell
      */
-    private int currentPatients;
+    private float currentPatients;
 
-    public int getCurrentPatients() {
+    public float getCurrentPatients() {
+        setCurrentPatients(0);
+        for (int i = 0; i < getFiles(); i++) {
+            for (int j = 0; j < getColumnes(); j++) {
+                if (getCasella(i, j) != getInvalidPosition()) {
+                    sumCurrentPatients((int)(getCasella(i,j)));
+                }
+            }
+        }
         return currentPatients;
     }
 
     public void setCurrentPatients(int currentPatients) {
         this.currentPatients = currentPatients;
+    }
+
+    public void sumCurrentPatients(int currentPatients) {
+        this.currentPatients += currentPatients;
     }
 
     public int getPatients() {
@@ -63,8 +75,12 @@ public class Taulell {
         return totalPatients;
     }
 
-    public void setTotalPatients(float totalPatients) {
+    public void setTotalPatients(int totalPatients) {
         this.totalPatients = totalPatients;
+    }
+
+    public void sumTotalPatients(int totalPatients) {
+        this.totalPatients += totalPatients;
     }
 
     public int getTotalDisplaced() {
@@ -193,20 +209,27 @@ public class Taulell {
         setTotalCured(0);
         setTotalPatients(0);
         setTotalDisplaced(0);
+        setCurrentPatients(0);
     }
 
     /**
      * Funció que actualitza els malalts actuals del taulell
      *
      */
-    public void actualitzarPatients() {
+    public void startTotalPatients() {
         setTotalPatients(0);
         for (int i = 0; i < getFiles(); i++) {
             for (int j = 0; j < getColumnes(); j++) {
                 if (getCasella(i, j) != getInvalidPosition()) {
-                    setTotalPatients(getTotalPatients() + getCasella(i, j));
+                    setTotalPatients((int)(getTotalPatients() + getCasella(i, j)));
                 }
             }
+        }
+    }
+
+    public void updateTotalPatients() {
+        if (getCurrentPatients() > getTotalPatients()){
+            sumTotalPatients((int)(getCurrentPatients() - getTotalPatients()));
         }
     }
 
@@ -218,6 +241,7 @@ public class Taulell {
                 }
             }
         }
+        updateTotalPatients();
     }
 
     public void curarMalaltsPercentatgeGlobal(int cureNumber) {
@@ -268,9 +292,10 @@ public class Taulell {
     }
     
     public void desplacarMalalts(boolean lockedPosition, String answerDisplace,int x,int y){
+        /*
         switch (answerDisplace) {
             case "q" -> {
-                lockedPosition = Utils.validarCasellaDesti(t, x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = Utils.validarCasellaDesti(t,x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                 if (lockedPosition) {
                     sumCasella(x - 1, y - 1, getPatients());
                     setTotalDisplaced(getTotalDisplaced() + getPatients());
@@ -329,5 +354,18 @@ public class Taulell {
         if (!lockedPosition) {
             sumCasella(x, y, getPatients());
         }
+         */
     }
+
+    public String taulellToString() {
+        String taulell = "";
+        for (int i = 0; i < files; i++) {
+            for (int j = 0; j < columnes; j++) {
+                taulell += getCasella(i,j) + " ";
+            }
+        }
+        return taulell;
+    }
+
+
 }
