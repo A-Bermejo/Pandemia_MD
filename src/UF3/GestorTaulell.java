@@ -191,12 +191,16 @@ public class GestorTaulell {
         }
     }
 
+    public void llegirFitxer(Taulell t) {
+        t.llegirFitxer();
+    }
+
     public void escriureFitxer(Taulell t) {
         try {
             FileWriter desti = new FileWriter("res/Taulells.txt", true);
             Date data = new Date();
             desti.append(data.toString() + "\n"); //Data
-            desti.append((int)t.getCurrentPatients() + " " + (int)t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
+            desti.append(t.getCurrentPatients() + " " + t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
             desti.append(t.getFiles() + " " + t.getColumnes() + "\n"); // Dimensions taulell actual
             desti.append(t.taulellToString() + "\n"); // Taulell actual
             desti.close();

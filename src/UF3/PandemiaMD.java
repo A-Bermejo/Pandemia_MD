@@ -45,10 +45,8 @@ public class PandemiaMD {
                     Interficie.mostrarEstadistiques(t);
                     Interficie.mostrarTaulell(t);
                 }
-                //case 7 -> g.llegirFitxer();
-                case 8 -> {
-                    g.escriureFitxer(t);
-                }
+                case 7 -> g.llegirFitxer(t);
+                case 8 -> g.escriureFitxer(t);
                 case 0 -> Interficie.mostrarMissatgeSortida();
             }
         } while (opcio != 0);
