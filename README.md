@@ -75,6 +75,10 @@ Classe on es crea i es modifica l'estructura del Taulell.
    - Funció per obtenir el total de malalts actuals.
  * **Funció setCurrentPatients()**
    - Funció per assignar un nou valor al total de malalts actuals.
+ * **Funció getPositionPatients()**
+   - Funció per obtenir els malalts que s'assignaràn a una casella.
+ * **Funció setPositionPatients()**
+   - Funció per assignar un nou valor als malalts que s'assignaràn a una casella.
  * **Funció getCasella()**
    - Funció per obtenir una casella concreta.
  * **Funció setCasella()**
@@ -113,7 +117,8 @@ Classe on es crea i es modifica l'estructura del Taulell.
    - Funció per escriure el nostre taulell en un fitxer com si fos una String.
  * **Funció llegirTaulell()**
    - Funció que ens serveix per llegir un fitxer i obtenir un taulell amb les dades corresponents.
-
+ * **Funció introduirMalalts()**
+   - Funció que introdueix els malalts a la casella corresponent i que retorna un int per mostrar un missatge.
 ### Classe "Interficie"
  * **Funció mostrarMenu()**
    - Mostra per pantalla les diferents opcions que formen els menús.
@@ -451,7 +456,7 @@ En aquest cas el que es fa és mostrar un missatge de comiat i a continuació s'
 
 # Codi Javadoc
 Captura justificativa sobre que el nostre projecte conté Javadoc.
-
+![Javadoc](./img/JavaDoc.PNG)
 
 # Importació i emmagatzematge de dades en fitxers TXT
 Per realitzar aquest aquest apartat haviem de ser capaços de llegir i escriure dades sobre un fitxer TXT. A continuació es mostren captures jusitificatives del treball realitzat correctament.

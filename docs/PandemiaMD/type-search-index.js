@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"UF3","l":"APICovid"},{"p":"UF3","l":"GestorTaulell"},{"p":"UF3","l":"Interficie"},{"p":"UF3","l":"PandemiaMD"},{"p":"UF3","l":"Taulell"},{"p":"UF3","l":"Utils"}];updateSearchResults();

@@ -7,8 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * En aquesta classe tenim les funcions que es dediquen a modificar
- * les dades del taulell.
+ * En aquesta classe tenim les funcions que fan d'intermediaries entre el Taulell i l'usuari
  *
  * @author Daniel Lopez
  * @author Morel Luque
@@ -24,7 +23,7 @@ public class GestorTaulell {
      * Funció que serveix per carregar dades al taulell, tant si es vol crear un taulell aleatori com si es vol crear un amb mesures introduïdes per l'usuari.
      * Aquesta funció la utilitzem per crear el primer taulell però es pot tornar a utilitzar durant l'execució del programa.
      *
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
     public void carregarDades(Taulell t) {
         Interficie.mostrarMenu(1);
@@ -40,13 +39,13 @@ public class GestorTaulell {
                 x = (Utils.validarEnter("No has introduït un número de X: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2));
                 Interficie.mostrarMissatge("Diga'm les columnes (Y:) que té el taulell: ");
                 y = ((Utils.validarEnter("No has introduït un número de Y: correcte. Introdueix com a mínim 2", "No has introduït un caràcter númeric vàlid. Torna a provar.", 0, 2)));
-                t.createTaulellBuit(countBlockedPositions,x,y);
+                t.createTaulellBuit(countBlockedPositions, x, y);
             }
             //Creació d'un taulell aleatori
             case 2 -> {
                 x = (int) (Math.random() * 9 + 2);
                 y = (int) (Math.random() * 9 + 2);
-                t.createTaulellRand(countBlockedPositions,x,y);
+                t.createTaulellRand(countBlockedPositions, x, y);
                 Interficie.mostrarMissatge("Es crearà un taulell amb les següents dimensions (x:" + t.getFiles() + " y:" + t.getColumnes() + ")");
             }
         }
@@ -58,12 +57,12 @@ public class GestorTaulell {
     /**
      * Funció que ens permet introduïr malalts al nostre taulell i no només en una sola cel·la, sino que els podem repartir en varies cel·les.
      *
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
     public void introduirMalalts(Taulell t) {
         Interficie.mostrarMissatge("Quants malalts vols introduir: ");
         t.setPatients(Utils.validarEnter("Introdueix un número vàlid", "No has introduït un caràcter númeric vàlid. Torna a provar", 0, 0));
-        int positionPatients = 0;
+        t.setPositionPatients(0);
         Interficie.mostrarTaulell(t);
         int aux = 0;
         while (aux < t.getPatients()) {
@@ -71,30 +70,22 @@ public class GestorTaulell {
             int x = Utils.validarEnter("Indica una posició per X: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getFiles(), 1) - 1;
             Interficie.mostrarMissatge("A quina columna (Y:) vols introduir el/s malalt/s: ");
             int y = Utils.validarEnter("Indica una posició per Y: que estigui dins del taulell", "No has introduït un caràcter numèric", t.getColumnes(), 1) - 1;
-            if (t.getCasella(x, y) != t.getInvalidPosition()) {
-                if (x <= t.getFiles() && y <= t.getColumnes()) {
-                    Interficie.mostrarMissatge("Quants malalts hi ha en aquesta posició: ");
-                    positionPatients = Math.abs(scan.nextInt());
-                    if (positionPatients + aux <= t.getPatients()) { // Es suma positionPatients + i per tenir en compte els malalts que ya s'han introduït.
-                        t.sumCasella(x, y, positionPatients);
-                    } else {
-                        Interficie.mostrarMissatgeError("No pots especificar més malalts en una posicio que el total" +
-                                " de malalts que vols introduir.");
-                    }
-                } else {
-                    Interficie.mostrarMissatgeError("Especifica una columna i fila existents en el taulell.");
-                }
-            } else {
-                Interficie.mostrarMissatgeError("No pots introduir malalts en una posició bloquejada");
+            Interficie.mostrarMissatge("Quants malalts hi ha en aquesta posició: ");
+            switch (t.introduirMalalts(x,y,aux)) {
+                case 1 -> Interficie.mostrarMissatgeError("No pots especificar més malalts en una posicio que el total" +
+                        " de malalts que vols introduir.");
+                case 2 -> Interficie.mostrarMissatgeError("Especifica una columna i fila existents en el taulell.");
+                case 3 -> Interficie.mostrarMissatgeError("No pots introduir malalts en una posició bloquejada");
+                case 0 -> Interficie.mostrarMissatge("S'han introduït els malalts correctament");
             }
-            aux += positionPatients;
+            aux += t.getPositionPatients();
         }
     }
 
     /**
      * Funció que ens permet trasnmetre virus aplicant una taxa de contagi.
      *
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
     public void transmetreVirus(Taulell t) {
         Interficie.mostrarMissatge("Diga'm la taxa de contagi: ");
@@ -105,14 +96,14 @@ public class GestorTaulell {
     /**
      * Funció que ens permet curar maltalts. Es pot fer de dues maneres: 1 - De forma global, 2 - A una casella completa. En ambdós casos es pot decidir si es vol curar amb % o amb un valor concret.
      *
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
     public void curarMalalts(Taulell t) {
         Interficie.mostrarMenu(2);
         int answerCure = Utils.validarEnter("Introdueix un número de la llista", "No has introduït un caràcter numèric vàlid. Torna a provar.", 2, 1);
         int answerCureValue;
         int cureNumber;
-        int aux = (int)t.getCurrentPatients();
+        int aux = (int) t.getCurrentPatients();
         switch (answerCure) {
             //Curar malalts de forma global
             case 1 -> {
@@ -155,7 +146,7 @@ public class GestorTaulell {
                         case 2 -> {
                             Interficie.mostrarMissatge("Quants malalts vols curar (valor concret): ");
                             cureNumber = scan.nextInt();
-                            t.curarMalaltsValorConcret(cureNumber,x,y);
+                            t.curarMalaltsValorConcret(cureNumber, x, y);
                         }
                     }
                 } else {
@@ -163,12 +154,13 @@ public class GestorTaulell {
                 }
             }
         }
-        t.setCurrentPatients(aux - (aux - (int)t.getCurrentPatients()));
+        t.setCurrentPatients(aux - (aux - (int) t.getCurrentPatients()));
 
     }
 
     /**
-     * @param t Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     * Funció que crida al Taullel per gestionar aquesta part del programa
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
      */
     public void desplacarMalalts(Taulell t) {
         Interficie.mostrarTaulell(t);
@@ -184,9 +176,9 @@ public class GestorTaulell {
                 Interficie.mostrarMenuDesplacar();
                 String answerDisplace = Utils.validarLletraCasella("Introdueix una lletra de la llista", "Has de introduir un caràcter valid.");
                 boolean lockedPosition = t.validarCasellaDesti(x - 1, y - 1);
-                if (lockedPosition){
-                    t.desplacarMalalts(lockedPosition,answerDisplace,x,y);
-                }else{
+                if (lockedPosition) {
+                    t.desplacarMalalts(lockedPosition, answerDisplace, x, y);
+                } else {
                     Interficie.mostrarMissatgeError("No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
                 }
 
@@ -199,13 +191,17 @@ public class GestorTaulell {
         }
     }
 
+    /**
+     * Funció que mostra els taulells que tenim al fitxer i crida a la funció corresponent per importar el taulel
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     */
     public void llegirFitxer(Taulell t) {
         Interficie.mostrarMissatge("Ara es mostraran tots els taulells disponibles per importar amb les seves dimensions: ");
         try {
             File origin = new File("res/Taulells.txt");
             Scanner reader = new Scanner(origin);
             int i = 0;
-            while (reader.hasNextLine()){
+            while (reader.hasNextLine()) {
                 int nTaulellFile = reader.nextInt();
                 reader.nextLine();
                 reader.nextLine();
@@ -216,15 +212,19 @@ public class GestorTaulell {
                 i += 4;
                 Interficie.mostrarMissatge("Taulell " + nTaulellFile + ": files(" + x + ") columnes(" + y + ")");
             }
-            int nTaulell = Utils.validarEnter("Introdueix un número corresponent a un taulell", "Introdueix un caràcter númeric vàlid", i/4, 1);
+            int nTaulell = Utils.validarEnter("Introdueix un número corresponent a un taulell", "Introdueix un caràcter númeric vàlid", i / 4, 1);
             t.llegirTaulell(nTaulell);
             reader.close();
         } catch (Exception e) {
             Interficie.mostrarMissatge(e.getMessage());
         }
-        
+
     }
 
+    /**
+     * Funció que escriu les dades del taulell actual al fitxer
+     * @param t Es passa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
+     */
     public void escriureFitxer(Taulell t) {
         try {
             FileWriter desti = new FileWriter("res/Taulells.txt", true);
@@ -232,18 +232,18 @@ public class GestorTaulell {
             File aux = new File("res/Taulells.txt");
             Scanner reader = new Scanner(aux);
             int i = 0;
-            while (reader.hasNextLine()){
+            while (reader.hasNextLine()) {
                 reader.nextLine();
                 i++;
             }
-            if (i/4+1 <= 10){
+            if (i / 4 + 1 <= 10) {
                 reader.close();
-                desti.append(i/4+1 + " " + data.toString() + "\n"); //Id i Data
+                desti.append(i / 4 + 1 + " " + data.toString() + "\n"); //Id i Data
                 desti.append(t.getCurrentPatients() + " " + t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
                 desti.append(t.getFiles() + " " + t.getColumnes() + "\n"); // Dimensions taulell actual
                 desti.append(t.taulellToString() + "\n"); // Taulell actual
                 desti.close();
-            }else{
+            } else {
                 Interficie.mostrarMissatgeError("No es poden guardar més de 10 taulells.");
             }
 
