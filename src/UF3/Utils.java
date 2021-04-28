@@ -84,25 +84,6 @@ public class Utils {
     }
 
     /**
-     * Funció que ens permet validar la casella de destí quan desplaçem un malalt.
-     *
-     * @param t             Es pasa el taulell de la classe "Taulell" perquè és on es guarda tota la informació del taulell que utilitzem.
-     * @param x             Representa la fila a on es vol desplaçar el malalt.
-     * @param y             Representa la columna a on es vol desplaçar el malalt.
-     * @param missatgeError Conté el text que es mostrarà a l'usuari en cas
-     *                      que introdueixi una posició que estigui fora del taulell o si està bloquejada.
-     * @return Dona "true" o "false" depent si la comprovació que es fa sobre
-     * si la posició a on es mou el malalt està fora del taulell, es una posició bloquejada o es una posició vàlida.
-     */
-    public static boolean validarCasellaDesti(Taulell t, int x, int y, String missatgeError) {
-        if ((x != t.getInvalidPosition() && y != t.getInvalidPosition()) && (x != t.getFiles() && y != t.getColumnes()) && t.getCasella(x, y) != t.getInvalidPosition()) {
-            return true;
-        }
-        Interficie.mostrarMissatgeError(missatgeError);
-        return false;
-    }
-
-    /**
      * Funció que ens permet validar si la lletra que escriu l'usuari per moure malalts
      * no és un número i està dins de les lletres que es demanen.
      *

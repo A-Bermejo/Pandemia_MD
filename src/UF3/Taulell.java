@@ -302,53 +302,69 @@ public class Taulell {
             }
         }
     }
+
+    /**
+     * Funció que ens permet validar la casella de destí quan desplaçem un malalt.
+     *
+     * @param x             Representa la fila a on es vol desplaçar el malalt.
+     * @param y             Representa la columna a on es vol desplaçar el malalt.
+     *                      que introdueixi una posició que estigui fora del taulell o si està bloquejada.
+     * @return Dona "true" o "false" depent si la comprovació que es fa sobre
+     * si la posició a on es mou el malalt està fora del taulell, es una posició bloquejada o es una posició vàlida.
+     */
+    public boolean validarCasellaDesti(int x, int y) {
+        if ((x != INVALIDPOSITION && y != INVALIDPOSITION) && (x != files && y != columnes) && taulell[x][y] != INVALIDPOSITION) {
+            return true;
+        }
+        return false;
+    }
     
     public void desplacarMalalts(boolean lockedPosition, String answerDisplace,int x,int y){
         switch (answerDisplace) {
             case "q" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this,x - 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition =validarCasellaDesti(x - 1, y - 1);
                 if (lockedPosition) {
                     taulell[x-1][y-1] += patients;
                     totalDisplaced += patients;
                 }
             }
             case "w" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x - 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x - 1, y);
                 if (lockedPosition) {
                     taulell[x-1][y] += patients;
                     totalDisplaced += patients;
                 }
             }
             case "e" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x - 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x - 1, y + 1);
                 if (lockedPosition) {
                     taulell[x-1][y+1] += patients;
                     totalDisplaced += patients;
                 }
             }
             case "a" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x, y - 1);
                 if (lockedPosition) {
                     taulell[x][y-1] += patients;
                     totalDisplaced += patients;
                 }
             }
             case "d" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x, y + 1);
                 if (lockedPosition) {
                     taulell[x][y+1] += patients;
                     totalDisplaced += patients;
                 }
             }
             case "z" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x + 1, y - 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x + 1, y - 1);
                 if (lockedPosition) {
                     taulell[x+1][y-1] += patients;
                     totalDisplaced += patients;
                 }
             }
             case "x" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x + 1, y, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x + 1, y);
                 if (lockedPosition) {
                     taulell[x+1][y] += patients;
                     totalDisplaced += patients;
@@ -356,7 +372,7 @@ public class Taulell {
                 }
             }
             case "c" -> {
-                lockedPosition = Utils.validarCasellaDesti(Taulell.this, x + 1, y + 1, "No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                lockedPosition = validarCasellaDesti(x + 1, y + 1);
                 if (lockedPosition) {
                     taulell[x+1][y+1] += patients;
                     totalDisplaced += patients;

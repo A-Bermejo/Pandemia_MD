@@ -192,7 +192,14 @@ public class GestorTaulell {
                 t.subtractCasella(x, y, t.getPatients());
                 Interficie.mostrarMenuDesplacar();
                 String answerDisplace = Utils.validarLletraCasella("Introdueix una lletra de la llista", "Has de introduir un caràcter valid.");
-                t.desplacarMalalts(false,answerDisplace,x,y);
+                boolean lockedPosition = t.validarCasellaDesti(x - 1, y - 1);
+                if (lockedPosition){
+                    t.desplacarMalalts(lockedPosition,answerDisplace,x,y);
+                }else{
+                    Interficie.mostrarMissatgeError("No pots desplaçar els malalts a una posició bloquejada o fora del taulell");
+                }
+
+
             } else {
                 Interficie.mostrarMissatgeError("No pots introduïr un número superior als malalts que pertanyen a aquesta posició");
             }
@@ -266,7 +273,7 @@ public class GestorTaulell {
                     Interficie.mostrarMissatge("Nous contagiats ahir a Girona: " + girona.get("today_new_confirmed").toString());
                 }
                 case 3 -> {
-                    Interficie.mostrarMissatge("Nous contagiats ahir a Espnya: " + spain.get("today_new_confirmed").toString());
+                    Interficie.mostrarMissatge("Nous contagiats ahir a Espanya: " + spain.get("today_new_confirmed").toString());
                 }
                 case 4 -> {
                     regionsSDeaths.sort(Comparator.naturalOrder());
@@ -276,7 +283,7 @@ public class GestorTaulell {
                     }
                     Interficie.mostrarMissatge(text);
                 }
-                case 0 -> Interficie.mostrarMissatge("Gracies per consultar la API de \"Proyecto COVID-19\"");
+                case 0 -> Interficie.mostrarMissatge("Gràcies per consultar la API de \"Proyecto COVID-19\"");
             }
             Interficie.mostrarMissatge("Dades Covid dia: " + yesterday.toString());
             Interficie.mostrarMenu(9);

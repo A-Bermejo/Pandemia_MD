@@ -47,10 +47,7 @@ public class PandemiaMD {
                 }
                 case 7 -> g.llegirFitxer(t);
                 case 8 -> g.escriureFitxer(t);
-                case 9 -> {
-                    g.consultarCovid();
-
-                }
+                case 9 -> g.consultarCovid();
                 case 0 -> Interficie.mostrarMissatgeSortida();
             }
         } while (opcio != 0);
