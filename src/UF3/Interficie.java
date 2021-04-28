@@ -25,11 +25,11 @@ public class Interficie {
     public static void mostrarMenu(int option) {
         String menu = switch (option) {
             case 0 -> "MENÚ PRINCIPAL\n" +
-                    "1. Carregar taulell   4. Curar malalts\n" +
-                    "2. Introduir malalts  5. Desplaçar malalts\n" +
-                    "3. Transmitir virus   6. Mostrar informació\n" +
-                    "7. Llegir Fitxer      8. Escriure Fitxer\n" +
-                    "0. Sortir";
+                    "1. Carregar taulell        4. Curar malalts\n" +
+                    "2. Introduir malalts       5. Desplaçar malalts\n" +
+                    "3. Transmitir virus        6. Mostrar informació\n" +
+                    "7. Llegir Fitxer           8. Escriure Fitxer\n" +
+                    "9. Consultar dades Covid   0. Sortir";
             case 1 -> "De quina manera vols crear el taulell?:\n" +
                     "1. Crear un taulell buit (introduint les files y columnes)\n" +
                     "2. Taulell amb malalts de forma aleatoria (minim 2 columnes i files)";
@@ -39,6 +39,9 @@ public class Interficie {
             case 21 -> "Ho vols fer amb:\n" +
                     "1. Percentatge (%)\n" +
                     "2. Valor concret";
+            case 9 ->   "1. Contagiats ahir a Catalunya.    2. Contagiats ahir a Girona.\n" +
+                        "3. Contagiats ahir a Espanya       4. Regions d'Espanya amb més 10 morts ahir.\n" +
+                        "0. Sortir";
             default -> "";
         };
         System.out.println(WHITE + menu);
