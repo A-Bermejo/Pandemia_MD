@@ -34,8 +34,11 @@ En aquesta classe tenim les funcions que es dediquen a modificar les dades del t
  * **Funció curarMalaltsValorConcret()**
     - Funció que ens verifica que quan curem malalts amb un valor concret no estiguem en una posició bloquejada ni estiguem curant més persones que les que hi ha malaltes en aquella casella.
  * **Funció desplacarMalalts()**
-    - Funció que ens serveix per desplaçar malalts d'una cel·la a un altre. Es pot desplaçar a qualsevol cel·la colindant sempre que no sigui una posició bloquejada o estigui fora del taulell.
-
+    - Funció que demana la posició del malat que es vol desplaçar i crida a la classe Taulell que és la que ens realitza totes les operacions.
+ * **Funció llegirFitxers()**
+    - Funció que crida a la classe Taulell perquè faci l'operació de llegir les dades d'un fitxer.
+ * **Funció escriureFitxer()**
+    - Funció per escriure en un fitxer la situació actual del nostre taulell
 ### Classe "Taulell"
 Classe on es crea i es modifica l'estructura del Taulell.
  * **Funció Taulell()**
@@ -50,13 +53,67 @@ Classe on es crea i es modifica l'estructura del Taulell.
    - Funció per obtenir les columnes del nostre taulell.
  * **Funció setColumnes()**
    - Funció per modificar les columnes del nostre taulell passant-li un nou valor.
- * **Funció getTaulell()**
-   - Funció per obtenir el nostre taulell.
- * **Funció setTaulell()**
-   - Funció per modificar el taulell i assignar-li nous valors.
- * **Funció createTaulell()**
-   - Funció per crear el taulell ja sigui de forma manual o de forma aleatoria.
-  
+ * **Funció getInvalidPosition()**
+   - Funció per obtenir INVALIDPOSITION.
+ * **Funció getPatients()**
+   - Funció per obtenir els malalts
+ * **Funció setPatients()**
+   - Funció per assignar un nou valor de malalts.
+ * **Funció getTotalCured()**
+   - Funció per obtenir el total de curats.
+ * **Funció setTotalCured()**
+   - Funció per assignar un nou valor al total de curats.
+ * **Funció getTotalPatients()**
+   - Funció per obtenir el total de malalts.
+ * **Funció setTotalPatients()**
+   - Funció per assignar un nou valor al total de malalts.
+ * **Funció sumTotalPatients()**
+   - Funció per incrementar el total de malalts.
+ * **Funció getTotalDisplaced()**
+   - Funció per obtenir el total de malalts que s'han saltat el confinament.
+ * **Funció getCurrentPatients()**
+   - Funció per obtenir el total de malalts actuals.
+ * **Funció setCurrentPatients()**
+   - Funció per assignar un nou valor al total de malalts actuals.
+ * **Funció getCasella()**
+   - Funció per obtenir una casella concreta.
+ * **Funció setCasella()**
+   - Funció per assignar un nou valor a una casella concreta.
+ * **Funció subtractCasella()**
+   - Funció per restar al valor d'una casella concreta.
+ * **Funció createTaulellBuit()**
+   - Funció per crear el taulell buit amb unes mesures introduïdes per l'usuari.
+ * **Funció createTaulellRand()**
+   - Funció per crear el taulell amb mesures i valors aleatoris.
+ * **Funció createTaulellFitxer()**
+   - Funció per crear un taulell amb les dades d'un fitxer.
+ * **Funció createInvalidPosition()**
+   - Funció per assignar posicions bloquejades al taulell.
+ * **Funció resetVariables()**
+   - Funció per resetejar variables.
+ * **Funció startTotalPatients()**
+   - Funció que recull els malalts totals al crear el taulell.
+ * **Funció updateTotalPatients()**
+   - Funció que actualitza els malalts totals.
+ * **Funció transmitirVirus()**
+   - Funció que va per cada casella aplicant la taxa de contagi que li passem.
+ * **Funció curarMalaltsPercentatgeGlobal()**
+   - Funció per curar malalts de forma global quan se li passa un percentatge.
+ * **Funció curarMalaltsPercentatgeVC()**
+   - Funció per curar malalts a una casella concreta quan se li passa un percentatge.
+ * **Funció curarMalaltsValorConcretGlobal()**
+   - Funció per curar malalts de forma global quan se li passa un valor concret.
+ * **Funció curarMalaltsValorConcret()**
+   - Funció per curar malalts a una casella concreta quan se li passa un valor concret.
+ * **Funció validarCasellaDesti()**
+   - Funció que ens permet validar si la casella de destí quan desplaçem un malalt és una posició bloquejada, esta fora del taulell o es una posició vàlida.
+ * **Funció desplacarMalalts()**
+   - Funció per desplaçar els malalts segons la direcció que ens passi l'usuari mitjançant una lletra.
+ * **Funció taulellToString()**
+   - Funció per escriure el nostre taulell en un fitxer com si fos una String.
+ * **Funció llegirFitxer()**
+   - Funció que ens serveix per llegir un fitxer i obtenir un taulell amb les dades corresponents.
+
 ### Classe "Interficie"
  * **Funció mostrarMenu()**
    - Mostra per pantalla les diferents opcions que formen els menús.
@@ -80,11 +137,20 @@ Classe on es crea i es modifica l'estructura del Taulell.
    - Solicita un enter fins que sigui correcte.
  * **Funció validarTaxaContagi()**
    - Solicita un float fins que sigui correcte.
- * **Funció validarCasellaDesti()**
-   - Funció que ens permet validar si la casella de destí quan desplaçem un malalt és una posició bloquejada, esta fora del taulell o es una posició vàlida.
  * **Funció validarLletraCasella()**
    - Funció que ens permet validar si la lletra que escriu l'usuari per moure malalts no és un número i està dins de les lletres que es demanen.
 
+### Classe "APICovid"
+ * **Funció queryAPICat()**
+   - Funció que ens retorna el JSONObject de Catalunya.
+ * **Funció queryAPIGir()**
+   - Funció que ens retorna el JSONObject de Girona.
+ * **Funció queryAPIRNoDeaths()**
+   - Funció que ens mostra totes les regions d'Espanya que no tenen morts en el dia d'ahir.
+ * **Funció queryAPIRDeaths()**
+   - Funció que ens mostra totes les regions d'Espanya que tenen més de 10 morts en el dia d'ahir.
+ * **Funció consultesAPICovid()**
+   - Funció que llegeix l'API i ens mostra els resultats segons l'opció escollida.
 # Explicació Repartiment de Tasques
 En el nostre cas nos ens hem atabalat molt, hem fet els apartats intercalats però això no vol dir que els hagim fet per separat o incomunicats. Mitjançant "Discord" hem fet trucades per realitzar cadascun dels apartats del projecte fos el que ens toquès a nosaltres o no, comentant codi, errors, fent proves... A més a més si no ens tocava realitzar un apartat el dia que feiem trucada, procuravem ajudar, buscar informació, intentar solucionar problemes... per tal de possar de la nostra part.  
 
