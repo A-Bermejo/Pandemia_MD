@@ -1,4 +1,4 @@
-# Pandemia_MD :shipit:
+# PandemiaMD :shipit:
 Projecte Pandemia Morel i Daniel
 
 # Esquema Principal del Projecte
@@ -16,7 +16,7 @@ Projecte Pandemia Morel i Daniel
 # Distribució de funcions
 Per que el codi estigués ben estructurat i sigui bonic i senzill vam decidir separar-lo en diferents classes i funcions. Per explicar el següent apartat ho farem divint l'explicació en cadascuna de les classes que hem creat.
 
-### Classe "Pandemia_MD"
+### Classe "PandemiaMD"
 Aquesta classe conté el main. Aquest crida a la funció "inici" que és la funció principal que crida a la resta de funcions.
  * **Funció inici()**
     - Programa principal cridat des del main de la classe. Mostra el menú per pantalla i segons la opció triada executa una o altre instrucció fins que aquesta opció sigui la de sortir
@@ -111,7 +111,7 @@ Classe on es crea i es modifica l'estructura del Taulell.
    - Funció per desplaçar els malalts segons la direcció que ens passi l'usuari mitjançant una lletra.
  * **Funció taulellToString()**
    - Funció per escriure el nostre taulell en un fitxer com si fos una String.
- * **Funció llegirFitxer()**
+ * **Funció llegirTaulell()**
    - Funció que ens serveix per llegir un fitxer i obtenir un taulell amb les dades corresponents.
 
 ### Classe "Interficie"
@@ -449,6 +449,46 @@ A més es mostrara a continuació el taulell.
   
 En aquest cas el que es fa és mostrar un missatge de comiat i a continuació s'atura el programa.
 
+# Codi Javadoc
+Captura justificativa sobre que el nostre projecte conté Javadoc.
+
+
+# Importació i emmagatzematge de dades en fitxers TXT
+Per realitzar aquest aquest apartat haviem de ser capaços de llegir i escriure dades sobre un fitxer TXT. A continuació es mostren captures jusitificatives del treball realitzat correctament.
+
+### Lectura
+El fitxer base que teniem era el següent:
+![FitxerBase](./img/FitxerBase.png)
+Com es pot veure disposem de 4 taulells d'exemple. A continuació es pot veure com tenint un taulell ja carregat, llegim el fitxer i el taulell passa a ser el que nosaltres escollim.
+![LlegirFitxer](./img/LlegirFitxer.png)
+
+### Escriptura
+A continuació es mostrarà com també podem escriure o exportar les dades que tenim del nostre taulell actual, a un fitxer TXT.
+
+![EscriureFitxer](./img/EscriureFitxer.png)
+
+Una vegada hem escollit l'opció d'escriptura, adjunto captura del fitxer per veure que s'ha exportat bé la informació
+
+![FitxerActualitzat](./img/FitxerActualitzat.png)
+
+#### Limit Taulells
+No es poden emmagatzemar més de 10 taulells. Aquí veiem el contingut del fitxer amb el màxim de 10 taulells:
+
+![LimitTaulellsFitxer](./img/LimitTaulellsFitxer.png)
+
+Quan l'usuari vol exportar un taulell però el fitxer ja conté el seu màxim, surt un missatge d'error.
+
+![LimitTaulells](./img/LimitTaulells.png)
+
+# Consum API REST COVID
+Com es veu a la imatge que tenim a continuació, hem pogut consumir l'API de dades sobre Covid perfectament. Per realitzar aquesta operació, l'usuari haurà de marcar que vol l'opció 9 del menú principal.
+Un cop dins, es mostra un submenú que ens permet realitzar 4 consultes sobre el Covid.
+1. És una consulta que ens mostra els contagiats que ha hagut en el dia d'ahir a Catalunya.
+2. És una consulta que ens mostra els contagiats que ha hagut en el dia d'ahir a Girona.
+3. És una consulta que ens mostra totes les regions d'Espanya que no han tingut cap mort en el dia d'ahir.
+4. És una consulta que ens mostra totes les regions d'Espanya que han tingut més de 10 morts en el dia d'ahir.
+
+![ConsumApiCovid](./img/ConsumAPI.PNG)
 # Proposta de millora
 ![Proposta de millora](./img/PropostaMillora.png)
 
