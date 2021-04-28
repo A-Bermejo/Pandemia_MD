@@ -31,6 +31,7 @@ public class PandemiaMD {
         int opcio;
         Taulell t = new Taulell();
         GestorTaulell g = new GestorTaulell();
+        APICovid a = new APICovid();
         g.carregarDades(t);
         do {
             Interficie.mostrarMenu(0);
@@ -47,7 +48,7 @@ public class PandemiaMD {
                 }
                 case 7 -> g.llegirFitxer(t);
                 case 8 -> g.escriureFitxer(t);
-                case 9 -> g.consultarCovid();
+                case 9 -> a.consultesAPICovid();
                 case 0 -> Interficie.mostrarMissatgeSortida();
             }
         } while (opcio != 0);

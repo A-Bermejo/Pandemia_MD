@@ -40,7 +40,7 @@ public class Interficie {
                     "1. Percentatge (%)\n" +
                     "2. Valor concret";
             case 9 ->   "1. Contagiats ahir a Catalunya    2. Contagiats ahir a Girona\n" +
-                        "3. Contagiats ahir a Espanya       4. Regions d'Espanya amb més 10 morts ahir\n" +
+                        "3. Contagiats ahir a Espanya      4. Regions d'Espanya amb més 10 morts ahir\n" +
                         "0. Sortir";
             default -> "";
         };
