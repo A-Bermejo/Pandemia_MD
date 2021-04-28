@@ -1,5 +1,6 @@
 package UF3;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -199,6 +200,20 @@ public class GestorTaulell {
     }
 
     public void llegirFitxer(Taulell t) {
+        Interficie.mostrarMissatge("Ara es mostraran tots els taulells disponibles per importar amb les seves dimensions: ");
+        try {
+            File origin = new File("res/Taulells.txt");
+            Scanner reader = new Scanner(origin);
+            while (reader.hasNextLine()){
+                Interficie.mostrarMissatge("Taulell " + reader.nextInt() + ": ");
+                reader.nextLine();
+            }
+
+
+            reader.close();
+        } catch (Exception e) {
+            Interficie.mostrarMissatge(e.getMessage());
+        }
         t.llegirFitxer();
     }
 

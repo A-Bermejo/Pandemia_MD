@@ -3,7 +3,6 @@ package UF3;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -57,7 +56,7 @@ public class APICovid {
             }
         }
         regionsSDeaths.sort(Comparator.naturalOrder());
-        String text = "Regions d'Espanya amb més 10 morts ahir: ";
+        String text = "Regions d'Espanya amb més de 10 morts ahir: ";
         for (int i = 0; i < regionsSDeaths.size(); i++) {
             text += "\n\t- " + regionsSDeaths.get(i);
         }
