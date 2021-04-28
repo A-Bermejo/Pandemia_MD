@@ -204,28 +204,49 @@ public class GestorTaulell {
         try {
             File origin = new File("res/Taulells.txt");
             Scanner reader = new Scanner(origin);
+            int i = 0;
             while (reader.hasNextLine()){
-                Interficie.mostrarMissatge("Taulell " + reader.nextInt() + ": ");
+                int nTaulellFile = reader.nextInt();
                 reader.nextLine();
+                reader.nextLine();
+                int x = reader.nextInt();
+                int y = reader.nextInt();
+                reader.nextLine();
+                reader.nextLine();
+                i += 4;
+                Interficie.mostrarMissatge("Taulell " + nTaulellFile + ": files(" + x + ") columnes(" + y + ")");
             }
-
-
+            int nTaulell = Utils.validarEnter("Introdueix un número corresponent a un taulell", "Introdueix un caràcter númeric vàlid", i/4, 1);
+            t.llegirTaulell(nTaulell);
             reader.close();
         } catch (Exception e) {
             Interficie.mostrarMissatge(e.getMessage());
         }
-        t.llegirFitxer();
+        
     }
 
     public void escriureFitxer(Taulell t) {
         try {
             FileWriter desti = new FileWriter("res/Taulells.txt", true);
             Date data = new Date();
-            desti.append(data.toString() + "\n"); //Data
-            desti.append(t.getCurrentPatients() + " " + t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
-            desti.append(t.getFiles() + " " + t.getColumnes() + "\n"); // Dimensions taulell actual
-            desti.append(t.taulellToString() + "\n"); // Taulell actual
-            desti.close();
+            File aux = new File("res/Taulells.txt");
+            Scanner reader = new Scanner(aux);
+            int i = 0;
+            while (reader.hasNextLine()){
+                reader.nextLine();
+                i++;
+            }
+            if (i/4+1 <= 10){
+                reader.close();
+                desti.append(i/4+1 + " " + data.toString() + "\n"); //Id i Data
+                desti.append(t.getCurrentPatients() + " " + t.getTotalPatients() + " " + t.getTotalCured() + "\n"); // Malalts actuals, malalts totals i curats totals
+                desti.append(t.getFiles() + " " + t.getColumnes() + "\n"); // Dimensions taulell actual
+                desti.append(t.taulellToString() + "\n"); // Taulell actual
+                desti.close();
+            }else{
+                Interficie.mostrarMissatgeError("No es poden guardar més de 10 taulells.");
+            }
+
         } catch (IOException e) {
             Interficie.mostrarMissatgeError(e.getMessage());
         }
