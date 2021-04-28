@@ -394,18 +394,29 @@ public class Taulell {
         return dadesTaulell;
     }
 
-    public void llegirFitxer() {
+    public void llegirTaulell(int nTaulell) {
         try {
             File origin = new File("res/Taulells.txt");
             Scanner reader = new Scanner(origin);
-            reader.nextLine();
-            setCurrentPatients(Float.parseFloat(reader.next()));
-            setTotalPatients(Float.parseFloat(reader.next()));
-            setTotalCured(Integer.parseInt(reader.next()));
-            setFiles(Integer.parseInt(reader.next()));
-            setColumnes(Integer.parseInt(reader.next()));
-            reader.nextLine();
-            createTaulellFitxer(reader.nextLine());
+            boolean taulellN = true;
+            while(taulellN){
+                if (reader.nextInt() == nTaulell){
+                    taulellN = false;
+                    reader.nextLine();
+                    setCurrentPatients(Float.parseFloat(reader.next()));
+                    setTotalPatients(Float.parseFloat(reader.next()));
+                    setTotalCured(Integer.parseInt(reader.next()));
+                    setFiles(Integer.parseInt(reader.next()));
+                    setColumnes(Integer.parseInt(reader.next()));
+                    reader.nextLine();
+                    createTaulellFitxer(reader.nextLine());
+                    reader.close();
+                }else{
+                    for (int i = 0; i < 4; i++) {
+                        reader.nextLine();
+                    }
+                }
+            }
             reader.close();
         } catch (Exception e) {
             Interficie.mostrarMissatge(e.getMessage());
